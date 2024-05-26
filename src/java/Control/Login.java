@@ -24,7 +24,6 @@ public class Login extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         User user = new UsersAct().getUserByUsername(username);
-        PrintWriter out = resp.getWriter();
         if(user!= null && password.equals(user.getPassword())){
             req.getRequestDispatcher("ShowHome").forward(req, resp);
         }else
