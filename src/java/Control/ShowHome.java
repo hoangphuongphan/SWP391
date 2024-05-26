@@ -19,6 +19,6 @@ public class ShowHome extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("Home/menu.jsp");
+        req.getRequestDispatcher("Home/menu.jsp").forward(req, resp);
     }
 }
