@@ -4,37 +4,29 @@
  */
 package Control;
 
-import Dao.UsersAct;
-import Model.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author phoan
  */
-public class Login extends HttpServlet {
+public class ConfirmRegisterEmail extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        User user = new UsersAct().getUserByUsername(username);
-        if(user!= null && password.equals(user.getPassword())){
-            HttpSession session = req.getSession(true);
-            session.setAttribute("username", username);
-            session.setAttribute("password", password);
-            req.getRequestDispatcher("ShowHome").forward(req, resp);
-        }else
-            resp.sendRedirect("Login/Login.jsp");   
+        req.setAttribute("username", req.getParameter("username"));
+        req.setAttribute("password", req.getParameter("password"));
+        req.setAttribute("password", req.getParameter("email"));
+        req.getRequestDispatcher("Login/RegisterEmail.jsp").forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);  
+        doPost(req, resp);
     }
 }

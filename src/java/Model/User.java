@@ -22,7 +22,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.displayName = new Generator().getNewDisplayName();
+        this.displayName = Generator.getInstance().getNewDisplayName();
         this.bio = null;
         this.isAdmin = false;
         this.isPublisher = false;

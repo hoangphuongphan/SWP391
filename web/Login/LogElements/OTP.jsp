@@ -31,7 +31,7 @@
 </head>
 <body>
     <%
-        String OTP = "123412";
+        String OTP = Generator.getInstance().getOTP();
         Email mail = new Email(request.getParameter("email"), OTP, "Authentication");
         mail.run();
     %>
