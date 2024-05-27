@@ -19,7 +19,7 @@ public class EnterNewPassword extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("Login/ChangePassword.jsp").forward(req, resp);
+        resp.sendRedirect("Login/ChangePassword.jsp");
     }
 
     @Override

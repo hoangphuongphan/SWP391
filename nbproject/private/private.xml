@@ -3,15 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/FU/SWP391/SWP391/web/Login/Register.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Login/Login.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Login/ForgetVerify.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Forgetting/ResetPassword.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Login/ChangePassword.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Forgetting/SendOTPForget.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Forgetting/EnterNewPassword.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Filter/OTPAuthentication.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/ConfirmRegisterEmail.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Login/ForgetVerify.jsp</file>
             <file>file:/C:/FU/SWP391/SWP391/web/WEB-INF/web.xml</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Login/RegisterEmail.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Login/LogElements/OTP.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Register.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Registering/Register.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Login/ForgetPassword.jsp</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Filter/Authentication.java</file>
         </group>
     </open-files>

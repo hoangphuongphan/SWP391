@@ -28,7 +28,7 @@ public class SendOTPForget extends HttpServlet {
         HttpSession session = req.getSession(true);
         session.setAttribute("email", req.getParameter("email"));
         session.setAttribute("trueOTP", OTP);
-        req.getRequestDispatcher("Login/ForgetVerify.jsp").forward(req, resp);
+        resp.sendRedirect("Login/ForgetVerify.jsp");
     }
 
     @Override

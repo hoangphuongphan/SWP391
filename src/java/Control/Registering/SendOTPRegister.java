@@ -24,8 +24,8 @@ public class SendOTPRegister extends HttpServlet {
         String OTP = Generator.getInstance().getOTP();
         Email mail = new Email(req.getParameter("email"), OTP, "Authentication");
         mail.run();
-        req.setAttribute("OTP", OTP);
-        req.getRequestDispatcher("Login/RegisterEmail.jsp").forward(req, resp);
+        req.getSession().setAttribute("OTP", OTP);
+        resp.sendRedirect("Login/RegisterEmail.jsp");
     }
 
     @Override

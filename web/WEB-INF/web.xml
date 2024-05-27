@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>ShowHome</servlet-name>
-        <servlet-class>Control.ShowHome</servlet-class>
+        <servlet-class>Control.Homing.ShowHome</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ConfirmRegisterEmail</servlet-name>
