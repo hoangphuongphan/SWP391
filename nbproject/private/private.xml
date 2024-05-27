@@ -4,15 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/FU/SWP391/SWP391/web/Login/Register.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/Database.java</file>
             <file>file:/C:/FU/SWP391/SWP391/web/Login/Login.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/UsersAct.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/ShowHome.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Login/ForgetVerify.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Filter/OTPAuthentication.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/ConfirmRegisterEmail.java</file>
             <file>file:/C:/FU/SWP391/SWP391/web/WEB-INF/web.xml</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/navbar.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Login.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Login/RegisterEmail.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Login/LogElements/OTP.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Register.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Filter/Authentication.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/menu.jsp</file>
         </group>
     </open-files>
 </project-private>

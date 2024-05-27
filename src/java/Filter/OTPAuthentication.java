@@ -107,8 +107,8 @@ public class OTPAuthentication implements Filter {
         
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        String TOTP = request.getParameter("trueOTP");
-        String OTP = request.getParameter("OTP");
+        String TOTP = (String) req.getAttribute("OTP");
+        String OTP = req.getParameter("OTP");
         if(TOTP!=null && OTP!=null){
             if(!TOTP.equals(OTP)){
                 res.sendRedirect(req.getServletPath());

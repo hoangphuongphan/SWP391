@@ -58,7 +58,7 @@ public class UsersAct {
     
     public boolean Create(User user) {
         String query = "INSERT INTO Users (Username, PasswordHash, Email, DisplayName) " + "\n"
-                + "VALUES (?, ?, ?)";
+                + "VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement pre = con.prepareStatement(query);
             pre.setString(1, user.getUsername());

@@ -2,39 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Control;
+package Control.Registering;
 
-import Dao.UsersAct;
-import Model.User;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 /**
  *
  * @author phoan
  */
-public class Login extends HttpServlet {
+public class ConfirmRegisterEmail extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        User user = new UsersAct().getUserByUsername(username);
-        if(user!= null && password.equals(user.getPassword())){
-            HttpSession session = req.getSession(true);
-            session.setAttribute("username", username);
-            session.setAttribute("password", password);
-            req.getRequestDispatcher("ShowHome").forward(req, resp);
-        }else
-            resp.sendRedirect("Login/Login.jsp");   
+        HttpSession session = req.getSession(true);
+        session.setAttribute("username", req.getParameter("username"));
+        session.setAttribute("password", req.getParameter("password"));
+        session.setAttribute("email", req.getParameter("email"));
+        req.getRequestDispatcher("SendOTPRegister").forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);  
+        doPost(req, resp);
     }
 }

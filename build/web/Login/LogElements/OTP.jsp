@@ -30,12 +30,6 @@
     </style>
 </head>
 <body>
-    <%
-        String OTP = Generator.getInstance().getOTP();
-        Email mail = new Email(request.getParameter("email"), OTP, "Authentication");
-        mail.run();
-    %>
-                                <input value="<%=OTP%>" type="hidden" name="trueOTP">
 					<div class="wrap-input100 validate-input" data-validate = "OTP is required">
 						<input class="input100" type="text" name="OTP" placeholder="OTP">
 						<span class="focus-input100"></span>

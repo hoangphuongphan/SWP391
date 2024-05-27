@@ -18,7 +18,7 @@
     </filter-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>Control.Login</servlet-class>
+        <servlet-class>Control.LoggingIn.Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowHome</servlet-name>
@@ -26,11 +26,27 @@
     </servlet>
     <servlet>
         <servlet-name>ConfirmRegisterEmail</servlet-name>
-        <servlet-class>Control.ConfirmRegisterEmail</servlet-class>
+        <servlet-class>Control.Registering.ConfirmRegisterEmail</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Register</servlet-name>
-        <servlet-class>Control.Register</servlet-class>
+        <servlet-class>Control.Registering.Register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendOTPForget</servlet-name>
+        <servlet-class>Control.Forgetting.SendOTPForget</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPassword</servlet-name>
+        <servlet-class>Control.Forgetting.ResetPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendOTPRegister</servlet-name>
+        <servlet-class>Control.Registering.SendOTPRegister</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnterNewPassword</servlet-name>
+        <servlet-class>Control.Forgetting.EnterNewPassword</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -47,6 +63,22 @@
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendOTPForget</servlet-name>
+        <url-pattern>/SendOTPForget</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPassword</servlet-name>
+        <url-pattern>/ResetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendOTPRegister</servlet-name>
+        <url-pattern>/SendOTPRegister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnterNewPassword</servlet-name>
+        <url-pattern>/EnterNewPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
