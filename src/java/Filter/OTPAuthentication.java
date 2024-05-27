@@ -4,8 +4,8 @@
  */
 package Filter;
 
-import Control.Generator;
-import Model.Email;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -16,15 +16,11 @@ import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author phoan
  */
-@WebFilter(filterName = "OTPAuthentication", urlPatterns = {"/Login/*"})
 public class OTPAuthentication implements Filter {
     
     private static final boolean debug = true;
@@ -118,6 +114,7 @@ public class OTPAuthentication implements Filter {
                 res.sendRedirect(req.getServletPath());
             }
         }
+        
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
