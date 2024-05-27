@@ -108,9 +108,9 @@ public class Authentication implements Filter {
         //checking session
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        HttpSession session = req.getSession(false);
+        HttpSession session = req.getSession();
         if(session == null || session.getAttribute("username") == null){
-            res.sendRedirect("Login/Login.jsp");
+            res.sendRedirect("Login");
         }
         
         Throwable problem = null;
