@@ -29,7 +29,7 @@
             <div class="container-login100">
                 <div class="wrap-login100">
                     <%@include file="Icon.jsp" %>
-                    <form class="login100-form validate-form" action="${action}" method="post">
+                    <form id="normalForm" class="login100-form validate-form" action="${action}" method="post">
                         <%@include file="Title.jsp" %>
                         <%for (String cont : content) {%>
                         <jsp:include page="<%= cont%>"/>
@@ -64,6 +64,6 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
         <script src="js/passconfirm.js"></script>
-
+        <script src="js/verify.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@ public class Generator {
     
     public String getOTP() {
         int OTP =  new Random().nextInt(999999);
-        return "Your OTP is " + String.format("%06d", OTP);
+        return String.format("%06d", OTP);
     }
     
     public String getNewDisplayName() {

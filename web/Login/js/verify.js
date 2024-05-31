@@ -1,19 +1,15 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
- */
-document.getElementById('OTPcheck').addEventListener('submit', function(event) {
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('normalForm');
+    form.addEventListener('submit', function(event) {
+        var trueOTP = document.getElementById('trueOTP').value;
+        var userOTP = document.getElementById('OTP').value;
+        var otpErrorMessage = document.getElementById('otp-error-message');
 
-            let inputText = document.getElementById('OTPinput').value;
-            let storedText = '<%= OTP %>';
-            let errorMessage = document.getElementById('error-message');
-            let successMessage = document.getElementById('success-message');
-
-            if (inputText !== storedText) {
-                errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-                event.preventDefault(); 
-            } else {
-            }
-        });
-
+        if (userOTP !== trueOTP) {
+            otpErrorMessage.style.display = 'block';
+            event.preventDefault(); // Prevent form submission
+        } else {
+            otpErrorMessage.style.display = 'none';
+        }
+    });
+});

@@ -25,6 +25,7 @@ public class ResetPassword extends HttpServlet {
         String password = req.getParameter("password");
         UsersAct act = new UsersAct();
         act.UpdataePassword(password, (String) session.getAttribute("email"));
+        req.getSession().invalidate();
         resp.sendRedirect("Login/Login.jsp");
     }
 

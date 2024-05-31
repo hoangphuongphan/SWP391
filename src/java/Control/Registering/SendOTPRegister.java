@@ -22,7 +22,7 @@ public class SendOTPRegister extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String OTP = Generator.getInstance().getOTP();
-        Email mail = new Email(req.getParameter("email"), OTP, "Authentication");
+        Email mail = new Email(req.getParameter("email"),"Your OTP is " + OTP, "Authentication");
         mail.run();
         req.getSession().setAttribute("OTP", OTP);
         resp.sendRedirect("Login/RegisterEmail.jsp");

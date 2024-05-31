@@ -30,14 +30,15 @@
     </style>
 </head>
 <body>
+    <input type="hidden" value="<%=(String) session.getAttribute("OTP")%>" name="trueOTP" id="trueOTP">
 					<div class="wrap-input100 validate-input" data-validate = "OTP is required">
-						<input class="input100" type="text" name="OTP" placeholder="OTP">
+                                            <input class="input100" type="text" name="OTP" id="OTP" placeholder="OTP">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-	
+                                        <span id="error-message" class="error">Not Valid OTP!</span><br><br>
 	
 
 	
@@ -58,6 +59,7 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
         <script src="js/passconfirm.js"></script>
+        <script src="js/verify.js"></script>
 
 </body>
 </html>

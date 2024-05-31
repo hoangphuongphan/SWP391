@@ -4,14 +4,6 @@
         <filter-name>Authentication</filter-name>
         <filter-class>Filter.Authentication</filter-class>
     </filter>
-    <filter>
-        <filter-name>OTPAuthentication</filter-name>
-        <filter-class>Filter.OTPAuthentication</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>OTPAuthentication</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>Authentication</filter-name>
         <url-pattern>/Home/*</url-pattern>

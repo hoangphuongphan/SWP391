@@ -23,7 +23,7 @@ public class SendOTPForget extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String OTP = Generator.getInstance().getOTP();
-        Email mail = new Email(req.getParameter("email"), OTP, "Authentication");
+        Email mail = new Email(req.getParameter("email"), "Your OTP is " + OTP, "Authentication");
         mail.run();
         HttpSession session = req.getSession(true);
         session.setAttribute("email", req.getParameter("email"));
