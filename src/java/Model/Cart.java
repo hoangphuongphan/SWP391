@@ -4,8 +4,8 @@
  */
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class Cart {
     private static Cart instance;
-    private List<Product> list;
+    private Map<Product,Integer> cart;
 
     private Cart() {
-        list = new ArrayList<>();
+        cart = new HashMap<>();
     }
 
     public static Cart getInstance() {
@@ -25,7 +25,30 @@ public class Cart {
         return instance;
     }
 
-    public List<Product> getList() {
-        return list;
+    public Map<Product, Integer> getCart() {
+        return cart;
+    }
+    
+    public boolean Add(Product product, int amount){
+        int defaultAmount = amount;
+        if(cart.containsKey(product)){
+            defaultAmount = cart.get(product) + amount;
+            cart.put(product, cart.get(product) + amount);
+        }else{
+            cart.put(product, amount);
+        }
+        return defaultAmount == cart.get(product);
+    }
+    
+    public boolean Delete(Product product, int amount){
+        if(cart.containsKey(product)){
+            int defaultAmount = cart.get(product);
+            if (defaultAmount > amount) {
+                cart.put(product, defaultAmount - amount);
+            } else 
+                cart.remove(product);
+            return !cart.containsKey(product) || cart.get(product) == defaultAmount - amount;
+        }
+        return false;
     }
 }
