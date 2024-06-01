@@ -5,6 +5,7 @@
 package Control.LoggingIn;
 
 import Dao.UsersAct;
+import Model.CurrentUser;
 import Model.User;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -28,6 +29,7 @@ public class Login extends HttpServlet {
             HttpSession session = req.getSession(true);
             session.setAttribute("username", username);
             session.setAttribute("password", password);
+            session.setAttribute("currentUser", CurrentUser.getCurrent(session));
             req.getRequestDispatcher("ShowHome").forward(req, resp);
         }else
             resp.sendRedirect("Login/Login.jsp");   

@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class Cart {
     private static Cart instance;
-    private Map<Product,Integer> cart;
+    private static Map<Product,Integer> cart;
 
     private Cart() {
         cart = new HashMap<>();

@@ -16,7 +16,7 @@
                     <a class="nav-link active" aria-current="page" href="MenuServlet">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Library</a>
+                    <a class="nav-link" href="ShowCart">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Support</a>
