@@ -25,4 +25,8 @@ public class CurrentUser{
             CU = new CurrentUser(session);
         return current;
     }
+    
+    protected static User getUser(){
+        return current;
+    }
 }

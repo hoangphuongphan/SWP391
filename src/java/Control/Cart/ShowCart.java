@@ -19,7 +19,7 @@ public class ShowCart extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("Home/Cart.jsp").forward(req, resp);
+        resp.sendRedirect("Home/Cart.jsp");
     }
 
     @Override

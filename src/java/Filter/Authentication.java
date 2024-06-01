@@ -109,7 +109,7 @@ public class Authentication implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
-        if(session == null || session.getAttribute("username") == null){
+        if(session == null || session.getAttribute("currentUser") == null){
             res.sendRedirect("/SWP391/Login");
         }
         

@@ -11,7 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <!--Css for cart-->
+        <link rel="stylesheet" href="css/cartMain.css"/>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -27,6 +28,70 @@
     </head>
     <body>
         <%@include file="navbar.jsp" %>
-        
+        <div class="bigcontainer">
+            <div class="title container">
+                <h1>My cart</h1>
+            </div>
+            <div class="container">
+                <div class="leftcolumn ">
+
+                    <div class="container">
+                        <div class="info center person">
+                            this is person info
+                        </div>
+                        <div class="info center location">
+                            this is location info
+                        </div>
+                    </div>
+                    <div class="cart">
+                        <div class="title">
+                            <h3>Get it shipped(?)</h3>
+                        </div>
+                        <div class="cartelement">Your fee ship is ?</div>
+                        <div class="container cartelement">
+                            <div class="productimage">
+                                this is image
+                            </div>
+                            <div class="productinfo">
+                                this is product info
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightcolumn ">
+                    <div class="payment">
+                        <div class="prices">
+                            <div class="container">
+                                <div class="left"><p>Merchandise Subtotal</p></div>
+                                <div class="right"><p class="bold">$?</p></div>
+                            </div>
+                            <div class="container">
+                                <div class="left"><p>Shipping and Handling</p></div>
+                                <div class="right"><p class="bold">$?</p></div>
+                            </div>
+                            <div class="container">
+                                <div class="left"><p>Estimated Tax</p></div>
+                                <div class="right"><p class="bold">$?</p></div>
+                            </div>
+                        </div>
+                        <div class="total">
+                            <div class="container">
+                                <div class="left"><p class="bold">In Total</p></div>
+                                <div class="right"><p class="bold">$?</p></div>
+                            </div>
+                            <p style="color: #D6D3D1; font-size: 1rem;">Shipping and taxes are included in the checkout</p>
+                            <button class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
+                            <button class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay Online</button>
+                        </div>
+                    </div>
+                    <div class="promotioncontainer">
+                        <div class="view"><a href="">View your discount ></a></div>
+                        <div class="promotion">
+                            <input type="text" placeholder="Discount or Reward Code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

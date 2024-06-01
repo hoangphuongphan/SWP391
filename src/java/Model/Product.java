@@ -9,5 +9,5 @@ package Model;
  * @author phoan
  */
 public class Product {
-    
+    private String imgurl,name,info,shopName;
 }

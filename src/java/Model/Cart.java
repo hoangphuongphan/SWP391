@@ -14,9 +14,11 @@ import java.util.Map;
 public class Cart {
     private static Cart instance;
     private static Map<Product,Integer> cart;
+    private static User owner;
 
     private Cart() {
         cart = new HashMap<>();
+        owner = CurrentUser.getUser();
     }
 
     public static Cart getInstance() {

@@ -1,0 +1,136 @@
+
+.BigContainer{
+    margin: 5% 20%;
+}
+
+.title{
+    padding: 0;
+}
+
+.container {
+    display: flex; 
+    margin: 0;
+    padding: 0;
+}
+
+.leftcolumn{
+    width: 65%;
+    margin: 10px 2% 10px 0%;
+}
+
+.rightcolumn{
+    width: 30%;
+}
+
+.info{
+    width: 49%;
+    margin-bottom: 1%;
+    border: 2px solid #F0F9FF;
+    border-radius: 10px;
+    padding: 0 5%;
+}
+
+
+.person{
+    margin-right: 1%;
+}
+
+.location{
+    margin-left: 1%;
+}
+
+.cart{
+    padding: 1%;
+    background-color: #F0F9FF;
+    border-radius: 10px;
+}
+
+.cartelement{
+    background-color: white;
+    margin: 0 1%;
+    border: 2px solid #F0F9FF;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.productimage{
+    width: 25%;
+}
+
+.productinfo{
+    width: 75%;
+}
+
+.payment{
+    border: 2px solid #F0F9FF;
+}
+
+
+.promotion{
+    border: 2px solid #F0F9FF;
+    border-radius: 5px;
+}
+
+.promotion input{
+    width: 100%;
+    height: 10%;
+    border: none;
+}
+
+.promotioncontainer{
+    margin-top: 10%;
+}
+
+.view{
+    text-align: right;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit; /* This will keep the same color as the default */
+}
+
+.left{
+    text-align: left;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+.right{
+    text-align: right;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+.total{
+    border-top: 2px solid #F0F9FF;
+    font-size: 1.25rem;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.button{
+    height: 12%;
+    width: 80%;
+    text-align: center;
+    border-radius: 20px;
+    margin: 1% 10%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.center{
+    text-align: center;
+}
+
+.prices{
+    padding: 0;
+}
