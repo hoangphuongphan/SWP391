@@ -4,7 +4,9 @@
  */
 package Control.LoggingIn;
 
+import Dao.FoodDao;
 import Dao.UsersAct;
+import Model.Cart;
 import Model.CurrentUser;
 import Model.User;
 import java.io.IOException;
@@ -25,11 +27,14 @@ public class Login extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         User user = new UsersAct().getUserByUsername(username);
+        FoodDao dao = new FoodDao();
         if(user!= null && password.equals(user.getPassword())){
             HttpSession session = req.getSession(true);
             session.setAttribute("username", username);
             session.setAttribute("password", password);
             session.setAttribute("currentUser", CurrentUser.getCurrent(session));
+            Cart cart = Cart.getInstance();
+            cart.Add(dao.getFoodByID(1), 1);
             req.getRequestDispatcher("ShowHome").forward(req, resp);
         }else
             resp.sendRedirect("Login/Login.jsp");   

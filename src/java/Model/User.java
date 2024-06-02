@@ -12,74 +12,43 @@ import java.time.LocalDate;
  *
  * @author phoan
  */
-public class User {
-    private String userID, username, password, email, displayName, bio, profilePicture;
-    private boolean isPublisher = false,isAdmin = false;
-    private java.sql.Date createdAt;
+public class User extends Account{
+    private String email, phone, name, location;
+    private int ID;
 
-    public User( String username, String password, String email) {
-        this.userID = null;
-        this.username = username;
-        this.password = password;
+    public User( String username, String password, String email, String phone, String name) {
+        super(username, password);
         this.email = email;
-        this.displayName = Generator.getInstance().getNewDisplayName();
-        this.bio = null;
-        this.isAdmin = false;
-        this.isPublisher = false;
-        this.createdAt = java.sql.Date.valueOf(LocalDate.now());
-        this.profilePicture = null;
+        this.phone = phone;
+        this.name = name;
     }
     
-    public User(String userID, String username, String password, String email, String displayName, Date createdAt, String bio, boolean isPublisher, boolean isAdmin, String profilePicture) {
-        this.userID = userID;
-        this.username = username;
-        this.password = password;
+    public User( String username, String password, String email, String phone, String name, String location, int ID) {
+        super(username, password);
         this.email = email;
-        this.displayName = displayName;
-        this.bio = bio;
-        this.isPublisher = isPublisher;
-        this.isAdmin = isAdmin;
-        this.createdAt = createdAt;
-        this.profilePicture = profilePicture;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+        this.phone = phone;
+        this.name = name;
+        this.location = location;
+        this.ID = ID;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getPhone() {
+        return phone;
     }
 
-    public String getBio() {
-        return bio;
+    public String getName() {
+        return name;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getLocation() {
+        return location;
     }
 
-    public boolean isIsPublisher() {
-        return isPublisher;
-    }
-
-    public boolean isIsAdmin() {
-        return isAdmin;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
+    public int getID() {
+        return ID;
     }
 }

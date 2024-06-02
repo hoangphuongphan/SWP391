@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class Cart {
     private static Cart instance;
-    private static Map<Product,Integer> cart;
+    private static HashMap<Food,Integer> cart;
     private static User owner;
 
     private Cart() {
@@ -27,11 +27,11 @@ public class Cart {
         return instance;
     }
 
-    public Map<Product, Integer> getCart() {
+    public static HashMap<Food, Integer> getCart() {
         return cart;
     }
     
-    public boolean Add(Product product, int amount){
+    public boolean Add(Food product, int amount){
         int defaultAmount = amount;
         if(cart.containsKey(product)){
             defaultAmount = cart.get(product) + amount;
@@ -42,7 +42,7 @@ public class Cart {
         return defaultAmount == cart.get(product);
     }
     
-    public boolean Delete(Product product, int amount){
+    public boolean Delete(Food product, int amount){
         if(cart.containsKey(product)){
             int defaultAmount = cart.get(product);
             if (defaultAmount > amount) {

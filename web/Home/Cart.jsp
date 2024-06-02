@@ -5,10 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Model.User" %>
+<%@page import="Model.Food" %>
+<%@page import="Model.Cart" %>
+<%@page import="java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Css for cart-->
@@ -28,6 +31,8 @@
     </head>
     <body>
         <%@include file="navbar.jsp" %>
+        <%User current = (User) session.getAttribute("currentUser");%>
+        <%Cart cart = Cart.getInstance();%>
         <div class="bigcontainer">
             <div class="title container">
                 <h1>My cart</h1>
@@ -37,7 +42,7 @@
 
                     <div class="container">
                         <div class="info center person">
-                            this is person info
+                            <p><%=current.getName()%><br><%=current.getPhone()%></p>
                         </div>
                         <div class="info center location">
                             this is location info
@@ -48,14 +53,16 @@
                             <h3>Get it shipped(?)</h3>
                         </div>
                         <div class="cartelement">Your fee ship is ?</div>
-                        <div class="container cartelement">
-                            <div class="productimage">
-                                this is image
+                        
+                            <div class="container cartelement">
+                                <div class="productimage">
+                                    food image
+                                </div>
+                                <div class="productinfo">
+                                    food info<br>
+                                    food amount
+                                </div>
                             </div>
-                            <div class="productinfo">
-                                this is product info
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="rightcolumn ">

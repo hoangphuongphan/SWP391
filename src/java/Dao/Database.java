@@ -20,7 +20,7 @@ public class Database {
 
     private Database() {
         String serverName = "sun-phan";
-        String databaseName = "GameStore";
+        String databaseName = "Foodpal";
         String url = "jdbc:sqlserver://" + serverName + ";databaseName=" + databaseName + ";encrypt=false";
         String username = "sa";
         String password = "sa";

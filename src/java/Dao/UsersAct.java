@@ -22,15 +22,15 @@ public class UsersAct {
     }
     
     public User getUserByMail(String mail){
-        String query = "Select * from Users where Email = ?";
+        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where Email = ?";
         User user = null;
         try{
             PreparedStatement st = con.prepareStatement(query);
             st.setString(1, mail);
             ResultSet rs = st.executeQuery();
             if(rs.next())
-                user = new User(rs.getString("UserID"), rs.getString("Username"), rs.getString("PasswordHash"), rs.getString("Email"), rs.getString("DisplayName"), 
-                        rs.getDate("CreatedAt"), rs.getString("Bio"), rs.getBoolean("IsPublisher"), rs.getBoolean("IsAdmin"), rs.getString("ProfilePicture"));
+                user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
+                        , rs.getInt("UserID"));
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -39,15 +39,15 @@ public class UsersAct {
     }
     
     public User getUserByUsername(String username) {
-        String query = "Select * from Users where Username = ?";
+        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where Username = ?";
         User user = null;
         try{
             PreparedStatement st = con.prepareStatement(query);
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
             if(rs.next())
-                user = new User(rs.getString("UserID"), rs.getString("Username"), rs.getString("PasswordHash"), rs.getString("Email"), rs.getString("DisplayName"), 
-                        rs.getDate("CreatedAt"), rs.getString("Bio"), rs.getBoolean("IsPublisher"), rs.getBoolean("IsAdmin"), rs.getString("ProfilePicture"));
+                user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
+                        , rs.getInt("UserID"));
         } catch (SQLException ex) {
             Logger.getLogger(UsersAct.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -57,14 +57,13 @@ public class UsersAct {
     }
     
     public boolean Create(User user) {
-        String query = "INSERT INTO Users (Username, PasswordHash, Email, DisplayName) " + "\n"
-                + "VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO Users (Name, Phone, Email) " + "\n"
+                + "VALUES (?, ?, ?)";
         try {
             PreparedStatement pre = con.prepareStatement(query);
-            pre.setString(1, user.getUsername());
-            pre.setString(2, user.getPassword());
+            pre.setString(1, user.getName());
+            pre.setString(2, user.getPhone());
             pre.setString(3, user.getEmail());
-            pre.setString(4, user.getDisplayName());
             int re = pre.executeUpdate();
             return re == 1? true : false;
         } catch (SQLException ex) {

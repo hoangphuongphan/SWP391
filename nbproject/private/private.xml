@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Cart.java</file>
             <file>file:/C:/FU/SWP391/SWP391/web/Home/Cart.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Homing/ShowHome.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/LoggingIn/Login.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Product.java</file>
             <file>file:/C:/FU/SWP391/SWP391/web/WEB-INF/web.xml</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Filter/Authentication.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Cart/ShowCart.java</file>
         </group>
     </open-files>
 </project-private>
