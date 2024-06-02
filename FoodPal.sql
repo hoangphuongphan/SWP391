@@ -1,16 +1,18 @@
 Create database Foodpal;
 
+
 -- tao bang user
 create table Users(
-	UserID int primary key,
+	UserID int IDENTITY(1,1) primary key,
 	Name nvarchar(50) not null,
 	Phone varchar(10) not null,
+	Email varchar(50) not null,
 	Location nvarchar(100)
 )
 
 -- tao bang Shop
 create table Shop(
-	ShopID int primary key,
+	ShopID int IDENTITY(1,1) primary key,
 	Name nvarchar(50) not null,
 	Phone varchar(10) not null,
 	Location nvarchar(100) not null,
@@ -19,7 +21,7 @@ create table Shop(
 
 -- tao bang shipper
 create table Shipper(
-	ShipperID int primary key,
+	ShipperID int IDENTITY(1,1) primary key,
 	Name nvarchar(50) not null,
 	Phone varchar(10) not null,
 	VehicleID varchar(20) not null,
@@ -27,19 +29,19 @@ create table Shipper(
 
 -- tao bang admin
 create table Admin(
-	AdminID int primary key,
+	AdminID int IDENTITY(1,1) primary key,
 	Name nvarchar(50) not null,
 )
 
 -- tao bang category
 create table Category(
-	CateID int primary key,
+	CateID int IDENTITY(1,1) primary key,
 	Name nvarchar(50) not null
 )
 
 create table Food(
 	ShopID int foreign key references Shop(ShopID),
-	FoodID int,
+	FoodID int IDENTITY(1,1),
 	CateID int foreign key references Category(CateID),
 	Price money,
 	FoodImage varchar(100),
@@ -48,7 +50,7 @@ create table Food(
 
 create table Review(
 	FoodID int foreign key references Food(FoodID),
-	ReviewID int,
+	ReviewID int IDENTITY(1,1),
 	UserID int foreign key references Users(UserID),
 	content nvarchar(200)
 	primary key (FoodID, ReviewID, UserID)
@@ -56,7 +58,7 @@ create table Review(
 
 create table Rate(
 	FoodID int foreign key references Food(FoodID),
-	RateID int,
+	RateID int IDENTITY(1,1),
 	UserID int foreign key references Users(UserID),
 	Rate int,
 	constraint Rate CHECK (Rate between 0 and 5),
@@ -64,7 +66,7 @@ create table Rate(
 )
 
 create table ReportFood(
-	ReportFoodID int,
+	ReportFoodID int IDENTITY(1,1),
 	UserID int foreign key references Users(UserID),
 	FoodID int foreign key references Food(FoodID),
 	content nvarchar(200),
@@ -72,7 +74,7 @@ create table ReportFood(
 )
 
 create table ReportShop(
-	ReportFoodID int,
+	ReportFoodID int IDENTITY(1,1),
 	UserID int foreign key references Users(UserID),
 	ShopID int foreign key references Shop(ShopID),
 	content nvarchar(200),
@@ -80,7 +82,7 @@ create table ReportShop(
 )
 
 create table ReportShipper(
-	ReportFoodID int,
+	ReportFoodID int IDENTITY(1,1),
 	UserID int foreign key references Users(UserID),
 	ShipperID int foreign key references Shipper(ShipperID),
 	content nvarchar(200),
@@ -88,7 +90,7 @@ create table ReportShipper(
 )
 
 create table Orders(
-	OrderID int,
+	OrderID int IDENTITY(1,1),
 	ShopID int foreign key references Shop(ShopID),
 	UserID int foreign key references Users(UserID),
 	Time Date,
@@ -104,14 +106,14 @@ create table OrdersDetail(
 
 -- tao bang account
 create table Account(
-	AccountID int primary key,
+	AccountID int IDENTITY(1,1) primary key,
 	Username varchar(20) not null,
 	Password varchar(20) not null,
 	Type varchar(20) not null Check (Type in ('User','Shop','Shipper'))
 )
 
 create table UserAccount(
-    UserAccountID INT PRIMARY KEY,
+    UserAccountID INT IDENTITY(1,1) PRIMARY KEY,
     UserID INT FOREIGN KEY REFERENCES Users(UserID),
     AccountID INT FOREIGN KEY REFERENCES Account(AccountID)
 )
@@ -119,14 +121,14 @@ create table UserAccount(
 	
 -- Tạo bảng ShopAccount (Tài khoản cửa hàng)
 CREATE TABLE ShopAccount (
-    ShopAccountID INT PRIMARY KEY,
+    ShopAccountID INT IDENTITY(1,1) PRIMARY KEY,
     ShopID INT FOREIGN KEY REFERENCES Shop(ShopID),
     AccountID INT FOREIGN KEY REFERENCES Account(AccountID)
 	
 );
 
 create table ShipperAccount(
-	ShipperAccountID int primary key,
+	ShipperAccountID int IDENTITY(1,1) primary key,
 	ShipperID int foreign key references Shipper(ShipperID),
 	AccountID int foreign key references Account(AccountID)
 )
