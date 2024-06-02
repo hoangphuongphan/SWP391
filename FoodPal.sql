@@ -43,7 +43,7 @@ create table Food(
 	CateID int foreign key references Category(CateID),
 	Price money,
 	FoodImage varchar(100),
-	primary key (ShopID, FoodID, CateID)
+	primary key (FoodID)
 )
 
 create table Review(
@@ -74,7 +74,7 @@ create table ReportFood(
 create table ReportShop(
 	ReportFoodID int,
 	UserID int foreign key references Users(UserID),
-	ShopID int foreign key references Shop(FoodID),
+	ShopID int foreign key references Shop(ShopID),
 	content nvarchar(200),
 	primary key (ShopID, ReportFoodID, UserID)
 )
@@ -87,15 +87,15 @@ create table ReportShipper(
 	primary key (ShipperID, ReportFoodID, UserID)
 )
 
-create table Orders{
+create table Orders(
 	OrderID int,
 	ShopID int foreign key references Shop(ShopID),
 	UserID int foreign key references Users(UserID),
 	Time Date,
-	primary key (OrderID, ShopID, UserID)
+	primary key (OrderID)
 )
 
-create table Orders{
+create table OrdersDetail(
 	OrderID int foreign key references Orders(OrderID),
 	FoodID int foreign key references Food(FoodID),
 	Amount int,
@@ -107,14 +107,14 @@ create table Account(
 	AccountID int primary key,
 	Username varchar(20) not null,
 	Password varchar(20) not null,
-	Type varchar(20) not null Check (Type in ('User','Shop'))
+	Type varchar(20) not null Check (Type in ('User','Shop','Shipper'))
 )
 
 create table UserAccount(
     UserAccountID INT PRIMARY KEY,
     UserID INT FOREIGN KEY REFERENCES Users(UserID),
     AccountID INT FOREIGN KEY REFERENCES Account(AccountID)
-
+)
 	
 	
 -- Tạo bảng ShopAccount (Tài khoản cửa hàng)
@@ -125,5 +125,10 @@ CREATE TABLE ShopAccount (
 	
 );
 
-	
+create table ShipperAccount(
+	ShipperAccountID int primary key,
+	ShipperID int foreign key references Shipper(ShipperID),
+	AccountID int foreign key references Account(AccountID)
+)
 
+	
