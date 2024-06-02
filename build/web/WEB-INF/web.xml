@@ -40,6 +40,10 @@
         <servlet-name>EnterNewPassword</servlet-name>
         <servlet-class>Control.Forgetting.EnterNewPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeUsrInfo</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.ChangeUsrInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>EnterNewPassword</servlet-name>
         <url-pattern>/EnterNewPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeUsrInfo</servlet-name>
+        <url-pattern>/ChangeUsrInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
