@@ -3,6 +3,7 @@ Create database Foodpal;
 -- tao bang user
 create table Users(
 	UserID int primary key,
+	email varchar(50) not null,
 	Name nvarchar(50) not null,
 	Phone varchar(10) not null,
 	Location nvarchar(100)
