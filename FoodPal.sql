@@ -114,6 +114,15 @@ create table UserAccount(
     UserAccountID INT PRIMARY KEY,
     UserID INT FOREIGN KEY REFERENCES Users(UserID),
     AccountID INT FOREIGN KEY REFERENCES Account(AccountID)
+
+	
+	
+-- Tạo bảng ShopAccount (Tài khoản cửa hàng)
+CREATE TABLE ShopAccount (
+    ShopAccountID INT PRIMARY KEY,
+    ShopID INT FOREIGN KEY REFERENCES Shop(ShopID),
+    AccountID INT FOREIGN KEY REFERENCES Account(AccountID)
+	
 );
 
 	
