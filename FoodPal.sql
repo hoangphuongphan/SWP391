@@ -111,5 +111,10 @@ create table Account(
 )
 
 create table UserAccount(
+    UserAccountID INT PRIMARY KEY,
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    AccountID INT FOREIGN KEY REFERENCES Account(AccountID)
+);
+
 	
 
