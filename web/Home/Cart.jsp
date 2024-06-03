@@ -8,6 +8,7 @@
 <%@page import="Model.User" %>
 <%@page import="Model.Food" %>
 <%@page import="Model.Cart" %>
+<%@page import="java.util.Map" %>
 <%@page import="java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
@@ -31,74 +32,75 @@
     </head>
     <body>
         <%@include file="navbar.jsp" %>
-        <%User current = (User) session.getAttribute("currentUser");%>
-        <%Cart cart = Cart.getInstance();%>
+        <%User current = (User) session.getAttribute("currentUser");
+        HashMap<Food,Integer> cart = Cart.getInstance().getCart();
+        int total = 0,ship = 0;%>
         <div class="bigcontainer">
-            <div class="title container">
-                <h1>My cart</h1>
-            </div>
-            <div class="container">
-                <div class="leftcolumn ">
+            <form action="action">
+                <div class="title container">
+                    <h1>My cart</h1>
+                </div>
+                <div class="container">
+                    <div class="leftcolumn ">
 
-                    <div class="container">
-                        <div class="info center person">
-                            <p><%=current.getName()%><br><%=current.getPhone()%></p>
+                        <div class="container">
+                            <div class="info center person">
+                                <p><%=current.getName()%><br><%=current.getPhone()%></p>
+                            </div>
+                            <div class="info center location">
+                                <input name="location" type="text" placeholder="Enter a Location">
+                            </div>
                         </div>
-                        <div class="info center location">
-                            this is location info
+                        <div class="cart">
+                            <div class="title">
+                                <h3>Get it shipped(<%=cart.size()%>)</h3>
+                            </div>
+                                <div class="cartelement">Your fee ship is <%=ship%></div>
+                            <%for (Map.Entry<Food,Integer> entry : cart.entrySet()){%>
+                                <div class="container cartelement">
+                                    <div class="productimage">
+                                        <img src="<%=entry.getKey().getImgurl()%>" alt="Food image"/>
+                                    </div>
+                                    <div class="productinfo">
+                                        <%=entry.getKey()%><br>
+                                        <%=entry.getValue()%>
+                                    </div>
+                                </div>
+                                        <%total += entry.getKey().getPrice() * entry.getValue();%>
+                            <%}%>
                         </div>
                     </div>
-                    <div class="cart">
-                        <div class="title">
-                            <h3>Get it shipped(?)</h3>
-                        </div>
-                        <div class="cartelement">Your fee ship is ?</div>
-                        
-                            <div class="container cartelement">
-                                <div class="productimage">
-                                    food image
+                    <div class="rightcolumn ">
+                        <div class="payment">
+                            <div class="prices">
+                                <div class="container">
+                                    <div class="left"><p>Merchandise Subtotal</p></div>
+                                    <div class="right"><p class="bold"><%=total%> vnd</p></div>
                                 </div>
-                                <div class="productinfo">
-                                    food info<br>
-                                    food amount
+                                <div class="container">
+                                    <div class="left"><p>Shipping and Handling</p></div>
+                                    <div class="right"><p class="bold"><%=ship%> vnd</p></div>
                                 </div>
                             </div>
+                            <div class="total">
+                                <div class="container">
+                                    <div class="left"><p class="bold">In Total</p></div>
+                                    <div class="right"><p class="bold"><%=ship + total%></p></div>
+                                </div>
+                                <p style="color: #D6D3D1; font-size: 1rem;">Shipping and taxes are included in the checkout</p>
+                                <button class="button" type="submit" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
+                                <button class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay Online</button>
+                            </div>
+                        </div>
+                        <div class="promotioncontainer">
+                            <div class="view"><a href="">View your discount ></a></div>
+                            <div class="promotion">
+                                <input type="text" placeholder="Discount or Reward Code">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="rightcolumn ">
-                    <div class="payment">
-                        <div class="prices">
-                            <div class="container">
-                                <div class="left"><p>Merchandise Subtotal</p></div>
-                                <div class="right"><p class="bold">$?</p></div>
-                            </div>
-                            <div class="container">
-                                <div class="left"><p>Shipping and Handling</p></div>
-                                <div class="right"><p class="bold">$?</p></div>
-                            </div>
-                            <div class="container">
-                                <div class="left"><p>Estimated Tax</p></div>
-                                <div class="right"><p class="bold">$?</p></div>
-                            </div>
-                        </div>
-                        <div class="total">
-                            <div class="container">
-                                <div class="left"><p class="bold">In Total</p></div>
-                                <div class="right"><p class="bold">$?</p></div>
-                            </div>
-                            <p style="color: #D6D3D1; font-size: 1rem;">Shipping and taxes are included in the checkout</p>
-                            <button class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
-                            <button class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay Online</button>
-                        </div>
-                    </div>
-                    <div class="promotioncontainer">
-                        <div class="view"><a href="">View your discount ></a></div>
-                        <div class="promotion">
-                            <input type="text" placeholder="Discount or Reward Code">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </body>
 </html>

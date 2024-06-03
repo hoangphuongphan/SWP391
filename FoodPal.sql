@@ -94,6 +94,7 @@ create table Orders(
 	ShopID int foreign key references Shop(ShopID),
 	UserID int foreign key references Users(UserID),
 	Time Date,
+	ShipLocation nvarchar(200) not null,
 	primary key (OrderID)
 )
 
@@ -132,3 +133,12 @@ create table ShipperAccount(
 	ShipperID int foreign key references Shipper(ShipperID),
 	AccountID int foreign key references Account(AccountID)
 )
+
+create table Discount(
+	DiscountID int IDENTITY(1,1) primary key,
+	DiscountName nvarchar(50),
+	Offer varchar(20),
+	ValidDate Date default getDate(),
+	ExpiredDate Date not null
+)
+

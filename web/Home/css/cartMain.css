@@ -53,6 +53,14 @@
     padding: 1%;
 }
 
+.productimage img{
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  display: block;
+    margin: auto;
+}
+
 .productimage{
     width: 25%;
 }
