@@ -13,8 +13,13 @@
             <input type="text" class="form-control" id="displayName" value="${user.displayName}" placeholder="Enter your display name"/>
         </div>
         <div class="form-group">
-            <label for="bio">Bio</label>
-            <input type="text" class="form-control" id="bio" value="${user.bio}" placeholder="Enter your bio here"/>
+            <label for="phone">Phone</label>
+            <input type="tel" class="form-control" id="phone" value="${user.bio}" placeholder="Enter your phone number here"/>
         </div>
+        <div class="form-group">
+            <label for="address">Location</label>
+            <input type="text" class="form-control" id="address" value="${user.address}" placeholder="Enter your location here">
+        </div>
+        <button type="submit" class="btn btn-primary">Update profile</button>
     </form>
 </div>

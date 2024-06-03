@@ -4,12 +4,14 @@
  */
 package Control.ChangeUsrInfo;
 
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -28,7 +30,6 @@ public class ChangeUsrInfo extends HttpServlet {
      */
 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -40,7 +41,10 @@ public class ChangeUsrInfo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+        request.setAttribute("user", user);
+        request.getRequestDispatcher("Home/profilesettingpage.jsp").forward(request, response);
     }
 
     /**
@@ -54,7 +58,9 @@ public class ChangeUsrInfo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String displayName=request.getParameter("displayName");
+        String phone=request.getParameter("phone");
+        String location=request.getParameter("location");
     }
 
     /**
