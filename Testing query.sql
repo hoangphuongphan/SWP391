@@ -7,6 +7,8 @@ select * from Food
 select * from Shop
 select * from Category
 
+select * from Discount
+
 insert into Account values ('sunheophp','123456','User')
 insert into Users values ('Phuong','0914020508','phoangphuong309@gmail.com',null)
 insert into UserAccount values (1,1)

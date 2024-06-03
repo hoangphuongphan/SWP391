@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="promotioncontainer">
-                            <div class="view"><a href="">View your discount ></a></div>
+                            <div class="view" id="discount"><button>View your discount ></button></div>
                             <div class="promotion">
                                 <input type="text" placeholder="Discount or Reward Code">
                             </div>
@@ -102,5 +102,22 @@
                 </div>
             </form>
         </div>
+            <dialog>
+                <div>
+                    <p>Discount offers</p>
+                </div>
+            </dialog>
+        <script>
+            const dialogElement = document.querySelector('dialog');
+
+            document.getElementById("discount").addEventListener("click", () =>{
+                event.preventDefault();
+                dialogElement.showModal();
+            });
+
+            dialogElement.addEventListener("click", (event) => {
+                dialogElement.close();
+            });
+        </script>
     </body>
 </html>

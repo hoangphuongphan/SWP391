@@ -142,3 +142,9 @@ create table Discount(
 	ExpiredDate Date not null
 )
 
+
+create table DiscountOwner(
+	DiscountID int foreign key references Discount(DiscountID),
+	UserID int foreign key references Users(UserID),
+	stock int constraint stock check(stock>-1)
+)

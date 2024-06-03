@@ -21,6 +21,23 @@ public class UsersAct {
             con = instance.getCon();
     }
     
+    public User getUserByID(int id){
+        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where UserID = ?";
+        User user = null;
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
+                        , rs.getInt("UserID"));
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return user;
+    }
+    
     public User getUserByMail(String mail){
         String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where Email = ?";
         User user = null;

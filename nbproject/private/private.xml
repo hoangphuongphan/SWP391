@@ -6,11 +6,13 @@
             <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/AccountsAct.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Cart.java</file>
             <file>file:/C:/FU/SWP391/SWP391/web/Home/Cart.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Discount.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/UsersAct.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Control/LoggingIn/Login.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Home/css/cartMain.css</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/FoodDao.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Account.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/CurrentUser.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/DiscountOwnerDao.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/DiscountDao.java</file>
         </group>
     </open-files>
 </project-private>
