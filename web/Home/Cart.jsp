@@ -102,22 +102,59 @@
                 </div>
             </form>
         </div>
-            <dialog>
-                <div>
-                    <p>Discount offers</p>
+           <dialog>
+        <div>
+            <h3 class="title">Discount</h3>
+            <div class="offers">
+                <div class="left-arrow arrow-active">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="1.5" 
+                        stroke="currentColor" 
+                        class="size-6">
+                            <path 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round" 
+                            d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
                 </div>
-            </dialog>
-        <script>
-            const dialogElement = document.querySelector('dialog');
+                <ul>
+                        <li><div class="item"><p>item1</p></div></li>
+                        <li><div class="item"><p>item2</p></div></li>
+                        <li><div class="item"><p>item3</p></div></li>
+                        <li><div class="item"><p>item4</p></div></li>
+                        <li><div class="item"><p>item5</p></div></li>
+                        <li><div class="item"><p>item6</p></div></li>
+                </ul>
+                <div class="right-arrow arrow-active">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        strokeWidth={1.5} 
+                        stroke="currentColor" 
+                        className="size-6">
+                        <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                </div>
+        </div>
+    </dialog>
+    <script>
+        const dialogElement = document.querySelector('dialog');
 
-            document.getElementById("discount").addEventListener("click", () =>{
-                event.preventDefault();
-                dialogElement.showModal();
-            });
+        document.getElementById("discount").addEventListener("click", () =>{
+            dialogElement.showModal();
+        });
 
-            dialogElement.addEventListener("click", (event) => {
+        dialogElement.addEventListener("click", (event) => {
+            if(event.target == dialogElement)
                 dialogElement.close();
-            });
-        </script>
+        });
+    </script>
     </body>
 </html>
