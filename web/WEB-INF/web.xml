@@ -4,6 +4,14 @@
         <filter-name>Authentication</filter-name>
         <filter-class>Filter.Authentication</filter-class>
     </filter>
+    <filter>
+        <filter-name>Remember</filter-name>
+        <filter-class>Filter.Remember</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Remember</filter-name>
+        <url-pattern>/Login/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>Authentication</filter-name>
         <url-pattern>/Home/*</url-pattern>
@@ -44,6 +52,10 @@
         <servlet-name>ShowCart</servlet-name>
         <servlet-class>Control.Cart.ShowCart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Control.LoggingIn.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -79,6 +91,18 @@
     <servlet-mapping>
         <servlet-name>ShowCart</servlet-name>
         <url-pattern>/ShowCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>Control.Payment.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/vnpayajax/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

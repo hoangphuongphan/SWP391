@@ -53,4 +53,12 @@ public class Cart {
         }
         return false;
     }
+    
+    public boolean DeleteCart(){
+        this.cart = null;
+        this.instance = null;
+        this.owner = null;
+        
+        return cart == null && instance == null;
+    }
 }

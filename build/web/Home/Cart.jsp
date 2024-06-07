@@ -36,7 +36,6 @@
         HashMap<Food,Integer> cart = Cart.getInstance().getCart();
         int total = 0,ship = 0;%>
         <div class="bigcontainer">
-            <form action="action">
                 <div class="title container">
                     <h1>My cart</h1>
                 </div>
@@ -68,6 +67,7 @@
                                 </div>
                                         <%total += entry.getKey().getPrice() * entry.getValue();%>
                             <%}%>
+                            <%session.setAttribute("total",total+ship);%>
                         </div>
                     </div>
                     <div class="rightcolumn ">
@@ -88,19 +88,18 @@
                                     <div class="right"><p class="bold"><%=ship + total%></p></div>
                                 </div>
                                 <p style="color: #D6D3D1; font-size: 1rem;">Shipping and taxes are included in the checkout</p>
-                                <button class="button" type="submit" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
+                                <button id="vn-pay" class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
                                 <button class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay Online</button>
                             </div>
                         </div>
                         <div class="promotioncontainer">
-                            <div class="view" id="discount"><button>View your discount ></button></div>
+                            <div class="view" id="discount">View your discount ></button></div>
                             <div class="promotion">
                                 <input type="text" placeholder="Discount or Reward Code">
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
            <dialog>
         <div>
@@ -155,6 +154,10 @@
             if(event.target == dialogElement)
                 dialogElement.close();
         });
+        
+        document.getElementById("vn-pay").addEventListener("click", () =>{
+            window.location.href = "/SWP391/Payment/vnpay_pay.jsp";
+        })
     </script>
     </body>
 </html>
