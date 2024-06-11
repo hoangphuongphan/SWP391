@@ -4,9 +4,9 @@
  */
 package Control.ChangeUsrInfo;
 
+import Dao.UsersAct;
 import Model.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,55 +19,37 @@ import jakarta.servlet.http.HttpSession;
  */
 public class ChangeUsrInfo extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session=request.getSession();
-        User user=(User) session.getAttribute("user");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         request.setAttribute("user", user);
         request.getRequestDispatcher("Home/profilesettingpage.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String displayName=request.getParameter("displayName");
-        String phone=request.getParameter("phone");
-        String location=request.getParameter("location");
+        String displayName = request.getParameter("displayName");
+        String phone = request.getParameter("phone");
+        String location = request.getParameter("location");
+
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+
+        UsersAct ua = new UsersAct();
+
+        boolean result = ua.UpdateProfile(username, displayName, phone, location);
+
+        if (result) {
+            request.getRequestDispatcher("Home/menu.jsp").forward(request, response);
+        } else {
+            request.setAttribute("err", "Invalid info");
+            doGet(request, response);
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
