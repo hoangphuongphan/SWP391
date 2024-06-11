@@ -4,6 +4,7 @@
     Author     : DELL
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,5 +27,14 @@
     <body>
         <jsp:include page="navbar.jsp"/>
         <jsp:include page="profilesetting.jsp"/>
+        <c:set var="err" value="${requestScope.err}"/>
+        <c:if test="${not empty err}">
+            <div class="container mt-5">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> ${requestScope.err}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </c:if>
     </body>
 </html>
