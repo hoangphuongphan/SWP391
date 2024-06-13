@@ -4,11 +4,14 @@
  */
 package Control.Homing;
 
+import Dao.FoodAct;
+import Model.Food;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -18,11 +21,16 @@ public class ShowHome extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        FoodAct fa = new FoodAct();
+        List<Food> nfl = fa.get5NewItems();
+        List<Food> ffl = fa.get5RandomItems();
+        req.setAttribute("nfl", nfl);
+        req.setAttribute("ffl", ffl);
         req.getRequestDispatcher("Home/menu.jsp").forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
+
     }
 }

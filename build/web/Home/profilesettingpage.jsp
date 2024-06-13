@@ -27,21 +27,14 @@
     <body>
         <jsp:include page="navbar.jsp"/>
         <jsp:include page="profilesetting.jsp"/>
-        <%
-            String err="";
-        %>
         <c:set var="err" value="${err}"/>
-        <%
-        if(err!=null || err!=""){
-        %>
-        <div class="container mt-5">
+        <c:if test="${not empty err}">
+            <div class="container mt-5">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Error!</strong> ${requestScope.err}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
-        <%
-            }
-        %>
+        </c:if>
     </body>
 </html>
