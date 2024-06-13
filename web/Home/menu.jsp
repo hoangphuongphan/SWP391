@@ -27,5 +27,6 @@
     </head>
     <body>
         <jsp:include page="navbar.jsp"/>
+        <jsp:include page="homebanner.jsp"/>
     </body>
 </html>

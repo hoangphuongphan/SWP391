@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="container mt-5">
-    <form action="ChangeUsrInfo.java" method="POST">
+    <form action="Control.ChangeUsrInfo.java" method="POST">
         <div class="form-group">
             <label for="displayName">Display Name</label>
             <input type="text" class="form-control" id="displayName" value="${user.displayName}" placeholder="Enter your display name"/>

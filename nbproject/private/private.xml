@@ -3,15 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/SWP/SWP391/src/java/Control/ChangeUsrInfo/ChangeUsrInfo.java</file>
-            <file>file:/E:/SWP/SWP391/web/Home/profilesetting.jsp</file>
+            <file>file:/E:/SWP/SWP391/src/java/Control/UsrInfo/ChangeUsrInfo.java</file>
+            <file>file:/E:/SWP/SWP391/web/Home/navbar.jsp</file>
+            <file>file:/E:/SWP/SWP391/web/Profile/profilesetting.jsp</file>
+            <file>file:/E:/SWP/SWP391/web/Profile/profilecontent.jsp</file>
+            <file>file:/E:/SWP/SWP391/src/java/Control/UsrInfo/UsrInfo.java</file>
             <file>file:/E:/SWP/SWP391/src/java/Dao/UsersAct.java</file>
-            <file>file:/E:/SWP/SWP391/src/java/Control/Homing/ShowHome.java</file>
-            <file>file:/E:/SWP/SWP391/src/java/Model/CurrentUser.java</file>
-            <file>file:/E:/SWP/SWP391/web/Home/profile.jsp</file>
-            <file>file:/E:/SWP/SWP391/web/Home/profilesettingpage.jsp</file>
+            <file>file:/E:/SWP/SWP391/src/java/Control/LoggingIn/Login.java</file>
+            <file>file:/E:/SWP/SWP391/web/META-INF/context.xml</file>
+            <file>file:/E:/SWP/SWP391/src/java/Dao/UserAct_Extra.java</file>
             <file>file:/E:/SWP/SWP391/web/Home/menu.jsp</file>
-            <file>file:/E:/SWP/SWP391/src/java/Model/User.java</file>
+            <file>file:/E:/SWP/SWP391/web/Home/homebanner.jsp</file>
+            <file>file:/E:/SWP/SWP391/web/Profile/profilesettingpage.jsp</file>
         </group>
     </open-files>
 </project-private>
