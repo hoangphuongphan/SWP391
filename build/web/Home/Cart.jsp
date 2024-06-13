@@ -8,8 +8,12 @@
 <%@page import="Model.User" %>
 <%@page import="Model.Food" %>
 <%@page import="Model.Cart" %>
+<%@page import="Model.Discount" %>
+<%@page import="Dao.DiscountDao" %>
+<%@page import="Dao.FoodDao" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.HashMap" %>
+<%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,8 +37,11 @@
     <body>
         <%@include file="navbar.jsp" %>
         <%User current = (User) session.getAttribute("currentUser");
-        HashMap<Food,Integer> cart = Cart.getInstance().getCart();
-        int total = 0,ship = 0;%>
+        HashMap<Integer,Integer> cart = Cart.getInstance().getCart();
+        FoodDao dao = new FoodDao();
+        int ship = 0;
+        int total = Cart.getInstance().getTotal();
+        ArrayList<Discount> list = new DiscountDao().getDiscountByUserID(current.getID());%>
         <div class="bigcontainer">
                 <div class="title container">
                     <h1>My cart</h1>
@@ -55,17 +62,17 @@
                                 <h3>Get it shipped(<%=cart.size()%>)</h3>
                             </div>
                                 <div class="cartelement">Your fee ship is <%=ship%></div>
-                            <%for (Map.Entry<Food,Integer> entry : cart.entrySet()){%>
+                            <%for (Map.Entry<Integer,Integer> entry : cart.entrySet()){
+                                Food food = dao.getFoodByID(entry.getKey());%>
                                 <div class="container cartelement">
                                     <div class="productimage">
-                                        <img src="<%=entry.getKey().getImgurl()%>" alt="Food image"/>
+                                        <img src="<%=food.getImgurl()%>" alt="Food image"/>
                                     </div>
                                     <div class="productinfo">
-                                        <%=entry.getKey()%><br>
+                                        <%=food%><br>
                                         <%=entry.getValue()%>
                                     </div>
                                 </div>
-                                        <%total += entry.getKey().getPrice() * entry.getValue();%>
                             <%}%>
                             <%session.setAttribute("total",total+ship);%>
                         </div>
@@ -88,8 +95,13 @@
                                     <div class="right"><p class="bold"><%=ship + total%></p></div>
                                 </div>
                                 <p style="color: #D6D3D1; font-size: 1rem;">Shipping and taxes are included in the checkout</p>
-                                <button id="vn-pay" class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
-                                <button class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay Online</button>
+                                <button class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
+                                <form action="/SWP391/ajaxServlet" id="frmCreateOrder" method="post">
+                                    <input type="hidden" id="language" name="language" value="en">
+                                    <input type="hidden" name="total" value="<%=ship + total%>">
+                                    <input type="hidden" id="bankCode" name="bankCode" value="VNBANK">
+                                    <button id="vn-pay" class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay Online</button>
+                                </form>
                             </div>
                         </div>
                         <div class="promotioncontainer">
@@ -105,43 +117,17 @@
         <div>
             <h3 class="title">Discount</h3>
             <div class="offers">
-                <div class="left-arrow arrow-active">
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        stroke-width="1.5" 
-                        stroke="currentColor" 
-                        class="size-6">
-                            <path 
-                            stroke-linecap="round" 
-                            stroke-linejoin="round" 
-                            d="M15.75 19.5 8.25 12l7.5-7.5" />
-                    </svg>
+                <%int i=0;
+                for(Discount dis : list){%>
+                <div id="<%="item" + i%>" class="item">
+                    <form action="/SWP391/applyDiscount">
+                        <input type="hidden" name="discount" value="<%=dis.getID()%>"
+                        <p><%=dis.getName()%> </p><br>
+                        <button id="<%="item" + i + "-btn"%>">apply</button>
+                    </form>
                 </div>
-                <ul>
-                        <li><div class="item"><p>item1</p></div></li>
-                        <li><div class="item"><p>item2</p></div></li>
-                        <li><div class="item"><p>item3</p></div></li>
-                        <li><div class="item"><p>item4</p></div></li>
-                        <li><div class="item"><p>item5</p></div></li>
-                        <li><div class="item"><p>item6</p></div></li>
-                </ul>
-                <div class="right-arrow arrow-active">
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        strokeWidth={1.5} 
-                        stroke="currentColor" 
-                        className="size-6">
-                        <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                </div>
-        </div>
+                <%}%>
+            </div>
     </dialog>
     <script>
         const dialogElement = document.querySelector('dialog');
@@ -155,9 +141,35 @@
                 dialogElement.close();
         });
         
-        document.getElementById("vn-pay").addEventListener("click", () =>{
-            window.location.href = "/SWP391/Payment/vnpay_pay.jsp";
-        })
+//        document.getElementById("vn-pay").addEventListener("click", () =>{
+//            window.location.href = "/SWP391/Payment/vnpay_pay.jsp";
+//        })
+        
+         $("#frmCreateOrder").submit(function () {
+                var postData = $("#frmCreateOrder").serialize();
+                var submitUrl = $("#frmCreateOrder").attr("action");
+                $.ajax({
+                    type: "POST",
+                    url: submitUrl,
+                    data: postData,
+                    dataType: 'JSON',
+                    success: function (x) {
+                        if (x.code === '00') {
+                            if (window.vnpay) {
+                                vnpay.open({width: 768, height: 600, url: x.data});
+                            } else {
+                                location.href = x.data;
+                            }
+                            return false;
+                        } else {
+                            alert(x.Message);
+                        }
+                    }
+                });
+                return false;
+            });
     </script>
+    <script src="/SWP391/Home/assets/jquery-1.11.3.min.js"></script>
+     <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
     </body>
 </html>

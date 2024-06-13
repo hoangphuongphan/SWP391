@@ -15,11 +15,11 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author phoan
  */
-public class ShowCart extends HttpServlet {
+public class ShowOrders extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/SWP391/Home/Cart.jsp");
+        resp.sendRedirect("/SWP391/Home/Order.jsp");
     }
 
     @Override

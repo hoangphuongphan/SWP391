@@ -9,11 +9,12 @@ import java.sql.Date;
  * @author phoan
  */
 public class Discount {
-    private int ID;
+    private int ID,stock;
     private String name,offer;
     private Date valid,expired;
 
-    public Discount(int ID, String name, String offer, Date valid, Date expired) {
+    public Discount(int ID, String name, String offer, Date valid, Date expired, int stock) {
+        this.stock = stock;
         this.ID = ID;
         this.name = name;
         this.offer = offer;
@@ -27,6 +28,10 @@ public class Discount {
         this.expired = expired;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
     public int getID() {
         return ID;
     }
@@ -38,6 +43,8 @@ public class Discount {
     public double getOffer() {
         if(offer.endsWith("%"))
             return (double) Double.parseDouble(offer.split("%")[0])/100;
+        else if(offer.equals("free-ship"))
+            return 0;
         return Double.parseDouble(offer);
     }
 

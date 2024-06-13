@@ -4,6 +4,9 @@
  */
 package Control.Cart;
 
+import Dao.DiscountDao;
+import Model.Cart;
+import Model.Discount;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,11 +18,13 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author phoan
  */
-public class ShowCart extends HttpServlet {
+public class applyDiscount extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/SWP391/Home/Cart.jsp");
+            Discount dis = new DiscountDao().getDiscountByID(Integer.parseInt(req.getParameter("discount")));
+            Cart.getInstance().setDiscount(dis);
+            resp.sendRedirect("/SWP391/Home/Cart.jsp");
     }
 
     @Override

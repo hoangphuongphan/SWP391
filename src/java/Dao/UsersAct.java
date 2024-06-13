@@ -22,7 +22,7 @@ public class UsersAct {
     }
     
     public User getUserByID(int id){
-        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where UserID = ?";
+        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where A.UserID = ?";
         User user = null;
         try{
             PreparedStatement st = con.prepareStatement(query);

@@ -89,12 +89,13 @@ create table ReportShipper(
 	primary key (ShipperID, ReportFoodID, UserID)
 )
 
+
 create table Orders(
 	OrderID int IDENTITY(1,1),
-	ShopID int foreign key references Shop(ShopID),
 	UserID int foreign key references Users(UserID),
-	Time Date,
+	Time smallDateTime default getDate(),
 	ShipLocation nvarchar(200) not null,
+	Status nvarchar(20) Check(Status in ('Cooking','Shipping','Done')),
 	primary key (OrderID)
 )
 
@@ -138,7 +139,7 @@ create table Discount(
 	DiscountID int IDENTITY(1,1) primary key,
 	DiscountName nvarchar(50),
 	Offer varchar(20),
-	ValidDate Date default getDate(),
+	ValidDate DateTime default getDate(),
 	ExpiredDate Date not null
 )
 

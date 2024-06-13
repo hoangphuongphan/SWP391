@@ -56,6 +56,22 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>Control.LoggingIn.Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>applyDiscount</servlet-name>
+        <servlet-class>Control.Cart.applyDiscount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>Control.Payment.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>order</servlet-name>
+        <servlet-class>Control.Payment.order</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowOrders</servlet-name>
+        <servlet-class>Control.Cart.ShowOrders</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -96,13 +112,21 @@
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>ajaxServlet</servlet-name>
-        <servlet-class>Control.Payment.ajaxServlet</servlet-class>
-    </servlet>
+    <servlet-mapping>
+        <servlet-name>applyDiscount</servlet-name>
+        <url-pattern>/applyDiscount</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
-        <url-pattern>/vnpayajax/*</url-pattern>
+        <url-pattern>/ajaxServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>order</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowOrders</servlet-name>
+        <url-pattern>/ShowOrders</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
