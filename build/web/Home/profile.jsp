@@ -26,7 +26,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="Home\navbar.jsp"/>
+        <jsp:include page="navbar.jsp"/>
         <jsp:include page="profilecontent.jsp"/>
     </body>
 </html>
