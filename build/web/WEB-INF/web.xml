@@ -72,6 +72,10 @@
         <servlet-name>ShowOrders</servlet-name>
         <servlet-class>Control.Cart.ShowOrders</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowDetails</servlet-name>
+        <servlet-class>Control.Cart.ShowDetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>ShowOrders</servlet-name>
         <url-pattern>/ShowOrders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowDetails</servlet-name>
+        <url-pattern>/ShowDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

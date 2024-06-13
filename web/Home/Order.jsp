@@ -20,8 +20,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/orderMain.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     </head>
     <body>
+        <%@include file="navbar.jsp" %>
         <div class="container">
         <div class="orderinfo">
             <h1>Orders</h1>
@@ -31,10 +33,13 @@
                 </div>
                 <div class="right-clm">
                     <%for(Order order : list){%>
+                    <form action="/SWP391/ShowDetails">
                         <div class="block">
+                        <input name="orderID" type="hidden" value="<%=order.getOrderID()%>"/>
                         <%=order%><br>
-                        <button class="bill">Detail</button>
+                        <button class="bill" type="submit">Detail</button>
                         </div>
+                    </form>
                     <%}%>
                 </div>
             </div>
