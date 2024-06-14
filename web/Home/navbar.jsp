@@ -4,6 +4,14 @@
     Author     : DELL
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <!-- jQuery library -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Game Việt</a>
@@ -13,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="MenuServlet">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/SWP391/ShowHome">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/SWP391/ShowCart">Cart</a>
