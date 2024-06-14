@@ -150,3 +150,8 @@ create table DiscountOwner(
 	stock int constraint stock check(stock>-1)
 	primary key (DiscountID,UserID)
 )
+
+create table Wallet(
+	UserID int foreign key references Users(UserID) primary key,
+	Amount money not null)
+

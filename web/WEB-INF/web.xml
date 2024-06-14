@@ -8,6 +8,14 @@
         <filter-name>Remember</filter-name>
         <filter-class>Filter.Remember</filter-class>
     </filter>
+    <filter>
+        <filter-name>DetailRequest</filter-name>
+        <filter-class>Filter.DetailRequest</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>DetailRequest</filter-name>
+        <url-pattern>/Home/Details.jsp</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>Remember</filter-name>
         <url-pattern>/Login/*</url-pattern>
@@ -76,6 +84,10 @@
         <servlet-name>ShowDetails</servlet-name>
         <servlet-class>Control.Cart.ShowDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TopUp</servlet-name>
+        <servlet-class>Control.Payment.TopUp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -135,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>ShowDetails</servlet-name>
         <url-pattern>/ShowDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TopUp</servlet-name>
+        <url-pattern>/TopUp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

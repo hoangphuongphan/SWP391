@@ -8,9 +8,11 @@
 <%@page import="Model.User" %>
 <%@page import="Model.Food" %>
 <%@page import="Model.Cart" %>
+<%@page import="Model.Wallet" %>
 <%@page import="Model.Discount" %>
 <%@page import="Dao.DiscountDao" %>
 <%@page import="Dao.FoodDao" %>
+<%@page import="Dao.WalletDao" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.HashMap" %>
 <%@page import="java.util.ArrayList" %>
@@ -19,19 +21,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--Css for cart-->
         <link rel="stylesheet" href="css/cartMain.css"/>
-        <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-
-        <!-- Popper JS -->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -41,7 +32,9 @@
         FoodDao dao = new FoodDao();
         int ship = 0;
         int total = Cart.getInstance().getTotal();
-        ArrayList<Discount> list = new DiscountDao().getDiscountByUserID(current.getID());%>
+        ArrayList<Discount> list = new DiscountDao().getDiscountByUserID(current.getID());
+        Wallet wallet = Wallet.getInstance(current.getID());%>
+        
         <div class="bigcontainer">
                 <div class="title container">
                     <h1>My cart</h1>
@@ -51,7 +44,7 @@
 
                         <div class="container">
                             <div class="info center person">
-                                <p><%=current.getName()%><br><%=current.getPhone()%></p>
+                                <p><%=current.getName()%><br><%=current.getPhone()%><br><%=wallet.getAmount()%></p>
                             </div>
                             <div class="info center location">
                                 <input name="location" type="text" placeholder="Enter a Location">
@@ -74,7 +67,6 @@
                                     </div>
                                 </div>
                             <%}%>
-                            <%session.setAttribute("total",total+ship);%>
                         </div>
                     </div>
                     <div class="rightcolumn ">
@@ -92,15 +84,13 @@
                             <div class="total">
                                 <div class="container">
                                     <div class="left"><p class="bold">In Total</p></div>
-                                    <div class="right"><p class="bold"><%=ship + total%></p></div>
+                                    <div class="right"><p class="bold" id="total"><%=ship + total%></p></div>
                                 </div>
                                 <p style="color: #D6D3D1; font-size: 1rem;">Shipping and taxes are included in the checkout</p>
                                 <button class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
-                                <form action="/SWP391/ajaxServlet" id="frmCreateOrder" method="post">
-                                    <input type="hidden" id="language" name="language" value="en">
-                                    <input type="hidden" name="total" value="<%=ship + total%>">
-                                    <input type="hidden" id="bankCode" name="bankCode" value="VNBANK">
-                                    <button id="vn-pay" class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay Online</button>
+                                <form action="/SWP391/order">
+                                    <input name="total" type="hidden" id="total" value="<%=ship + total%>"/>
+                                    <button id="payOnline" class="button" style="background-color: white; border: 3px sold black;" type="submit">Pay with wallet</button>
                                 </form>
                             </div>
                         </div>
@@ -131,6 +121,8 @@
     </dialog>
     <script>
         const dialogElement = document.querySelector('dialog');
+        var wallet = parseInt(document.getElementById("wallet").textContent);
+        var total = parseInt(document.getElementById("total").textContent);
 
         document.getElementById("discount").addEventListener("click", () =>{
             dialogElement.showModal();
@@ -141,35 +133,7 @@
                 dialogElement.close();
         });
         
-//        document.getElementById("vn-pay").addEventListener("click", () =>{
-//            window.location.href = "/SWP391/Payment/vnpay_pay.jsp";
-//        })
-        
-         $("#frmCreateOrder").submit(function () {
-                var postData = $("#frmCreateOrder").serialize();
-                var submitUrl = $("#frmCreateOrder").attr("action");
-                $.ajax({
-                    type: "POST",
-                    url: submitUrl,
-                    data: postData,
-                    dataType: 'JSON',
-                    success: function (x) {
-                        if (x.code === '00') {
-                            if (window.vnpay) {
-                                vnpay.open({width: 768, height: 600, url: x.data});
-                            } else {
-                                location.href = x.data;
-                            }
-                            return false;
-                        } else {
-                            alert(x.Message);
-                        }
-                    }
-                });
-                return false;
-            });
+         
     </script>
-    <script src="/SWP391/Home/assets/jquery-1.11.3.min.js"></script>
-     <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
     </body>
 </html>

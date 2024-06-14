@@ -37,6 +37,7 @@
                         Welcome ${user.displayName}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/SWP391/Home/TopUp.jsp">Top Up</a></li>
                         <li><a class="dropdown-item" href="ShowProfileServlet">Profile</a></li>
                         <li><a class="dropdown-item" href="/SWP391/Logout">Logout</a></li>
                     </ul>
