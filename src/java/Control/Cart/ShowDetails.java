@@ -19,7 +19,7 @@ public class ShowDetails extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/SWP391/Home/Details.jsp");
+        req.getRequestDispatcher("Home/Details.jsp").forward(req, resp);
     }
 
     @Override

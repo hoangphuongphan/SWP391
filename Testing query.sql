@@ -13,13 +13,18 @@ select * from DiscountOwner
 select * from Orders
 select * from OrdersDetail
 
+select GETDATE()
 select TOP 1 * from Orders where UserID = 1 Order by OrderID desc
-select * from Orders as A join OrdersDetail as B on A.OrderID = B.OrderID
+select * from Orders as A join OrdersDetail as B on A.OrderID = B.OrderID AND A.OrderID = 1
 select * from Discount as A join DiscountOwner as B on A.DiscountID = B.DiscountID where UserID = 1
 select * from Discount as A join DiscountOwner as B on A.DiscountID = B.DiscountID where A.DiscountID = 3
 
-insert into Orders(UserID,ShipLocation) values (1, 'Da Nang','Cooking')
-insert into OrdersDetail values  (2,1,4)	
+insert into Orders(UserID,ShipLocation,Status) values (1, 'Da Nang','Cooking')
+insert into Orders(UserID,ShipLocation,Status) values (1, 'Da Nang','Cooking')
+insert into OrdersDetail values  (1,1,4)	
+insert into OrdersDetail values (1,2,4)
+insert into OrdersDetail values (3,1,4)	
+insert into OrdersDetail values (3,2,4)
 
 insert into Account values ('sunheophp','123456','User')
 insert into Users values ('Phuong','0914020508','phoangphuong309@gmail.com',null)
