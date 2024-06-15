@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Search</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="search-container">
+        <!-- Phần tìm kiếm theo từ khóa -->
+        <form action="SearchServlet" method="get">
+            <input type="text" name="query" placeholder="Tìm kiếm thực phẩm...">
+            <button type="submit">Tìm kiếm</button>
+        </form>
+        
+        <!-- Phần chọn loại món ăn -->
+        <form action="SearchServlet" method="get">
+            <select name="category">
+                <!-- Danh sách các loại món ăn sẽ được thêm bằng mã Java trong servlet -->
+            </select>
+            <button type="submit">Lọc</button>
+        </form>
+    </div>
+    
+<!-- Nút để kích hoạt hiển thị form -->
+<!--<div>
+<style>
+  #showReportFormButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+</style>
+<button id="showReportFormButton">Report</button>
+
+ Form báo cáo món ăn (ẩn ban đầu) 
+<form id="reportFoodForm" style="display: none;">
+    <label for="foodId">ID:</label>
+    <input type="text" id="foodId" name="foodId" required> 
+    
+    <label for="reason">Reason:</label>
+    <select id="reason" name="reason" required>
+        <option value="1">Món ăn không phù hợp</option>
+        <option value="2">Món ăn không đúng như quảng cáo</option>
+        <option value="3">Others</option>  
+        
+    </select> 
+    
+    <label for="otherReason">Others:</label>
+    <input type="text" id="otherReason" name="otherReason"> 
+    
+    <button type="submit">Send</button>
+</form>
+
+ JavaScript để hiển thị và ẩn form 
+<script>
+    var isFormVisible = false; // Biến để theo dõi trạng thái hiện / ẩn của form
+    
+    document.getElementById('showReportFormButton').addEventListener('click', function() {
+        if (!isFormVisible) { // Nếu form đang ẩn, hiển thị nó
+            document.getElementById('reportFoodForm').style.display = 'block';
+            isFormVisible = true;
+        } else { // Nếu form đang hiển thị, ẩn nó
+            document.getElementById('reportFoodForm').style.display = 'none';
+            isFormVisible = false;
+        }
+    });
+</script>
+</div>-->
+</body>
+</html>
+

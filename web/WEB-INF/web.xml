@@ -80,6 +80,14 @@
         <servlet-name>TopUp</servlet-name>
         <servlet-class>Control.Payment.TopUp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeUsrInfo</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.ChangeUsrInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsrInfo</servlet-name>
+        <servlet-class>Control.UsrInfo.UsrInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -143,6 +151,14 @@
     <servlet-mapping>
         <servlet-name>TopUp</servlet-name>
         <url-pattern>/TopUp</url-pattern>
+    </servlet-mapping> 
+    <servlet-mapping>
+        <servlet-name>ChangeUsrInfo</servlet-name>
+        <url-pattern>/ChangeUsrInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsrInfo</servlet-name>
+        <url-pattern>/UsrInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
