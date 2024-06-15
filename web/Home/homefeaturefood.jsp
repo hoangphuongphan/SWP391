@@ -12,7 +12,7 @@
         <div class="carousel-inner">
             <c:forEach var="crsItems" items="${ffl}">
                 <div class="carousel-item active">
-                    <a href="#"><img src="${crsItems.foodImg}" alt="alt"/></a>
+                    <a href="#"><img src="${crsItems.imgurl}" alt="alt"/></a>
                 </div>
             </c:forEach>
         </div>
