@@ -80,11 +80,12 @@ public class OrderDao {
     }
     
     public void Create(User current,String location){
-        String query = "insert into Orders(UserID,ShipLocation) values (?,?)";
+        String query = "insert into Orders(UserID,ShipLocation,Status) values (?,?,?)";
         try{
             PreparedStatement st = con.prepareStatement(query);
             st.setInt(1, current.getID());
             st.setString(2, location);
+            st.setString(3, "Cooking");
             st.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(Discount.class.getName()).log(Level.SEVERE, null, ex);
