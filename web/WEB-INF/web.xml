@@ -8,14 +8,6 @@
         <filter-name>Remember</filter-name>
         <filter-class>Filter.Remember</filter-class>
     </filter>
-    <filter>
-        <filter-name>DetailRequest</filter-name>
-        <filter-class>Filter.DetailRequest</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>DetailRequest</filter-name>
-        <url-pattern>/Home/Details.jsp</url-pattern>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>Remember</filter-name>
         <url-pattern>/Login/*</url-pattern>

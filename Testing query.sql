@@ -15,6 +15,8 @@ select * from OrdersDetail
 
 select * from Wallet
 
+update Wallet set Amount = 1000000 where UserID = 1
+
 select TOP 1 * from Orders where UserID = 1 Order by OrderID desc
 select * from Orders as A join OrdersDetail as B on A.OrderID = B.OrderID
 select * from Discount as A join DiscountOwner as B on A.DiscountID = B.DiscountID where UserID = 1

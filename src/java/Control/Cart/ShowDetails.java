@@ -19,7 +19,8 @@ public class ShowDetails extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/SWP391/Home/Details.jsp");
+        int OrderID = Integer.parseInt(req.getParameter("orderID"));
+        resp.sendRedirect("/SWP391/Home/Details.jsp?orderID="+OrderID);
     }
 
     @Override
