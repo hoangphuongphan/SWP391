@@ -9,15 +9,14 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <img src="${u.profilePicture}" class="rounded-circle img-fluid" alt="placeholder.png">
+                    <img src="placeholder.png" class="rounded-circle img-fluid" alt="placeholder.png">
                 </div>
                 <div class="card-body text-center">
                     <h5 class="card-title">${u.userName}</h5>
                     <p class="card-text">${u.userId}</p>
                     <p class="card-text">${u.displayName}</p>
                     <p class="card-text"><small class="text-muted">Email: ${u.email}</small></p>
-                    <p class="card-text"><small class="text-muted">Bio: ${u.bio}</small></p>
-                    <a href="#">Change Profile</a>
+                    <a href="ChangeUsrInfo">Change Profile</a>
                     <a href="#">Change User Setting</a>
                 </div>
             </div>

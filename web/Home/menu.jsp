@@ -4,6 +4,7 @@
     Author     : DELL
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,5 +19,11 @@
     </head>
     <body>
         <jsp:include page="navbar.jsp"/>
+        <jsp:include page="homebanner.jsp"/>
+        <c:set var="ffl" value="${ffl}"/>
+        <c:set var="nfl" value="${nfl}"/>
+        <jsp:include page="homefeaturefood.jsp"/>
+        <jsp:include page="homenewfood.jsp"/>
+        <jsp:include page="homefooter.jsp"/>
     </body>
 </html>
