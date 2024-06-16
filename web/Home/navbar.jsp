@@ -20,7 +20,7 @@
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="ShowHome"><img class="" src="FoodPal.png" alt="alt"/></a>
+        <a class="navbar-brand" href="ShowHome"><img class="" src="/SWP391/FoodPal.png" alt="alt"/></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,7 +44,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="/SWP391/Home/TopUp.jsp">Top Up</a></li>
-                        <li><a class="dropdown-item" href="ShowProfileServlet">Profile</a></li>
+                        <li><a class="dropdown-item" href="/SWP391/UsrInfo">Profile</a></li>
                         <li><a class="dropdown-item" href="/SWP391/Logout">Logout</a></li>
                     </ul>
                 </li>
