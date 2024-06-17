@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import Dao.FoodDao; // Import FoodDao
+import Dao.FoodSearchDao;
 import Model.Food; // Import Food
 
 @WebServlet("/SearchServlet")
@@ -23,7 +24,7 @@ public class SearchServlet extends HttpServlet {
         String category = request.getParameter("category");
         
         // Gọi phương thức tìm kiếm từ FoodDao
-        FoodDao foodDao = new FoodDao();
+        FoodSearchDao foodDao = new FoodSearchDao();
         List<Food> searchResults;
         if (query != null && !query.isEmpty() && category != null && !category.isEmpty()) {
             // Nếu cả hai tham số query và category đều có

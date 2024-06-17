@@ -19,6 +19,7 @@
     </head>
     <body>
         <jsp:include page="navbar.jsp"/>
+        <jsp:include page="searchbar.jsp"/>
         <jsp:include page="homebanner.jsp"/>
         <c:set var="ffl" value="${ffl}"/>
         <c:set var="nfl" value="${nfl}"/>
