@@ -80,6 +80,56 @@
         <servlet-name>TopUp</servlet-name>
         <servlet-class>Control.Payment.TopUp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeUsrInfo</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.ChangeUsrInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsrInfo</servlet-name>
+        <servlet-class>Control.UsrInfo.UsrInfo</servlet-class>
+    </servlet> 
+   
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Search</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>Control.Search.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportFoodServlet</servlet-name>
+        <servlet-class>Control.Search.ReportFoodServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportShopServlet</servlet-name>
+        <servlet-class>Control.Search.ReportShopServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportShipperServlet</servlet-name>
+        <servlet-class>Control.Search.ReportShipperServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportFoodServlet</servlet-name>
+        <url-pattern>/ReportFoodServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportShopServlet</servlet-name>
+        <url-pattern>/ReportShopServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportShipperServlet</servlet-name>
+        <url-pattern>/ReportShipperServlet</url-pattern>
+    </servlet-mapping>
+  
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -143,6 +193,14 @@
     <servlet-mapping>
         <servlet-name>TopUp</servlet-name>
         <url-pattern>/TopUp</url-pattern>
+    </servlet-mapping> 
+    <servlet-mapping>
+        <servlet-name>ChangeUsrInfo</servlet-name>
+        <url-pattern>/ChangeUsrInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsrInfo</servlet-name>
+        <url-pattern>/UsrInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -154,4 +154,3 @@ create table DiscountOwner(
 create table Wallet(
 	UserID int foreign key references Users(UserID) primary key,
 	Amount money not null)
-

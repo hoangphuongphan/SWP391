@@ -12,9 +12,15 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    .navbar-brand img {
+        height: 40px;
+        width: auto;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Game Việt</a>
+        <a class="navbar-brand" href="ShowHome"><img class="" src="/SWP391/FoodPal.png" alt="alt"/></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,15 +36,15 @@
                     <a class="nav-link" href="/SWP391/ShowOrders">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Support</a>
+                    <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Welcome ${user.displayName}
+                        Welcome ${sessionScope.currentUser.getName()}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="/SWP391/Home/TopUp.jsp">Top Up</a></li>
-                        <li><a class="dropdown-item" href="ShowProfileServlet">Profile</a></li>
+                        <li><a class="dropdown-item" href="/SWP391/UsrInfo">Profile</a></li>
                         <li><a class="dropdown-item" href="/SWP391/Logout">Logout</a></li>
                     </ul>
                 </li>
