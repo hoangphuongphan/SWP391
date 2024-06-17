@@ -2,6 +2,7 @@ select * from Users as A join UserAccount as B on A.UserID = B.UserID join Accou
 
 select * from Account
 select * from Users
+select * from Shipper
 
 select * from Food
 select * from Shop

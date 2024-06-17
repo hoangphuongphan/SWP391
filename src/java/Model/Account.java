@@ -19,9 +19,10 @@ public class Account {
         this.type = type;
     }
 
-    public Account(String username, String password) {
+    public Account(String username, String password, String type) {
         this.username = username;
         this.password = password;
+        this.type = type;
     }
 
     public String getUsername() {

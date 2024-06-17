@@ -17,14 +17,14 @@ public class User extends Account{
     private int ID;
 
     public User( String username, String password, String email, String phone, String name) {
-        super(username, password);
+        super(username, password,"User");
         this.email = email;
         this.phone = phone;
         this.name = name;
     }
     
     public User( String username, String password, String email, String phone, String name, String location, int ID) {
-        super(username, password);
+        super(username, password,"User");
         this.email = email;
         this.phone = phone;
         this.name = name;
