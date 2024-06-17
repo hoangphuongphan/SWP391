@@ -1,30 +1,30 @@
 <%-- 
     Document   : searchbar
-    Created on : Jun 16, 2024, 1:40:32 PM
+    Created on : Jun 16, 2024, 1:40:32?PM
     Author     : Admin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="SWP391/Home/css/style.css"/>
         <title>JSP Page</title>
     </head>
     <body>
         <div class="search-container">
-        <!-- Phần tìm kiếm theo từ khóa -->
+        <!-- Ph?n t�m ki?m theo t? kh�a -->
         <form action="SearchServlet" method="get">
-            <input type="text" name="query" placeholder="Tìm kiếm thực phẩm...">
-            <button type="submit">Tìm kiếm</button>
+            <input type="text" name="query" placeholder="T�m ki?m th?c ph?m...">
+            <button type="submit">T�m ki?m</button>
         </form>
         
-        <!-- Phần chọn loại món ăn -->
+        <!-- Ph?n ch?n lo?i m�n ?n -->
         <form action="SearchServlet" method="get">
             <select name="category">
-                <!-- Danh sách các loại món ăn sẽ được thêm bằng mã Java trong servlet -->
+                <!-- Danh s�ch c�c lo?i m�n ?n s? ???c th�m b?ng m� Java trong servlet -->
             </select>
-            <button type="submit">Lọc</button>
+            <button type="submit">L?c</button>
         </form>
     </div>
     </body>

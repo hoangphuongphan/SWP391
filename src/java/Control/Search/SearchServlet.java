@@ -42,6 +42,6 @@ public class SearchServlet extends HttpServlet {
         
         // Chuyển hướng đến trang hiển thị kết quả tìm kiếm
         request.setAttribute("searchResults", searchResults);
-        request.getRequestDispatcher("searchResults.jsp").forward(request, response);
+        request.getRequestDispatcher("Home/searchResults.jsp").forward(request, response);
     }
 }
