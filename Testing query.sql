@@ -37,6 +37,8 @@ insert into Category values('Do an vat')
 insert into Food values(1,1, 20000,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnbmkhQSim64h2vJzu939EAZM8KjeFAp31bw&s','banh trang tron')
 insert into Food values (1,1, 15000, 'http://www.savourydays.com/cach-lam-banh-trang-cuon-sot-bo-bonus-banh-trang-tron/', 'banh trang cuon')
 
+update Food set FoodImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe9wBAIHdUUKA89uIRnV40VQ0AZtsuvlxMg&s' where FoodID = 2
+
 insert into Discount values ('Giam 30%','30%','2024-3-11','2025-11-25')
 insert into DiscountOwner values (3,1,5)
 
