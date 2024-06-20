@@ -23,8 +23,7 @@
         <jsp:include page="homebanner.jsp"/>
         <c:set var="ffl" value="${ffl}"/>
         <c:set var="nfl" value="${nfl}"/>
-        <jsp:include page="homefeaturefood.jsp"/>
-        <jsp:include page="homenewfood.jsp"/>
+        <jsp:include page="homecontent.jsp"/>
         <jsp:include page="homefooter.jsp"/>
     </body>
 </html>
