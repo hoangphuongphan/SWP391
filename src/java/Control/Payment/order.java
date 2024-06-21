@@ -15,6 +15,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -29,7 +31,9 @@ public class order extends HttpServlet {
         int amount = Integer.parseInt(req.getParameter("total"));
         wallet.add(amount*-1);
         new WalletDao().UpdateAmount(CurrentUser.getCurrent(req.getSession()).getID());
-        dao.createOrder(CurrentUser.getCurrent(req.getSession()), "Ha noi");
+        ArrayList<HashMap<Integer,Integer>> bills = BillSplit.SplitBill();
+        for(HashMap<Integer,Integer> bill : bills)
+            dao.createOrder(CurrentUser.getCurrent(req.getSession()), "Ha noi", bill);
         Cart.getInstance().DeleteCart();
         resp.sendRedirect("/SWP391/ShowOrders");
     }

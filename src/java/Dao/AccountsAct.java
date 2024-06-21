@@ -4,9 +4,11 @@
  */
 package Dao;
 
+import Model.Account;
 import Model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,5 +40,20 @@ public class AccountsAct {
             Logger.getLogger(UsersAct.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    
+    public Account getAccountByUsername(String username){
+        String query = "select * from Account where Username = ?";
+        Account acc = null;
+        try{
+            PreparedStatement pre = con.prepareStatement(query);
+            pre.setString(1, username);
+            ResultSet rs = pre.executeQuery();
+            if(rs.next())
+            acc = new Account(rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Type"));
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsAct.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return acc;
     }
 }

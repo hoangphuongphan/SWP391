@@ -120,8 +120,8 @@ public class OrderDao {
         return order;
     }
     
-    public void createOrder(User current, String location){
-        HashMap<Integer,Integer> cart = Cart.getCart();
+    public void createOrder(User current, String location, HashMap<Integer,Integer> items){
+        HashMap<Integer,Integer> cart = items;
         Create(current, location);
         for(HashMap.Entry<Integer,Integer> entry : cart.entrySet()){
             insertOrderDetais(OrderID(current.getID()), entry.getKey(), entry.getValue());

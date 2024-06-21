@@ -3,19 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/LoggingIn/Login.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/searchbar.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/WEB-INF/web.xml</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Account.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/menu.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/profile.jsp</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/AccountsAct.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Search/SearchServlet.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/ReportDAO.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Shipper.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/Database.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Shop.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Shop/Home.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/UsersAct.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/LoggingIn/Login.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/FoodDao.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/navbar.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/FoodSearchDao.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Homing/ShowShopHome.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Account.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/ShopDao.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/CurrentUser.java</file>
         </group>
     </open-files>
 </project-private>

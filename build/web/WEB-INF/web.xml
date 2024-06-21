@@ -8,6 +8,14 @@
         <filter-name>Remember</filter-name>
         <filter-class>Filter.Remember</filter-class>
     </filter>
+    <filter>
+        <filter-name>OrderFilter</filter-name>
+        <filter-class>Filter.OrderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>OrderFilter</filter-name>
+        <url-pattern>/order</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>Remember</filter-name>
         <url-pattern>/Login/*</url-pattern>
@@ -87,8 +95,7 @@
     <servlet>
         <servlet-name>UsrInfo</servlet-name>
         <servlet-class>Control.UsrInfo.UsrInfo</servlet-class>
-    </servlet> 
-   
+    </servlet>
     <servlet>
         <servlet-name>Search</servlet-name>
         <servlet-class>Search</servlet-class>
@@ -108,6 +115,14 @@
     <servlet>
         <servlet-name>ReportShipperServlet</servlet-name>
         <servlet-class>Control.Search.ReportShipperServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShopHome</servlet-name>
+        <servlet-class>Control.Homing.ShowShopHome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShipperHome</servlet-name>
+        <servlet-class>Control.Homing.ShowShipperHome</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
@@ -129,7 +144,6 @@
         <servlet-name>ReportShipperServlet</servlet-name>
         <url-pattern>/ReportShipperServlet</url-pattern>
     </servlet-mapping>
-  
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -193,7 +207,7 @@
     <servlet-mapping>
         <servlet-name>TopUp</servlet-name>
         <url-pattern>/TopUp</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeUsrInfo</servlet-name>
         <url-pattern>/ChangeUsrInfo</url-pattern>
@@ -201,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>UsrInfo</servlet-name>
         <url-pattern>/UsrInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShopHome</servlet-name>
+        <url-pattern>/ShowShopHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShipperHome</servlet-name>
+        <url-pattern>/ShowShipperHome</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

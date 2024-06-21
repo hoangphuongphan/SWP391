@@ -16,6 +16,10 @@ select * from OrdersDetail
 
 select * from Wallet
 
+select * from Account
+select * from ShopAccount
+select * from Shop
+
 update Wallet set Amount = 1000000 where UserID = 1
 
 select TOP 1 * from Orders where UserID = 1 Order by OrderID desc
@@ -28,6 +32,9 @@ insert into Wallet values (1,800000)
 insert into Orders(UserID,ShipLocation,Status) values (1, 'Da Nang','Cooking')
 insert into OrdersDetail values  (2,1,4)	
 insert into OrdersDetail values(2,2,4)
+
+insert into Account values ('shopanvat','123','Shop')
+insert into ShopAccount values(1,2)
 
 insert into Account values ('sunheophp','123456','User')
 insert into Users values ('Phuong','0914020508','phoangphuong309@gmail.com',null)

@@ -4,11 +4,17 @@
  */
 package Control.LoggingIn;
 
+import Dao.AccountsAct;
 import Dao.FoodDao;
+import Dao.ShipperDao;
+import Dao.ShopDao;
 import Dao.UsersAct;
+import Model.Account;
 import Model.Cart;
 import Model.CurrentUser;
 import Model.Food;
+import Model.Shipper;
+import Model.Shop;
 import Model.User;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -27,16 +33,30 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        User user = new UsersAct().getUserByUsername(username);
-        if(user!= null && password.equals(user.getPassword())){
+        Account acc = new AccountsAct().getAccountByUsername(username);
+        if(acc!= null && password.equals(acc.getPassword())){
             HttpSession session = req.getSession(true);
             session.setAttribute("username", username);
             session.setAttribute("password", password);
-            session.setAttribute("currentUser", CurrentUser.getCurrent(session));
-            Cart cart = Cart.getInstance();
-            cart.Add(1, 1);
-            cart.Add(2, 1);
-            req.getRequestDispatcher("ShowHome").forward(req, resp);
+            switch (acc.getType()) {
+                case "User":
+                    User user = new UsersAct().getUserByUsername(username);
+                    session.setAttribute("currentUser", CurrentUser.getCurrent(session));
+                    req.getRequestDispatcher("ShowHome").forward(req, resp);
+                    break;
+                case "Shop":
+                    Shop shop = new ShopDao().getShopByUsername(username);
+                    session.setAttribute("currentShop", shop);
+                    req.getRequestDispatcher("ShowShopHome").forward(req, resp);
+                    break;
+                case "Shipper":
+                    Shipper ship = new ShipperDao().getShipperByUsername(username);
+                    session.setAttribute("currentShipper", ship);
+                    req.getRequestDispatcher("ShowShipperHome").forward(req, resp);
+                    break;
+                default:
+                    resp.sendRedirect("Login/Login.jsp");
+            }
         }else
             resp.sendRedirect("Login/Login.jsp");   
     }
