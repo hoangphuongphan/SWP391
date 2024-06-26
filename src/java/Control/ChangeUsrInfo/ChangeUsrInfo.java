@@ -4,7 +4,7 @@
  */
 package Control.ChangeUsrInfo;
 
-import Dao.UsersAct;
+import Dao.UserDao;
 import Model.User;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -38,7 +38,7 @@ public class ChangeUsrInfo extends HttpServlet {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
 
-        UsersAct ua = new UsersAct();
+        UserDao ua = new UserDao();
 
         boolean result = ua.UpdateProfile(username, displayName, phone, location);
 

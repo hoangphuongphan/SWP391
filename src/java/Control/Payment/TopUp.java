@@ -26,8 +26,8 @@ public class TopUp extends HttpServlet {
         HttpSession session = req.getSession();
         int amount = Integer.parseInt((String) session.getAttribute("TopupAmount"));
         session.removeAttribute("TopupAmount");
-        Wallet.getInstance(CurrentUser.getCurrent(req.getSession()).getID()).add(amount);
-        new WalletDao().UpdateAmount(CurrentUser.getCurrent(session).getID());
+        Wallet.getInstance();
+        new WalletDao().UpdateAmount(null,null);
         resp.sendRedirect("/SWP391/ShowCart");
     }
 

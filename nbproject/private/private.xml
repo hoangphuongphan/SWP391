@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/AccountsAct.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/Database.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Shop.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Shop/Home.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/UsersAct.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/LoggingIn/Login.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/FoodDao.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Homing/ShowShopHome.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Account.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/ShopDao.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/CurrentUser.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Shop/Details.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Payment/order.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Home/Cart.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Order.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Home/Shop.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Shop/UpdateProfile.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Shop/Profile.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/OrderDao.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Payment/BillSplit.java</file>
         </group>
     </open-files>
 </project-private>

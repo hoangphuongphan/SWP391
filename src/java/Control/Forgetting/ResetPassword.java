@@ -4,7 +4,7 @@
  */
 package Control.Forgetting;
 
-import Dao.UsersAct;
+import Dao.UserDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -23,7 +23,7 @@ public class ResetPassword extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String password = req.getParameter("password");
-        UsersAct act = new UsersAct();
+        UserDao act = new UserDao();
         act.UpdataePassword(password, (String) session.getAttribute("email"));
         req.getSession().invalidate();
         resp.sendRedirect("Login/Login.jsp");

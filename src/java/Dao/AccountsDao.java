@@ -17,11 +17,11 @@ import java.util.logging.Logger;
  *
  * @author phoan
  */
-public class AccountsAct {
+public class AccountsDao {
     private Connection con;
     Database instance;
 
-    public AccountsAct() {
+    public AccountsDao() {
             instance = Database.getInstance();
             con = instance.getCon();
     }
@@ -37,7 +37,7 @@ public class AccountsAct {
             int re = pre.executeUpdate();
             return re == 1? true : false;
         } catch (SQLException ex) {
-            Logger.getLogger(UsersAct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AccountsDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -52,8 +52,22 @@ public class AccountsAct {
             if(rs.next())
             acc = new Account(rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Type"));
         } catch (SQLException ex) {
-            Logger.getLogger(AccountsAct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AccountsDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return acc;
+    }
+    
+    public boolean UpdateAccount(Account acc){
+        String query = "Update Account set Username = ?, Password = ? where AccountID = ?";
+        try{
+            PreparedStatement pre = con.prepareStatement(query);
+            pre.setString(1, acc.getUsername());
+            pre.setString(2, acc.getPassword());
+            pre.setInt(3, acc.getAccountID());
+            return pre.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountsDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

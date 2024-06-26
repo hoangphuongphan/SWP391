@@ -22,7 +22,7 @@ public class Cart {
 
     private Cart() {
         cart = new HashMap<>();
-        owner = CurrentUser.getUser();
+        owner = CurrentUser.getCurrent();
     }
 
     public static Cart getInstance() {

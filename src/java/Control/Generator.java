@@ -30,4 +30,13 @@ public class Generator {
             instance = new Generator();
         return instance;
     }
+    
+    public String phoneTrans(String phone){
+        if(phone.startsWith("+84"))
+            return phone;
+        phone = phone.substring(1);
+        return "+84" + phone;
+    }
+    
+    
 }

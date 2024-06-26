@@ -27,6 +27,22 @@ public class FoodDao {
             con = instance.getCon();
     }
     
+    public ArrayList<Food> getFoodByShop(int ShopID){
+        String query = "select * from Food where ShopID = ?";
+        ArrayList<Food> foods = new ArrayList<>();
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, ShopID);
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+                foods.add(new Food(rs.getString("Foodname"), rs.getString("FoodImage"), rs.getInt("FoodID"), rs.getInt("ShopID"), rs.getInt("CateID"), rs.getDouble("Price")));
+        } catch (SQLException ex) {
+            Logger.getLogger(Food.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return foods;
+    }
+    
     public Food getFoodByID(int id){
         String query = "select * from Food where FoodID = ?";
         Food food = null;

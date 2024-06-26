@@ -4,11 +4,11 @@
  */
 package Control.LoggingIn;
 
-import Dao.AccountsAct;
+import Dao.AccountsDao;
 import Dao.FoodDao;
 import Dao.ShipperDao;
 import Dao.ShopDao;
-import Dao.UsersAct;
+import Dao.UserDao;
 import Model.Account;
 import Model.Cart;
 import Model.CurrentUser;
@@ -16,6 +16,7 @@ import Model.Food;
 import Model.Shipper;
 import Model.Shop;
 import Model.User;
+import Model.Wallet;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -33,25 +34,30 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        Account acc = new AccountsAct().getAccountByUsername(username);
+        Account acc = new AccountsDao().getAccountByUsername(username);
         if(acc!= null && password.equals(acc.getPassword())){
             HttpSession session = req.getSession(true);
-            session.setAttribute("username", username);
-            session.setAttribute("password", password);
             switch (acc.getType()) {
-                case "User":
-                    User user = new UsersAct().getUserByUsername(username);
-                    session.setAttribute("currentUser", CurrentUser.getCurrent(session));
+                case 1:
+                    User user = new UserDao().getUserByUsername(username);
+                    CurrentUser.initialize(user);
+                    session.setAttribute("currentUser", user);
+                    Cart.getInstance();
+                    Wallet.initialize(user.getID(), "User");
+                    Cart.getInstance().Add(1, 4);
+                    Cart.getInstance().Add(2, 3);
                     req.getRequestDispatcher("ShowHome").forward(req, resp);
                     break;
-                case "Shop":
+                case 2:
                     Shop shop = new ShopDao().getShopByUsername(username);
                     session.setAttribute("currentShop", shop);
+                    Wallet.initialize(shop.getShopID(), "Shop");
                     req.getRequestDispatcher("ShowShopHome").forward(req, resp);
                     break;
-                case "Shipper":
+                case 3:
                     Shipper ship = new ShipperDao().getShipperByUsername(username);
                     session.setAttribute("currentShipper", ship);
+                    Wallet.initialize(ship.getID(), "Shipper");
                     req.getRequestDispatcher("ShowShipperHome").forward(req, resp);
                     break;
                 default:

@@ -11,12 +11,16 @@ import Dao.WalletDao;
  * @author phoan
  */
 public class Wallet {
-    private int UserID, amount;
+    private int UserID, amount, Type;
     private static Wallet instance;
 
-    public Wallet(int UserID, int amount) {
+    public Wallet(int UserID, int amount,int Type) {
         this.UserID = UserID;
         this.amount = amount;
+    }
+    
+    public static void initialize(int UserID, String type){
+        instance = new WalletDao().getWalletByID(UserID, type);
     }
 
     public int getUserID() {
@@ -26,10 +30,21 @@ public class Wallet {
     public int getAmount() {
         return amount;
     }
+    
+    public String getType(){
+        switch(Type){
+            case 1:
+                return "User";
+            case 2:
+                return "Shop";
+            case 3:
+                return "Shipper";
+            default:
+                return null;
+        }
+    }
 
-    public static Wallet getInstance(int UserID) {
-        if(instance == null)
-            instance = new WalletDao().getWalletByID(UserID);
+    public static Wallet getInstance() {
         return instance;
     }
 

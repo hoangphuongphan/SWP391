@@ -27,11 +27,28 @@ public class ShipperDao {
     }
     
     public Shipper getShipperByUsername(String username) {
-        String query = "select * from Shipper as A join ShipperAccount as B on A.ShipperID = B.ShipperID join Account as C on B.AccountID = C.AccountID where C.Username = ?";
+        String query = "select * from Shipper as A join Account as C on A.AccountID = C.AccountID where C.Username = ?";
         Shipper shipper = null;
         try {
             PreparedStatement st = con.prepareStatement(query);
             st.setString(1, username);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                shipper = new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"));
+        } catch (SQLException ex) {
+            Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return shipper;
+    }
+    
+    public Shipper getShipperByID(int ShipperID){
+        String query = "select * from Shipper as A join Account as C on A.AccountID = C.AccountID where A.ShipperID = ?";
+        Shipper shipper = null;
+        try {
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, ShipperID);
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 shipper = new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),

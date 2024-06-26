@@ -12,6 +12,16 @@
         <filter-name>OrderFilter</filter-name>
         <filter-class>Filter.OrderFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>TypeViolation</filter-name>
+        <filter-class>Filter.TypeViolation</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TypeViolation</filter-name>
+        <url-pattern>/Home/*</url-pattern>
+        <url-pattern>/Shop/*</url-pattern>
+        <url-pattern>/Shipper/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>OrderFilter</filter-name>
         <url-pattern>/order</url-pattern>
@@ -23,6 +33,8 @@
     <filter-mapping>
         <filter-name>Authentication</filter-name>
         <url-pattern>/Home/*</url-pattern>
+        <url-pattern>/Shop/*</url-pattern>
+        <url-pattern>/Shipper/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -124,6 +136,18 @@
         <servlet-name>ShowShipperHome</servlet-name>
         <servlet-class>Control.Homing.ShowShipperHome</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowShopOrderDetails</servlet-name>
+        <servlet-class>Control.Cart.ShowShopOrderDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DenyOrder</servlet-name>
+        <servlet-class>Control.Payment.DenyOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowFood</servlet-name>
+        <servlet-class>Control.LoggingIn.ShowFood</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -223,6 +247,18 @@
     <servlet-mapping>
         <servlet-name>ShowShipperHome</servlet-name>
         <url-pattern>/ShowShipperHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShopOrderDetails</servlet-name>
+        <url-pattern>/ShowShopOrderDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DenyOrder</servlet-name>
+        <url-pattern>/DenyOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowFood</servlet-name>
+        <url-pattern>/ShowFood</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

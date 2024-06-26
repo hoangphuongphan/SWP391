@@ -14,7 +14,7 @@
     <%
     OrderDao dao = new OrderDao();
     User current = (User) session.getAttribute("currentUser");
-    ArrayList<Order> list = dao.getOrderList(current.getID());
+    ArrayList<Order> list = dao.getOrderList(current.getID(),"User");
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -4,7 +4,11 @@
  */
 package Control.Payment;
 
+import Dao.FoodDao;
+import Dao.ShopDao;
 import Model.Cart;
+import Model.Food;
+import Model.Shop;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,20 +19,17 @@ import java.util.Map;
  */
 public class BillSplit {
     //split bill for each Shop
-    public static ArrayList<HashMap<Integer,Integer>> SplitBill(){
-        ArrayList<HashMap<Integer,Integer>> bills = new ArrayList<>();
-        ArrayList<Integer> shopList = new ArrayList<>();
-        HashMap<Integer,Integer> cart = Cart.getCart();
-        for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
-            if(!shopList.contains(entry.getKey())){
-                shopList.add(entry.getKey());
-                bills.add(new HashMap<>());
-            }
+    public static HashMap<Integer,HashMap<Integer,Integer>> SplitBill(){
+        FoodDao dao = new FoodDao();
+        ShopDao sdao = new ShopDao();
+        HashMap<Integer,HashMap<Integer,Integer>> list = new HashMap<>();
+        for(HashMap.Entry<Integer,Integer> item : Cart.getCart().entrySet()){
+            Food food = dao.getFoodByID(item.getKey());
+            Shop shop = sdao.getShopByID(food.getShopID());
+            if(list.get(shop.getShopID()) == null)
+                list.put(shop.getShopID(), new HashMap<>());
+            list.get(shop.getShopID()).put(food.getID(), item.getValue());
         }
-        
-        for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
-            bills.get(shopList.indexOf(entry.getKey())).put(entry.getKey(), entry.getValue());
-        }
-        return bills;
+        return list;
     }
 }

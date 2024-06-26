@@ -25,8 +25,25 @@ public class ShopDao {
         con = instance.getCon();
     }
     
+    public Shop getShopByID(int ID){
+        String query = "select * from Shop as A join Account as C on A.AccountID = C.AccountID where A.ShopID = ?";
+        Shop shop = null;
+        try {
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, ID);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                shop = new Shop(rs.getInt("ShopID"), rs.getString("Name"), rs.getString("Location"), rs.getString("Phone"), rs.getString("ShopImage"),
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"));
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return shop;
+    }
+    
     public Shop getShopByUsername(String username) {
-        String query = "select * from Shop as A join ShopAccount as B on A.ShopID = B.ShopID join Account as C on B.AccountID = C.AccountID where C.Username = ?";
+        String query = "select * from Shop as A join Account as C on A.AccountID = C.AccountID where C.Username = ?";
         Shop shop = null;
         try {
             PreparedStatement st = con.prepareStatement(query);
@@ -40,5 +57,21 @@ public class ShopDao {
             return null;
         }
         return shop;
+    }
+    
+    public boolean UpdateShop(Shop shop){
+        String query = "update Shop set Name = ?, Phone = ?, Location = ?, ShopImage = ? where ShopID = ?";
+        try {
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, shop.getName());
+            st.setString(2, shop.getPhone());
+            st.setString(3, shop.getLocation());
+            st.setString(4, shop.getImgurl());
+            st.setInt(5, shop.getShopID());
+            return st.execute();
+        }catch (SQLException ex) {
+            Logger.getLogger(ShopDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

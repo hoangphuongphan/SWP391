@@ -1,18 +1,54 @@
 select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where Email = 'phoangphuong309@gmail.com'
+select * from Shop as A join ShopAccount as B on A.ShopID = B.ShopID join Account as C on B.AccountID = C.AccountID where C.Username = 'shopanvat'
+select * from Shipper as A join ShipperAccount as B on A.ShipperID = B.ShipperID join Account as C on B.AccountID = C.AccountID where C.Username = 'shipper1'
 
-select * from Account
+select * from Orders as A join OrdersDetail as B on A.OrderID = B.OrderID join Food 
+as C on B.FoodID = C.FoodID Where ShopID = 1
+
+select * from Orders as A join OrdersDetail as B on A.OrderID = B.OrderID where A.OrderID = 1007
+
+Select * from Orders where UserID = 1 AND Status <> 'Denied'
+select * from Orders
+select * from OrdersDetail
+
+delete from OrdersDetail where OrderID = 1004
+delete from Orders where OrderID = 1004
+
 select * from Users
-select * from Shipper
+select * from Wallet
 
-select * from Food
+insert into Wallet values(1,1,1000000)
+
+select * from Shipper
+select * from Account
+
+update Shipper set AccountID = 1002 where ShipperID = 1
+
+select Count(*) as Lines from Orders 
+
+select * from Shop as A join ShopAccount as B on A.ShopID = B.ShopID join Account as C on B.AccountID = C.AccountID where A.ShopID = 1
+delete from OrdersDetail where OrderID
+
+Update Orders set Status = 'Cooking' where OrderID = 2
+
+select * from ShopAccount
+select * from Account
 select * from Shop
+select * from Food
 select * from Category
+
+select * from Shipper
+select * from Account
+select * from ShipperAccount
+
+select * from Account where Username = 'shopanvat'
 
 select * from Discount
 select * from DiscountOwner
 
 select * from Orders
 select * from OrdersDetail
+
 
 select * from Wallet
 
@@ -52,3 +88,8 @@ insert into DiscountOwner values (3,1,5)
 
 insert into Discount values ('Free ship','free-ship','2024-3-11','2025-11-25')
 insert into DiscountOwner values (4,1,5)
+
+insert into Account values ('shipper1','123','Shipper')
+insert into Shipper values('Phan Hoang Phuong', '0914020508', '43D67397')
+insert into ShipperAccount values (1,1002)
+

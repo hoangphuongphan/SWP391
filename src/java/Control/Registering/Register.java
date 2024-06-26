@@ -4,8 +4,6 @@
  */
 package Control.Registering;
 
-import Dao.UsersAct;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;

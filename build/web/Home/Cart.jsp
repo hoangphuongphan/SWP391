@@ -33,7 +33,7 @@
         int ship = 0;
         int total = Cart.getInstance().getTotal();
         ArrayList<Discount> list = new DiscountDao().getDiscountByUserID(current.getID());
-        Wallet wallet = Wallet.getInstance(current.getID());%>
+        Wallet wallet = Wallet.getInstance();%>
         
         <div class="bigcontainer">
                 <div class="title container">
