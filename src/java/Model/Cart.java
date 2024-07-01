@@ -69,6 +69,12 @@ public class Cart {
     public void setDiscount(Discount discount){
         this.discount = discount;
     }
+
+    public Discount getDiscount() {
+        if(discount == null)
+            return new Discount("", null, null);
+        return discount;
+    }
     
     public boolean DeleteCart(){
         this.cart = null;

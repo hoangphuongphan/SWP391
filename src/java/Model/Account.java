@@ -49,4 +49,8 @@ public class Account {
     public int getAccountID() {
         return AccountID;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

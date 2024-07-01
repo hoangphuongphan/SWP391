@@ -19,4 +19,8 @@ public class CurrentUser{
     public static void initialize(User current){
         CurrentUser.current = current;
     }
+    
+    public static void delete(){
+        CurrentUser.current = null;
+    }
 }

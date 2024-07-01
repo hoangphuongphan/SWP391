@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import Model.Category;
 
 public class CategoryDao {
@@ -22,20 +21,32 @@ public class CategoryDao {
     }
     
     // Phương thức để lấy danh sách loại món ăn từ cơ sở dữ liệu
-    public List<Category> getAllCategories() {
-        List<Category> categories = new ArrayList<>();
-        String query = "SELECT CateName FROM Category";
+    public ArrayList<Category> getAllCategories() {
+        ArrayList<Category> categories = new ArrayList<>();
+        String query = "SELECT * FROM Category";
         try {
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String cateName = rs.getString("CateName");
-                Category category = new Category(cateName); // Tạo đối tượng Category từ dữ liệu trong ResultSet
-                categories.add(category);
+                categories.add(new Category(rs.getInt("CateID"), rs.getString("Name")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return categories;
+    }
+    
+    public Category getCateByName(String cateName){
+        String query = "select * from Category where Name = ?";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, cateName);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                return new Category(rs.getInt("CateID"), cateName);
+        }catch(Exception ex){
+            
+        }
+        return null;
     }
 }

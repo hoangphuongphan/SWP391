@@ -26,13 +26,13 @@ public class AccountsDao {
             con = instance.getCon();
     }
     
-    public boolean Create(User user, String type) {
+    public boolean Create(Account acc, String type) {
         String query = "INSERT INTO Account (Username, Password, Type) " + "\n"
                 + "VALUES (?, ?, ?)";
         try {
             PreparedStatement pre = con.prepareStatement(query);
-            pre.setString(1, user.getUsername());
-            pre.setString(2, user.getPassword());
+            pre.setString(1, acc.getUsername());
+            pre.setString(2, acc.getPassword());
             pre.setString(3, type);
             int re = pre.executeUpdate();
             return re == 1? true : false;

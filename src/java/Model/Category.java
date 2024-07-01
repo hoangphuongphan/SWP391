@@ -6,10 +6,16 @@ package Model;
 
 
 public class Category {
+    private int CategoryID;
     private String name;
 
-    public Category(String name) {
+    public Category(int CategoryID, String name) {
+        this.CategoryID = CategoryID;
         this.name = name;
+    }
+
+    public int getCategoryID() {
+        return CategoryID;
     }
 
     public String getName() {

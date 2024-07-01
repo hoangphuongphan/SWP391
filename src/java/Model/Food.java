@@ -22,6 +22,14 @@ public class Food {
         this.price = price;
     }
 
+    public Food(String name, String imgurl, int ShopID, int CateID, double price) {
+        this.name = name;
+        this.imgurl = imgurl;
+        this.ShopID = ShopID;
+        this.CateID = CateID;
+        this.price = price;
+    }
+    
     public String getName() {
         return name;
     }
@@ -45,6 +53,28 @@ public class Food {
     public double getPrice() {
         return price;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
+
+    public void setShopID(int ShopID) {
+        this.ShopID = ShopID;
+    }
+
+    public void setCateID(int CateID) {
+        this.CateID = CateID;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    
 
     @Override
     public String toString() {

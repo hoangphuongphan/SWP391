@@ -4,6 +4,7 @@
  */
 package Control.Payment;
 
+import Control.StatusChecking;
 import Dao.OrderDao;
 import Dao.WalletDao;
 import Model.Cart;
@@ -34,17 +35,23 @@ public class order extends HttpServlet {
         User current = (User) session.getAttribute("currentUser");
         OrderDao dao = new OrderDao();
         Wallet wallet = Wallet.getInstance();
-        int amount = Integer.parseInt(req.getParameter("total"));
-        wallet.add(amount*-1);
-        new WalletDao().UpdateAmount(null,null);
-//        ArrayList<Order> bills = BillSplit.SplitBill();
-//        for(HashMap<Integer,Integer> bill : bills)
-//            dao.createOrder("Ha Noi");
         HashMap<Integer,HashMap<Integer,Integer>> bills = BillSplit.SplitBill();
-        for(HashMap.Entry<Integer,HashMap<Integer,Integer>> bill : bills.entrySet()){
-            dao.createOrder("hanoi", bill.getKey(),bill.getValue());
+        int amount = Integer.parseInt(req.getParameter("total"));
+        ArrayList<Integer> unavails = StatusChecking.unavilShops(bills);
+        if(amount < wallet.getAmount()){
+            if(unavails.size()<1){
+                for(HashMap.Entry<Integer,HashMap<Integer,Integer>> bill : bills.entrySet()){
+                    dao.createOrder("hanoi", bill.getKey(),bill.getValue());
+                }
+                wallet.add(amount*-1);
+                new WalletDao().UpdateAmount(null,null);
+                Cart.getInstance().DeleteCart();
+            }else{
+                resp.sendRedirect("/SWP391/Home/Cart.jsp?error=There are shops not available");
+            }
+        }else{
+            resp.sendRedirect("/SWP391/Home/Cart.jsp?error=Wallet not having enough");
         }
-        Cart.getInstance().DeleteCart();
         resp.sendRedirect("/SWP391/ShowOrders");
     }
 

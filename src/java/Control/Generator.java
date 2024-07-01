@@ -37,6 +37,4 @@ public class Generator {
         phone = phone.substring(1);
         return "+84" + phone;
     }
-    
-    
 }

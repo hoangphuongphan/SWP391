@@ -75,14 +75,15 @@ public class UserDao {
 
     }
 
-    public boolean Create(User user) {
-        String query = "INSERT INTO Users (Name, Phone, Email) " + "\n"
-                + "VALUES (?, ?, ?)";
+    public boolean Create(User user, int AccountID) {
+        String query = "INSERT INTO Users (Name, Phone, Email,AccountID) " + "\n"
+                + "VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement pre = con.prepareStatement(query);
             pre.setString(1, user.getName());
             pre.setString(2, user.getPhone());
             pre.setString(3, user.getEmail());
+            pre.setInt(4, AccountID);
             int re = pre.executeUpdate();
             return re == 1 ? true : false;
         } catch (SQLException ex) {

@@ -146,7 +146,59 @@
     </servlet>
     <servlet>
         <servlet-name>ShowFood</servlet-name>
-        <servlet-class>Control.LoggingIn.ShowFood</servlet-class>
+        <servlet-class>Control.Homing.ShowFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChaneShopInfo</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.ChaneShopInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePassword</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdatePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateContact</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdateContact</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateShopContact</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdateShopContact</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.CreateFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShopFood</servlet-name>
+        <servlet-class>Control.Homing.ShowShopFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.DeleteFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeFoodInfo</servlet-name>
+        <servlet-class>Control.FoodCRUD.ChangeFoodInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetShopStatus</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.SetShopStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RateFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.RateFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReviewFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.ReviewFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.ReportFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShop</servlet-name>
+        <servlet-class>Control.Homing.ShowShop</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
@@ -259,6 +311,58 @@
     <servlet-mapping>
         <servlet-name>ShowFood</servlet-name>
         <url-pattern>/ShowFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChaneShopInfo</servlet-name>
+        <url-pattern>/ChaneShopInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePassword</servlet-name>
+        <url-pattern>/UpdatePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateContact</servlet-name>
+        <url-pattern>/UpdateContact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateShopContact</servlet-name>
+        <url-pattern>/UpdateShopContact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateFood</servlet-name>
+        <url-pattern>/CreateFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShopFood</servlet-name>
+        <url-pattern>/ShowShopFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFood</servlet-name>
+        <url-pattern>/DeleteFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeFoodInfo</servlet-name>
+        <url-pattern>/ChangeFoodInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetShopStatus</servlet-name>
+        <url-pattern>/SetShopStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RateFood</servlet-name>
+        <url-pattern>/RateFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewFood</servlet-name>
+        <url-pattern>/ReviewFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportFood</servlet-name>
+        <url-pattern>/ReportFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShop</servlet-name>
+        <url-pattern>/ShowShop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

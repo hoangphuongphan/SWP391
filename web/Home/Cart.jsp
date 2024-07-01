@@ -33,9 +33,11 @@
         int ship = 0;
         int total = Cart.getInstance().getTotal();
         ArrayList<Discount> list = new DiscountDao().getDiscountByUserID(current.getID());
-        Wallet wallet = Wallet.getInstance();%>
+        Wallet wallet = Wallet.getInstance();
+        String error = request.getParameter("error");%>
         
         <div class="bigcontainer">
+            <input type="text" id="error" value="<%=error%>" class="title container" readonly="true" style="display: block"/>
                 <div class="title container">
                     <h1>My cart</h1>
                 </div>
@@ -97,7 +99,7 @@
                         <div class="promotioncontainer">
                             <div class="view" id="discount">View your discount ></button></div>
                             <div class="promotion">
-                                <input type="text" placeholder="Discount or Reward Code">
+                                <input type="text" placeholder="Discount or Reward Code" disabled="true" value="<%=Cart.getInstance().getDiscount().getName()%>">
                             </div>
                         </div>
                     </div>
@@ -132,8 +134,6 @@
             if(event.target == dialogElement)
                 dialogElement.close();
         });
-        
-         
     </script>
     </body>
 </html>

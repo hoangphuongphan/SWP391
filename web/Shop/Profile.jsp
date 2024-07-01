@@ -47,6 +47,7 @@
                     <h1><%=shop.getName()%></h1>
                     <h2><%=shop.getLocation()%></h2>
                     <h2><%=shop.getPhone()%></h2>
+                    <h2><%=shop.getEmail()%></h2>
                 </div>
 <!--                <div class="discount-list">
                     <div class="box">Discount</div>
@@ -54,23 +55,39 @@
                     <div class="box">Discount</div>
                 </div>-->
                 <div class="food-list">
+                    <button id="Createbtn_Click">Create Food</button>
                     <%for(Food food : foods){%>
                         <div class="box" style="width: 70%; margin: 0 10%;">
                             <%=food.getName()%><br>
                             <%=food.getPrice()%><br>
-                            <form action="/SWP391/ShowFood">
+                            <form action="/SWP391/ShowShopFood">
                                 <input type="hidden" name="FoodID" value="<%=food.getID()%>">
                                 <input type="submit" value="Food Information"/>
+                            </form>
+                                <form action="/SWP391/DeleteFood">
+                                <input type="hidden" name="FoodID" value="<%=food.getID()%>">
+                                <input type="submit" value="Delete"/>
                             </form>
                         </div>
                     <%}%>
                 </div>
                 <button id="Updatebtn_Click">Update</button>
+                <button id="UpdatePassbtn_Click">Update Password</button>
+                <button id="UpdateContbtn_Click">Update Contact</button>
             </div>
         </div>
                 <script>
                     document.getElementById("Updatebtn_Click").addEventListener("click", () => {
                         window.location.href = "UpdateProfile.jsp";
+                    })
+                    document.getElementById("UpdatePassbtn_Click").addEventListener("click", () => {
+                        window.location.href = "UpdatePassword.jsp";
+                    })
+                    document.getElementById("UpdateContbtn_Click").addEventListener("click", () => {
+                        window.location.href = "UpdateContact.jsp";
+                    })
+                    document.getElementById("Createbtn_Click").addEventListener("click", () => {
+                        window.location.href = "CreateFood.jsp";
                     })
                 </script>
     </body>

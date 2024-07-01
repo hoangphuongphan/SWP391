@@ -16,8 +16,11 @@ create table Shop(
 	Name nvarchar(50) not null,
 	Phone varchar(10) not null,
 	Location nvarchar(100) not null,
-	ShopImage varchar(100)
+	ShopImage varchar(100),
+	ShopEmail varchar(100),
+	Status int
 )
+
 
 -- tao bang shipper
 create table Shipper(
@@ -47,24 +50,25 @@ create table Food(
 	Price money,
 	FoodImage varchar(100),
 	Foodname nvarchar(100),
+	Status int,
 	primary key (FoodID)
 )
 
 create table Review(
 	FoodID int foreign key references Food(FoodID),
-	ReviewID int IDENTITY(1,1),
+	ReviewID int IDENTITY(1,1) primary key,
 	UserID int foreign key references Users(UserID),
+	RateID int foreign key references RateFood(RateID),
 	content nvarchar(200)
-	primary key (FoodID, ReviewID, UserID)
 )
 
-create table Rate(
+
+create table RateFood(
 	FoodID int foreign key references Food(FoodID),
-	RateID int IDENTITY(1,1),
+	RateID int IDENTITY(1,1) primary key,
 	UserID int foreign key references Users(UserID),
 	Rate int,
 	constraint Rate CHECK (Rate between 0 and 5),
-	primary key (FoodID, RateID, UserID)
 )
 
 create table ReportFood(
@@ -111,7 +115,7 @@ create table OrdersDetail(
 -- tao bang account
 create table Account(
 	AccountID int IDENTITY(1,1) primary key,
-	Username varchar(20) not null,
+	Username varchar(20) not null unique,
 	Password varchar(20) not null,
 	Type varchar(20) not null Check (Type in ('User','Shop','Shipper'))
 )
@@ -138,8 +142,13 @@ create table Wallet(
 	Amount money not null,
 	primary key (UserID,Type)
 )
- select * from Account
- select * from Shipper
+
+create table Ticket(
+	TicketID int primary key,
+	UserID int foreign key references Users(UserID),
+	Subject nvarchar(50),
+	Content nvarchar(500)
+)
 
  insert into Account values
 ('ptt@123','123','User'),
@@ -192,3 +201,9 @@ insert into Shipper values
 ('Than Tuyet Trinh','084232032','43D392654',2019),
 ('Hoang Thao My','0932432032','43D555053',2020),
 ('Do Minh Duc','0943252232','43D365432',2021)
+
+insert into Category values 
+('Do an nhanh'),
+('lau'),
+('nuoc uong'),
+('com, bun, mi')

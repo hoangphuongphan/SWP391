@@ -24,14 +24,6 @@ import java.util.Map;
  * @author phoan
  */
 public class DenyOrder extends HttpServlet {
-    
-    public static void main(String[] args) {
-//        OrderDao dao = new OrderDao();
-//        Order order = dao.getOrderByID(3);
-        Wallet wallet = new WalletDao().getWalletByID(1, "User");
-        wallet.add(100000);
-        new WalletDao().UpdateAmount(new UserDao().getUserByID(1), wallet);
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

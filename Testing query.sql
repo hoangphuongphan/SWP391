@@ -22,6 +22,8 @@ insert into Wallet values(1,1,1000000)
 select * from Shipper
 select * from Account
 
+select * from Category
+
 update Shipper set AccountID = 1002 where ShipperID = 1
 
 select Count(*) as Lines from Orders 
@@ -29,17 +31,24 @@ select Count(*) as Lines from Orders
 select * from Shop as A join ShopAccount as B on A.ShopID = B.ShopID join Account as C on B.AccountID = C.AccountID where A.ShopID = 1
 delete from OrdersDetail where OrderID
 
-Update Orders set Status = 'Cooking' where OrderID = 2
+Update Shop set Status = 1
+delete from Food where FoodID = 1003
 
-select * from ShopAccount
+select * from Account as A join Users as B on A.AccountID = B.AccountID
+insert into Account as A join Users as B on A.AccountID = B.AccountID values ('sunheo123','123','User','PH','phoangphuong309@gmail.com')
+
+select * from Users
 select * from Account
 select * from Shop
 select * from Food
 select * from Category
 
+delete from Users where UserID = 1004
+
+update Food set Status = 1
+select* from Food
 select * from Shipper
 select * from Account
-select * from ShipperAccount
 
 select * from Account where Username = 'shopanvat'
 
@@ -92,4 +101,16 @@ insert into DiscountOwner values (4,1,5)
 insert into Account values ('shipper1','123','Shipper')
 insert into Shipper values('Phan Hoang Phuong', '0914020508', '43D67397')
 insert into ShipperAccount values (1,1002)
+select * from Review
+select * from RateFood
+
+
+select * from Food where Foodname like '%cuon%'
+
+insert into Review values (1005,1,2,'nice')
+insert into RateFood values (1005,1,5)
+
+select * from RateFood where FoodID = 1005 AND UserID = 1 order by RateID desc
+
+SELECT * FROM Shop join Account on Shop.AccountID = Account.AccountID WHERE Name LIKE '%mi%'
 

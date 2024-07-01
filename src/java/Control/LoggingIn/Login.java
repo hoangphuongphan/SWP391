@@ -11,6 +11,8 @@ import Dao.ShopDao;
 import Dao.UserDao;
 import Model.Account;
 import Model.Cart;
+import Model.CurrentShipper;
+import Model.CurrentShop;
 import Model.CurrentUser;
 import Model.Food;
 import Model.Shipper;
@@ -52,11 +54,13 @@ public class Login extends HttpServlet {
                     Shop shop = new ShopDao().getShopByUsername(username);
                     session.setAttribute("currentShop", shop);
                     Wallet.initialize(shop.getShopID(), "Shop");
+                    CurrentShop.initialize(shop);
                     req.getRequestDispatcher("ShowShopHome").forward(req, resp);
                     break;
                 case 3:
                     Shipper ship = new ShipperDao().getShipperByUsername(username);
                     session.setAttribute("currentShipper", ship);
+                    CurrentShipper.initialize(ship);
                     Wallet.initialize(ship.getID(), "Shipper");
                     req.getRequestDispatcher("ShowShipperHome").forward(req, resp);
                     break;

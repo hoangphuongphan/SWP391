@@ -51,4 +51,8 @@ public class Wallet {
     public void add(int amount){
         this.amount += amount;
     }
+    
+    public static void delete(){
+        instance = null;
+    }
 }
