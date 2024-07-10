@@ -1,0 +1,43 @@
+.container{
+
+}
+
+.orderinfo{
+    margin: 10px 10%;
+}
+
+.order-list{
+    border: 2px solid #F0F9FF;
+    background-color: #F0F9FF;
+    display: flex;
+}
+
+.order-list div{
+    
+}
+
+.left-clm{
+    width: 35%;
+}
+
+
+.right-clm{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+.block{
+    width: 175px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+    background: white;
+}
+
+.bill{
+    width: 100px;
+    height: 25px;
+}

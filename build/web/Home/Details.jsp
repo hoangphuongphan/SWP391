@@ -23,7 +23,7 @@
         <%
         User current = (User) session.getAttribute("currentUser");
         int orderID =  Integer.parseInt(request.getParameter("orderID"));
-        Order order = new OrderDao().getOrderByID(current.getID() ,orderID);
+        Order order = new OrderDao().getOrderByID(orderID);
         FoodDao dao = new FoodDao();
         int total = 0;
         int amount = 0;

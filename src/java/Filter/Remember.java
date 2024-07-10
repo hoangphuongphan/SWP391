@@ -110,8 +110,12 @@ public class Remember implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         
-        if(session!= null && session.getAttribute("currentUser")!=null)
+        if(session!= null && (session.getAttribute("currentUser")!=null))
             req.getRequestDispatcher("/ShowHome").forward(request, response);
+        if(session!= null && session.getAttribute("currentShop")!=null)
+            req.getRequestDispatcher("/ShowShopHome").forward(request, response);
+        if(session!= null && session.getAttribute("currentShipper")!=null)
+            req.getRequestDispatcher("/ShowShipperHome").forward(request, response);
         
         Throwable problem = null;
         try {

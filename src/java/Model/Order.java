@@ -14,23 +14,30 @@ import java.util.HashMap;
 public class Order {
     private int OrderID;
     private User user;
+    private Shop shop;
     private HashMap<Integer,Integer> order;
     private Date time;
     private String status;
 
-    public Order(User user) {
+    public Order(User user, Shop shop, HashMap<Integer,Integer> items) {
         this.user = user;
-        this.order = Cart.getInstance().getCart();
+        this.order = items;
         this.time = null;
         this.status = "Cooking";
+        this.shop = shop;
     }
 
-    public Order(int OrderID, User user, HashMap<Integer, Integer> order, Date time, String status) {
+    public Order(int OrderID, User user, HashMap<Integer, Integer> order, Date time, String status, Shop shop) {
         this.OrderID = OrderID;
         this.user = user;
         this.order = order;
         this.time = time;
         this.status = status;
+        this.shop = shop;
+    }
+
+    public Shop getShop() {
+        return shop;
     }
 
     public User getUser() {

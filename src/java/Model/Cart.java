@@ -22,7 +22,7 @@ public class Cart {
 
     private Cart() {
         cart = new HashMap<>();
-        owner = CurrentUser.getUser();
+        owner = CurrentUser.getCurrent();
     }
 
     public static Cart getInstance() {
@@ -68,6 +68,12 @@ public class Cart {
     
     public void setDiscount(Discount discount){
         this.discount = discount;
+    }
+
+    public Discount getDiscount() {
+        if(discount == null)
+            return new Discount("", null, null);
+        return discount;
     }
     
     public boolean DeleteCart(){

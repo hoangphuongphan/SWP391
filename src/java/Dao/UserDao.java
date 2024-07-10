@@ -13,18 +13,18 @@ import java.sql.PreparedStatement;
  *
  * @author phoan
  */
-public class UsersAct {
+public class UserDao {
 
     private Connection con;
     Database instance;
 
-    public UsersAct() {
+    public UserDao() {
         instance = Database.getInstance();
         con = instance.getCon();
     }
     
     public User getUserByID(int id){
-        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where A.UserID = ?";
+        String query = "select * from Users as A join Account as B on B.AccountID = A.AccountID where A.UserID = ?";
         User user = null;
         try{
             PreparedStatement st = con.prepareStatement(query);
@@ -34,14 +34,14 @@ public class UsersAct {
                 user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
                         , rs.getInt("UserID"));
         } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         return user;
     }
     
     public User getUserByMail(String mail){
-        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where Email = ?";
+        String query = "select * from Users as A  join Account as C on A.AccountID = C.AccountID where Email = ?";
         User user = null;
         try {
             PreparedStatement st = con.prepareStatement(query);
@@ -51,14 +51,14 @@ public class UsersAct {
                 user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
                         , rs.getInt("UserID"));
         } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         return user;
     }
 
     public User getUserByUsername(String username) {
-        String query = "select * from Users as A join UserAccount as B on A.UserID = B.UserID join Account as C on B.AccountID = C.AccountID where Username = ?";
+        String query = "select * from Users as A join Account as C on A.AccountID = C.AccountID where Username = ?";
         User user = null;
         try {
             PreparedStatement st = con.prepareStatement(query);
@@ -68,25 +68,26 @@ public class UsersAct {
                 user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
                         , rs.getInt("UserID"));
         } catch (SQLException ex) {
-            Logger.getLogger(UsersAct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         return user;
 
     }
 
-    public boolean Create(User user) {
-        String query = "INSERT INTO Users (Name, Phone, Email) " + "\n"
-                + "VALUES (?, ?, ?)";
+    public boolean Create(User user, int AccountID) {
+        String query = "INSERT INTO Users (Name, Phone, Email,AccountID) " + "\n"
+                + "VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement pre = con.prepareStatement(query);
             pre.setString(1, user.getName());
             pre.setString(2, user.getPhone());
             pre.setString(3, user.getEmail());
+            pre.setInt(4, AccountID);
             int re = pre.executeUpdate();
             return re == 1 ? true : false;
         } catch (SQLException ex) {
-            Logger.getLogger(UsersAct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -100,7 +101,7 @@ public class UsersAct {
             int re = pre.executeUpdate();
             return re == 1 ? true : false;
         } catch (SQLException ex) {
-            Logger.getLogger(UsersAct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }

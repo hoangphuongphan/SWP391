@@ -24,6 +24,7 @@ public class ConfirmRegisterEmail extends HttpServlet {
         session.setAttribute("username", req.getParameter("username"));
         session.setAttribute("password", req.getParameter("password"));
         session.setAttribute("email", req.getParameter("email"));
+        session.setAttribute("phone", req.getParameter("phone"));
         req.getRequestDispatcher("SendOTPRegister").forward(req, resp);
     }
 

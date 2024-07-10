@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -19,7 +20,10 @@ public class EnterNewPassword extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("Login/ChangePassword.jsp");
+        HttpSession session = req.getSession();
+        if(req.getParameter("trueOTP").equals((String) session.getAttribute("OTP")))
+            resp.sendRedirect("Login/ChangePassword.jsp");
+        resp.sendRedirect("/SWP391/Login/ForgetVerify.jsp");
     }
 
     @Override

@@ -5,6 +5,10 @@
 package Control.LoggingIn;
 
 import Model.Cart;
+import Model.CurrentShipper;
+import Model.CurrentShop;
+import Model.CurrentUser;
+import Model.Wallet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -22,6 +26,10 @@ public class Logout extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();
         Cart.getInstance().DeleteCart();
+        CurrentUser.delete();
+        CurrentShop.delet();
+        CurrentShipper.delet();
+        Wallet.delete();
         resp.sendRedirect("Login/Login.jsp");
     }
 

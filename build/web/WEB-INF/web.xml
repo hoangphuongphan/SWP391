@@ -8,6 +8,24 @@
         <filter-name>Remember</filter-name>
         <filter-class>Filter.Remember</filter-class>
     </filter>
+    <filter>
+        <filter-name>OrderFilter</filter-name>
+        <filter-class>Filter.OrderFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>TypeViolation</filter-name>
+        <filter-class>Filter.TypeViolation</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TypeViolation</filter-name>
+        <url-pattern>/Home/*</url-pattern>
+        <url-pattern>/Shop/*</url-pattern>
+        <url-pattern>/Shipper/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>OrderFilter</filter-name>
+        <url-pattern>/order</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>Remember</filter-name>
         <url-pattern>/Login/*</url-pattern>
@@ -15,6 +33,8 @@
     <filter-mapping>
         <filter-name>Authentication</filter-name>
         <url-pattern>/Home/*</url-pattern>
+        <url-pattern>/Shop/*</url-pattern>
+        <url-pattern>/Shipper/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -87,8 +107,7 @@
     <servlet>
         <servlet-name>UsrInfo</servlet-name>
         <servlet-class>Control.UsrInfo.UsrInfo</servlet-class>
-    </servlet> 
-   
+    </servlet>
     <servlet>
         <servlet-name>Search</servlet-name>
         <servlet-class>Search</servlet-class>
@@ -108,6 +127,78 @@
     <servlet>
         <servlet-name>ReportShipperServlet</servlet-name>
         <servlet-class>Control.Search.ReportShipperServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShopHome</servlet-name>
+        <servlet-class>Control.Homing.ShowShopHome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShipperHome</servlet-name>
+        <servlet-class>Control.Homing.ShowShipperHome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShopOrderDetails</servlet-name>
+        <servlet-class>Control.Cart.ShowShopOrderDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DenyOrder</servlet-name>
+        <servlet-class>Control.Payment.DenyOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowFood</servlet-name>
+        <servlet-class>Control.Homing.ShowFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChaneShopInfo</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.ChaneShopInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePassword</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdatePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateContact</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdateContact</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateShopContact</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdateShopContact</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.CreateFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShopFood</servlet-name>
+        <servlet-class>Control.Homing.ShowShopFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.DeleteFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeFoodInfo</servlet-name>
+        <servlet-class>Control.FoodCRUD.ChangeFoodInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetShopStatus</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.SetShopStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RateFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.RateFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReviewFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.ReviewFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportFood</servlet-name>
+        <servlet-class>Control.FoodCRUD.ReportFood</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShop</servlet-name>
+        <servlet-class>Control.Homing.ShowShop</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
@@ -129,7 +220,6 @@
         <servlet-name>ReportShipperServlet</servlet-name>
         <url-pattern>/ReportShipperServlet</url-pattern>
     </servlet-mapping>
-  
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -193,7 +283,7 @@
     <servlet-mapping>
         <servlet-name>TopUp</servlet-name>
         <url-pattern>/TopUp</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeUsrInfo</servlet-name>
         <url-pattern>/ChangeUsrInfo</url-pattern>
@@ -201,6 +291,78 @@
     <servlet-mapping>
         <servlet-name>UsrInfo</servlet-name>
         <url-pattern>/UsrInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShopHome</servlet-name>
+        <url-pattern>/ShowShopHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShipperHome</servlet-name>
+        <url-pattern>/ShowShipperHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShopOrderDetails</servlet-name>
+        <url-pattern>/ShowShopOrderDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DenyOrder</servlet-name>
+        <url-pattern>/DenyOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowFood</servlet-name>
+        <url-pattern>/ShowFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChaneShopInfo</servlet-name>
+        <url-pattern>/ChaneShopInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePassword</servlet-name>
+        <url-pattern>/UpdatePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateContact</servlet-name>
+        <url-pattern>/UpdateContact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateShopContact</servlet-name>
+        <url-pattern>/UpdateShopContact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateFood</servlet-name>
+        <url-pattern>/CreateFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShopFood</servlet-name>
+        <url-pattern>/ShowShopFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFood</servlet-name>
+        <url-pattern>/DeleteFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeFoodInfo</servlet-name>
+        <url-pattern>/ChangeFoodInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetShopStatus</servlet-name>
+        <url-pattern>/SetShopStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RateFood</servlet-name>
+        <url-pattern>/RateFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewFood</servlet-name>
+        <url-pattern>/ReviewFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportFood</servlet-name>
+        <url-pattern>/ReportFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShop</servlet-name>
+        <url-pattern>/ShowShop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

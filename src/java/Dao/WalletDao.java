@@ -4,7 +4,8 @@
  */
 package Dao;
 
-import Model.Food;
+import Model.CurrentUser;
+import Model.User;
 import Model.Wallet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,29 +27,67 @@ public class WalletDao {
             con = instance.getCon();
     }
     
-    public Wallet getWalletByID(int UserID){
-        String query = "select * from Wallet where UserID = ?";
-        Wallet wallet = null;
+    public void CreateWallet(int ID, String type){
+        int wt = 0;
+        String query = "Insert into Wallet values (???)";
+        switch (type) {
+            case "User":
+                wt = 1;
+                break;
+            case "Shop":
+                wt = 2;
+                break;
+            case "Shipper":
+                wt = 3;
+        }
         try{
             PreparedStatement st = con.prepareStatement(query);
-            st.setInt(1, UserID);
-            ResultSet rs = st.executeQuery();
-            if(rs.next())
-                wallet = new Wallet(UserID, rs.getInt("Amount"));
-        } catch (SQLException ex) {
+            st.setInt(1, ID);
+            st.setInt(2, 0);
+            st.setInt(3, wt);
+            st.execute();
+        }catch (SQLException ex) {
             Logger.getLogger(WalletDao.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
-        return wallet;
     }
     
-    public void UpdateAmount(int UserID){
-        Wallet wallet = Wallet.getInstance(UserID);
-        String query = "update Wallet set Amount = ? where UserID = ?";
+    public Wallet getWalletByID(int ID, String type){
+        int wt = 0;
+        String query = "Select * from Wallet where UserID = ? AND Type = ?";
+        switch (type) {
+            case "User":
+                wt = 1;
+                break;
+            case "Shop":
+                wt = 2;
+                break;
+            case "Shipper":
+                wt = 3;
+        }
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, ID);
+            st.setInt(2, wt);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                return new Wallet(ID, rs.getInt("Amount"), wt);
+        }catch (SQLException ex) {
+            Logger.getLogger(WalletDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public void UpdateAmount(User user, Wallet wallet){
+        if(user == null)
+            user = CurrentUser.getCurrent();
+        if(wallet == null)
+            wallet = Wallet.getInstance();
+        String query = "update Wallet set Amount = ? where UserID = ? and Type = ?";
         try{
             PreparedStatement st = con.prepareStatement(query);
             st.setInt(1, wallet.getAmount());
-            st.setInt(2, UserID);
+            st.setInt(2, user.getID());
+            st.setInt(3, user.getType());
             st.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(WalletDao.class.getName()).log(Level.SEVERE, null, ex);
