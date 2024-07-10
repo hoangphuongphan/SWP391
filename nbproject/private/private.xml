@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/SWP/SWP391/web/Home/navbar.jsp</file>
-            <file>file:/E:/SWP/SWP391/src/java/Dao/Database.java</file>
+            <file>file:/E:/SWP/SWP391/web/Home/homecontent.jsp</file>
             <file>file:/E:/SWP/SWP391/src/java/Control/Homing/ShowHome.java</file>
-            <file>file:/E:/SWP/SWP391/src/java/Model/CurrentUser.java</file>
+            <file>file:/E:/SWP/SWP391/web/Home/homefeaturefood.jsp</file>
+            <file>file:/E:/SWP/SWP391/web/Home/homenewfood.jsp</file>
+            <file>file:/E:/SWP/SWP391/src/java/Model/Shop.java</file>
+            <file>file:/E:/SWP/SWP391/web/Home/menu.jsp</file>
             <file>file:/E:/SWP/SWP391/src/java/Model/Food.java</file>
-            <file>file:/E:/SWP/SWP391/src/java/Model/User.java</file>
         </group>
     </open-files>
 </project-private>

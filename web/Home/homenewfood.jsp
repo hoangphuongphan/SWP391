@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h5 class="mt-3">What to eat today</h5>
+            <h5 class="mt-3">New food on menu</h5>
         </div>
         <div class="col-6 text-right">
             <a class="btn btn-primary mb-3 mr-1" href="#slide" role="button" data-slide="prev">
