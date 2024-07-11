@@ -59,10 +59,10 @@ public class OrderDao {
         String query ;
         switch (type) {
             case "User":
-                query = "Select * from Orders where UserID = ? AND Status <> ?"; 
+                query = "Select * from Orders where UserID = ? AND Status <> ? AND Status <> ?"; 
                 break;
             case "Shop":
-                query = "select * from Orders where ShopID = ? AND Status <> ?";
+                query = "select * from Orders where ShopID = ? AND Status <> ? AND Status <> ?";
                 break;
             case "Shipper":
                 query = "";
@@ -75,6 +75,7 @@ public class OrderDao {
             PreparedStatement st = con.prepareStatement(query);
             st.setInt(1, UserID);
             st.setString(2, "Denied");
+            st.setString(3, "Done");
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 IDs.add(rs.getInt("OrderID"));

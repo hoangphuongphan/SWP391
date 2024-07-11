@@ -6,7 +6,8 @@ create table Users(
 	Name nvarchar(50) not null,
 	Phone varchar(20) not null,
 	Email varchar(50) not null,
-	Location nvarchar(100)
+	Location nvarchar(100),
+	status int
 )
 
 -- tao bang Shop
@@ -30,6 +31,7 @@ create table Shipper(
 	Name nvarchar(50) not null,
 	Phone varchar(20) not null,
 	VehicleID varchar(20) not null,
+	status int
 )
 
 -- tao bang admin

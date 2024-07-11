@@ -4,6 +4,7 @@
  */
 package Filter;
 
+import Model.Shipper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -112,6 +113,11 @@ public class ShipAuthentication implements Filter {
         if(session == null || session.getAttribute("currentShop") == null){
             res.sendRedirect("/SWP391/Login");
         }
+        Shipper ship =  (Shipper) session.getAttribute("currentShop");
+        if(ship.getStaus()==3)
+            res.sendRedirect("/SWP391/Error.jsp?error=banned");
+        else if(ship.getStaus()==4)
+            res.sendRedirect("/SWP391/Error.jsp?error=notApproved");
         
         Throwable problem = null;
         try {

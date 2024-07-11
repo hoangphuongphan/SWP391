@@ -4,6 +4,8 @@
  */
 package Model;
 
+import Control.Generator;
+
 /**
  *
  * @author phoan
@@ -22,6 +24,17 @@ public class Shop extends Account{
         this.email = email;
         this.status = status;
     }
+
+    public Shop(String Location, String Phone, String email, String username, String password, String type) {
+        super(username, password, type);
+        this.Location = Location;
+        this.Phone = Phone;
+        this.email = email;
+        this.Name = Generator.getInstance().getNewDisplayName();
+        status = 3;
+    }
+    
+    
 
     public int getStatus() {
         return status;

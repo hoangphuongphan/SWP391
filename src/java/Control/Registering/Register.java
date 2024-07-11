@@ -7,6 +7,7 @@ package Control.Registering;
 import Control.Generator;
 import Dao.AccountsDao;
 import Dao.UserDao;
+import Dao.WalletDao;
 import Model.Account;
 import Model.User;
 import java.io.IOException;
@@ -30,11 +31,13 @@ public class Register extends HttpServlet {
         if(((String)session.getAttribute("OTP")).equals(req.getParameter("trueOTP")) ){
         AccountsDao Adao = new AccountsDao();
         UserDao Udao = new UserDao();
+        WalletDao Wdao = new WalletDao();
         Account acc = new Account((String) session.getAttribute("username"), (String) session.getAttribute("password"), "User");
-        User user = new User(acc.getUsername(), acc.getPassword(), (String) session.getAttribute("email"), (String) session.getAttribute("phone"), Generator.getInstance().getNewDisplayName());
+        User user = new User(acc.getUsername(), acc.getPassword(), (String) session.getAttribute("email"), (String) session.getAttribute("phone"), Generator.getInstance().getNewDisplayName(),1);
         Adao.Create(acc, "User");
         acc = Adao.getAccountByUsername(acc.getUsername());
         Udao.Create(user, acc.getAccountID());
+        Wdao.CreateWallet(Udao.getUserByUsername(acc.getUsername()).getID(), "User");
         }
         session.removeAttribute("username");
         session.removeAttribute("password");

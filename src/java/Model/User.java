@@ -14,22 +14,24 @@ import java.time.LocalDate;
  */
 public class User extends Account{
     private String email, phone, name, location;
-    private int ID;
+    private int ID, status;
 
-    public User( String username, String password, String email, String phone, String name) {
+    public User( String username, String password, String email, String phone, String name, int status) {
         super(username, password,"User");
         this.email = email;
         this.phone = phone;
         this.name = name;
+        this.status = status;
     }
     
-    public User( String username, String password, String email, String phone, String name, String location, int ID) {
+    public User( String username, String password, String email, String phone, String name, String location, int ID, int status) {
         super(username, password,"User");
         this.email = email;
         this.phone = phone;
         this.name = name;
         this.location = location;
         this.ID = ID;
+        this.status = status;
     }
 
     public String getEmail() {
@@ -50,5 +52,13 @@ public class User extends Account{
 
     public int getID() {
         return ID;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -97,4 +97,22 @@ public class ShopDao {
         }
         return false;
     }
+    
+    public boolean CreateShop(Shop shop){
+        int AccountID = new AccountsDao().getAccountByUsername(shop.getUsername()).getAccountID();
+        String query = "insert into Shop(Name,Phone,Location,AccountID,ShopEmail,Status) values (?,?,?,?,?,?)";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, shop.getName());
+            st.setString(2, shop.getPhone());
+            st.setString(3, shop.getLocation());
+            st.setInt(4, AccountID);
+            st.setString(5, shop.getEmail());
+            st.setInt(6, 4);
+            return st.execute();
+        }catch (SQLException ex) {
+            Logger.getLogger(ShopDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

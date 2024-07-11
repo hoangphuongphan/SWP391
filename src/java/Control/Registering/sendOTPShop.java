@@ -4,6 +4,8 @@
  */
 package Control.Registering;
 
+import Control.Generator;
+import Model.Email;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,17 +17,20 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author phoan
  */
-public class setLocation extends HttpServlet {
+public class sendOTPShop extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String location = req.getParameter("location");
-        req.getSession().setAttribute("location", location);
-        resp.sendRedirect("Login/ShopRegister.jsp");
+        String OTP = Generator.getInstance().getOTP();
+        Email mail = new Email(req.getParameter("email"),"Your OTP is " + OTP, "Authentication");
+        mail.run();
+        req.getSession().setAttribute("OTP", OTP);
+        resp.sendRedirect("Login/RegisterShopEmail.jsp");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
+
 }

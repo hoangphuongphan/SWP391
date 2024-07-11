@@ -244,6 +244,18 @@
         <servlet-name>setLocation</servlet-name>
         <servlet-class>Control.Registering.setLocation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmShopEmail</servlet-name>
+        <servlet-class>Control.Registering.ConfirmShopEmail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sendOTPShop</servlet-name>
+        <servlet-class>Control.Registering.sendOTPShop</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterShop</servlet-name>
+        <servlet-class>Control.Registering.RegisterShop</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -439,6 +451,18 @@
     <servlet-mapping>
         <servlet-name>setLocation</servlet-name>
         <url-pattern>/setLocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmShopEmail</servlet-name>
+        <url-pattern>/ConfirmShopEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendOTPShop</servlet-name>
+        <url-pattern>/sendOTPShop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterShop</servlet-name>
+        <url-pattern>/RegisterShop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

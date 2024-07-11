@@ -9,23 +9,25 @@ package Model;
  * @author phoan
  */
 public class Shipper extends Account{
-    private int ID;
+    private int ID, staus;
     private String name, phone, VehicleID, avatar;
 
-    public Shipper(int ID, String name, String phone, String VehicleID, int id, String username, String password, String avatar) {
+    public Shipper(int ID, String name, String phone, String VehicleID, int id, String username, String password, String avatar, int status) {
         super(id, username, password, "Shipper");
         this.ID = ID;
         this.name = name;
         this.phone = phone;
         this.VehicleID = VehicleID;
         this.avatar = avatar;
+        this.staus = status;
     }
 
-    public Shipper(String username, String password, String name, String phone, String VehicleID) {
+    public Shipper(String username, String password, String name, String phone, String VehicleID, int status) {
         super(username, password, "Shipper");
         this.name = name;
         this.phone = phone;
         this.VehicleID = VehicleID;
+        this.staus = status;
     }
 
     public String getAvatar() {
@@ -52,4 +54,14 @@ public class Shipper extends Account{
     public String toString() {
         return name + "\n" + phone + "\n" + VehicleID;
     }
+
+    public int getStaus() {
+        return staus;
+    }
+
+    public void setStaus(int staus) {
+        this.staus = staus;
+    }
+    
+    
 }

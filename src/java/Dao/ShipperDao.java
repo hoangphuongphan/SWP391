@@ -35,7 +35,7 @@ public class ShipperDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 shipper = new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
-                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"));
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"));
         } catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -52,7 +52,7 @@ public class ShipperDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 shipper = new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
-                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"));
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"));
         } catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;

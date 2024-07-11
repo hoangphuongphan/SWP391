@@ -29,9 +29,9 @@
 </head>
 <body>
     <%
-        String location = request.getParameter("location");
-        if(location == null || location.length()<5)
-            location = "";
+        String location =(String) session.getAttribute("location");
+        if(location == null || location.length()<6)
+            location = "empty";
     %>
 					<div class="wrap-input100 validate-input" data-validate = "Location is required">
                                             <input class="input100" type="text" name="location" value="<%=location%>" readonly="true">

@@ -4,6 +4,7 @@
  */
 package Filter;
 
+import Model.User;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -112,6 +113,9 @@ public class Authentication implements Filter {
         if(session == null || session.getAttribute("currentUser") == null){
             res.sendRedirect("/SWP391/Login");
         }
+        User user = (User) session.getAttribute("currentUser");
+        if( user.getStatus() == 2)
+            res.sendRedirect("/SWP391/Error.jsp?error=banned");
         
         Throwable problem = null;
         try {
