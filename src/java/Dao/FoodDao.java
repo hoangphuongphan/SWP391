@@ -113,12 +113,12 @@ public class FoodDao {
         return null;
     }
     
-    public List<Food> get5NewItems() {
-        String sql = "select top 5 * from Food order by foodid desc";
-        List<Food> nfl = null;
+    public List<Food> getAllFood(){
+        String sql = "select top 5 * from Food order by newid()";
+        List<Food> ffl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);
-            nfl = new ArrayList<>();
+            ffl = new ArrayList<>();
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 int fId = rs.getInt(2);
@@ -127,9 +127,30 @@ public class FoodDao {
                 int p = rs.getInt(4);
                 String fIm = rs.getString(5);
                 String fN = rs.getString(6);
-                nfl.add(new Food(fN, fIm, fId, sId, cId, p));
+                ffl.add(new Food(fN, fIm, fId, sId, cId, p));
             }
-            return nfl;
+            return ffl;
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+    public List<Food> get5NewItems() {
+        String sql = "select * from Food";
+        List<Food> afl = null;
+        try {
+            PreparedStatement pstm = con.prepareCall(sql);
+            afl = new ArrayList<>();
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                int fId = rs.getInt(2);
+                int sId = rs.getInt(1);
+                int cId = rs.getInt(3);
+                int p = rs.getInt(4);
+                String fIm = rs.getString(5);
+                String fN = rs.getString(6);
+                afl.add(new Food(fN, fIm, fId, sId, cId, p));
+            }
+            return afl;
         } catch (SQLException e) {
         }
         return null;

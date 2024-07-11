@@ -13,11 +13,16 @@
     }
 </style>
 <div class="container">
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-center">
         <c:forEach var="items" items="${items}">
-            <div class="col-3 p-1">
+            <div class="border rounded col-4 p-1">
                 <img src="${items.imgUrl}" alt="alt"/>
-                
+                <h4>${items.name}</h4>
+                <p>${items.price}</p>
+                <form action="/SWP391/ShowFood">
+                    <input type="hidden" name="FoodID" value="${items.ID}">
+                    <input class= "btn btn-primary btn-sm btn-block" type="submit" value="Food Information"/>
+                </form>
             </div>
         </c:forEach>
     </div>

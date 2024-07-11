@@ -156,7 +156,7 @@ create table Ticket(
 )
 
  insert into Account values
-('ptt@123','123','User'),
+
 ('pnt@123','123','User'),
 ('dnd@123','123','User'),
 ('hcm@123','123','User'),
@@ -165,13 +165,12 @@ create table Ticket(
 ('ntp@123','123','User')
 
 insert into Users values
-(2002,'Phung Nhat Tan','0382958373','email1@gmail.com',null),
-(2003,'Do Ngoc Duc','0382943254','email2@gmail.com',null),
-(2004,'Hoang Cong minh','0384262575','email3@gmail.com',null),
-(2005,'Phan Thanh Tai','0382958361','email4@gmail.com',null),
-(2008,'Phan Minh Thanh','0382954372','email5@gmail.com',null),
-(2006,'Than Tuyet Trinh','0382954324','email6@gmail.com',null),
-(2007,'Nguyen trong Phuong','0382952345','email7@gmail.com',null)
+(2002,'pnt@123','Phung Nhat Tan','0382958373','email1@gmail.com',null),
+(2003,'dnd@123','Do Ngoc Duc','0382943254','email2@gmail.com',null),
+(2004,'hcm@123','Hoang Cong minh','0384262575','email3@gmail.com',null),
+(2005,'ptt@123','Phan Thanh Tai','0382958361','email4@gmail.com',null),
+(2006,'ttt@123','Than Tuyet Trinh','0382954324','email6@gmail.com',null),
+(2007,'ntp@123','Nguyen trong Phuong','0382952345','email7@gmail.com',null)
 
 insert into Account values
 ('shop1','123','Shop'),

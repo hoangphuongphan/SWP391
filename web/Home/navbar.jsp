@@ -25,20 +25,20 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav col-2">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/SWP391/ShowHome">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item col-2">
                     <a class="nav-link" href="/SWP391/ShowCart">Cart</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item col-2">
                     <a class="nav-link" href="/SWP391/ShowOrders">Orders</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item col-2">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item col dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                         Welcome ${sessionScope.currentUser.getName()}
                     </a>

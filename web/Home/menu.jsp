@@ -21,9 +21,12 @@
         <jsp:include page="navbar.jsp"/>
         <jsp:include page="searchbar.jsp"/>
         <jsp:include page="homebanner.jsp"/>
-        <c:set var="ffl" value="${ffl}"/>
-        <c:set var="nfl" value="${nfl}"/>
-        <jsp:include page="homecontent.jsp"/>
+        <c:set var="ffl" value="${requestScope.ffl}"/>
+        <jsp:include page="homefeaturefood.jsp"/>
+        <c:set var="nfl" value="${requestScope.nfl}"/>
+        <jsp:include page="homenewfood.jsp"/>
+        <c:set var="afl" value="${requestScope.afl}"/>
+        <jsp:include page="showallfood.jsp"/>
         <jsp:include page="homefooter.jsp"/>
     </body>
 </html>
