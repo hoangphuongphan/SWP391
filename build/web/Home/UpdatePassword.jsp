@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <<form id="resetPass" action="/SWP391/UpdateUserPass" onsubmit="return validateForm()">
+        <form id="resetPass" action="/SWP391/UpdateUserPass" onsubmit="return validateForm()">
             <label>Current Password</label><br>
             <input type="password" name="oldPass" placeholder="Your current Password"/><br>
             <label>New Password</label><br>

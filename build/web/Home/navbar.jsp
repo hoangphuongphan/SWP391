@@ -4,6 +4,7 @@
     Author     : DELL
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <!-- jQuery library -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 
@@ -40,6 +41,14 @@
                 </li>
                 <li class="nav-item col dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                        <c:choose>
+                            <c:when test="${not empty sessionScope.currentUser.getName()}">
+                                Welcome ${sessionScope.currentUser.getName()}
+                            </c:when>
+                            <c:otherwise>
+                                Welcome ${sessionScope.currentUser.getEmail()}
+                            </c:otherwise>
+                        </c:choose>
                         Welcome ${sessionScope.currentUser.getName()}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
