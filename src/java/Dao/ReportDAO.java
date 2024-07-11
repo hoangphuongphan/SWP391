@@ -18,11 +18,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportDAO {
+public class ReportDao {
 
     private Connection con;
 
-    public ReportDAO() {
+    public ReportDao() {
         // Lấy kết nối từ Database singleton
         this.con = Database.getInstance().getCon();
     }

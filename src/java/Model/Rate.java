@@ -15,18 +15,28 @@ public class Rate {
     private int RateID,Rate;
     private Food food;
     private User user;
+    private String reply;
 
-    public Rate(int RateID, int FoodID, int UserID, int Rate) {
+    public Rate(int RateID, int FoodID, int UserID, int Rate, String reply) {
         this.RateID = RateID;
         this.food = new FoodDao().getFoodByID(Rate);
         this.user = new UserDao().getUserByID(UserID);
         this.Rate = Rate;
+        this.reply = reply;
     }
     
     public Rate( int FoodID, int UserID, int Rate) {
         this.food = new FoodDao().getFoodByID(Rate);
         this.user = new UserDao().getUserByID(UserID);
         this.Rate = Rate;
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 
     public int getRateID() {

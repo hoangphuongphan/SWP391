@@ -16,11 +16,25 @@
         <filter-name>TypeViolation</filter-name>
         <filter-class>Filter.TypeViolation</filter-class>
     </filter>
+    <filter>
+        <filter-name>ShopAuthentication</filter-name>
+        <filter-class>Filter.ShopAuthentication</filter-class>
+    </filter>
+    <filter>
+        <filter-name>ShipAuthentication</filter-name>
+        <filter-class>Filter.ShipAuthentication</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ShipAuthentication</filter-name>
+        <url-pattern>/Shipper/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ShopAuthentication</filter-name>
+        <url-pattern>/Shop/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>TypeViolation</filter-name>
         <url-pattern>/Home/*</url-pattern>
-        <url-pattern>/Shop/*</url-pattern>
-        <url-pattern>/Shipper/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>OrderFilter</filter-name>
@@ -33,8 +47,6 @@
     <filter-mapping>
         <filter-name>Authentication</filter-name>
         <url-pattern>/Home/*</url-pattern>
-        <url-pattern>/Shop/*</url-pattern>
-        <url-pattern>/Shipper/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -194,11 +206,43 @@
     </servlet>
     <servlet>
         <servlet-name>ReportFood</servlet-name>
-        <servlet-class>Control.FoodCRUD.ReportFood</servlet-class>
+        <servlet-class>Control.Support.ReportFood</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowShop</servlet-name>
         <servlet-class>Control.Homing.ShowShop</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendTicket</servlet-name>
+        <servlet-class>Control.Support.SendTicket</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserPass</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdateUserPass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdjustAmount</servlet-name>
+        <servlet-class>Control.Cart.AdjustAmount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportShop</servlet-name>
+        <servlet-class>Control.Support.ReportShop</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportShipper</servlet-name>
+        <servlet-class>Control.Support.ReportShipper</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Reply</servlet-name>
+        <servlet-class>Control.FoodCRUD.Reply</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PickLocation</servlet-name>
+        <servlet-class>Control.Cart.PickLocation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>setLocation</servlet-name>
+        <servlet-class>Control.Registering.setLocation</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
@@ -363,6 +407,38 @@
     <servlet-mapping>
         <servlet-name>ShowShop</servlet-name>
         <url-pattern>/ShowShop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendTicket</servlet-name>
+        <url-pattern>/SendTicket</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserPass</servlet-name>
+        <url-pattern>/UpdateUserPass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdjustAmount</servlet-name>
+        <url-pattern>/AdjustAmount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportShop</servlet-name>
+        <url-pattern>/ReportShop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportShipper</servlet-name>
+        <url-pattern>/ReportShipper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Reply</servlet-name>
+        <url-pattern>/Reply</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PickLocation</servlet-name>
+        <url-pattern>/PickLocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>setLocation</servlet-name>
+        <url-pattern>/setLocation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

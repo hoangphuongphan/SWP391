@@ -55,7 +55,7 @@ public class OrderDao {
         return Orders;
     }
     
-    private ArrayList<Integer> getIDs(int UserID, String type){
+     private ArrayList<Integer> getIDs(int UserID, String type){
         String query ;
         switch (type) {
             case "User":
@@ -90,9 +90,9 @@ public class OrderDao {
         String query = "select * from Orders as A join OrdersDetail as B on A.OrderID = B.OrderID where A.OrderID = ?";
         HashMap<Integer,Integer> order = new HashMap<>();
         java.sql.Date date = null;
-        String status = "";
+        String status = "", shipLocation = "";
         int ID = 0;
-        int UserID = 0, ShopID = 0;
+        int UserID = 0, ShopID = 0, total = 0;
         try{
             PreparedStatement st = con.prepareStatement(query);
             st.setInt(1, OrderID);
@@ -103,16 +103,18 @@ public class OrderDao {
                 status = rs.getString("Status");
                 UserID = rs.getInt("UserID");
                 ShopID = rs.getInt("ShopID");
+                total = rs.getInt("Total");
+                shipLocation = rs.getString("ShipLocation");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Discount.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        return new Order(OrderID,new UserDao().getUserByID(UserID), order, date, status, new ShopDao().getShopByID(ShopID));
+        return new Order(OrderID,new UserDao().getUserByID(UserID), order, date, status, new ShopDao().getShopByID(ShopID),total,shipLocation);
     }
     
-    public void Create(String location,  int ShopID){
-        String query = "insert into Orders(UserID,ShipLocation,Status,ShopID) values (?,?,?,?)";
+    public void Create(String location,  int ShopID, int total){
+        String query = "insert into Orders(UserID,ShipLocation,Status,ShopID,Total) values (?,?,?,?,?)";
         User current = CurrentUser.getCurrent();
         try{
             PreparedStatement st = con.prepareStatement(query);
@@ -120,6 +122,7 @@ public class OrderDao {
             st.setString(2, location);
             st.setString(3, "Cooking");
             st.setInt(4, ShopID);
+            st.setInt(5, total);
             st.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(Discount.class.getName()).log(Level.SEVERE, null, ex);
@@ -155,7 +158,20 @@ public class OrderDao {
     }
     
     public void createOrder(String location, int ShopID, HashMap<Integer,Integer> cart){
-        Create(location, ShopID);
+        int total = 0;
+        Discount dis = Cart.getInstance().getDiscount();
+        //get total amount from cart
+        for(HashMap.Entry<Integer,Integer> entry : cart.entrySet())
+            total += new FoodDao().getFoodByID(entry.getKey()).getPrice() * entry.getValue();
+        
+        System.out.println(total);
+        
+        if(dis!=null){
+            if(dis.getOffer()<1)
+                total = (int) Math.round(total - (total*dis.getOffer()));
+        }
+        
+        Create(location, ShopID, total);
         for(HashMap.Entry<Integer,Integer> entry : cart.entrySet()){
             insertOrderDetais(OrderID(CurrentUser.getCurrent().getID()), entry.getKey(), entry.getValue());
         }

@@ -7,6 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Model.Food" %>
 <%@page import="Dao.FoodDao" %>
+<%@page import="Model.Rate" %>
+<%@page import="Model.Review" %>
+<%@page import="Dao.RateDao" %>
+<%@page import="Dao.ReviewDao" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="Model.Category" %>
 <%@page import="Dao.CategoryDao" %>
@@ -18,7 +22,9 @@
     </head>
     <body>
         <%Food food = new FoodDao().getFoodByID(Integer.parseInt(request.getParameter("FoodID")));
-        ArrayList<Category> cates = new CategoryDao().getAllCategories();%>
+        ArrayList<Category> cates = new CategoryDao().getAllCategories();
+        ArrayList<Rate> rates = new RateDao().getRateByFood(food.getID());
+            ReviewDao dao = new ReviewDao();%>
         
         <div class="container">
             <form action="/SWP391/ChangeFoodInfo" method="post" enctype="multipart/form-data">
@@ -36,6 +42,18 @@
             </select><br>
             <input type="submit" value="submit"/>
         </form>
+            <%for(Rate rate : rates){%>
+            <div style="border: 1px solid black;">
+                <h3><%=rate.getUser().getName()%></h3>
+                <h4><%=rate.getRate()%> star(s)</h4>
+                <p><%=dao.getReviewByRate(rate.getRateID()).getContent()%></p>
+                <form id="reply-form" action="/SWP391/Reply">
+                    <input type="hidden" name="FoodID" value="<%=food.getID()%>"/>
+                    <input type="hidden" name="RateID" value="<%=rate.getRateID()%>"/>
+                    <input type="text" name="reply" value="<%=rate.getReply()%>" onfocusout="Reply()"/>
+                </form>
+            </div>
+            <%}%>
         <script type="text/javascript">
 
             function PreviewImage() {
@@ -46,6 +64,10 @@
                     document.getElementById("uploadPreview").src = oFREvent.target.result;
                 };
             };
+            
+            function Reply() {
+                document.getElementById("reply-form").submit();
+            }
         </script>
         </div>
     </body>

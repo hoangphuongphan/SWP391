@@ -173,3 +173,10 @@ dialog::backdrop {
     background-color: #ddd;
     margin: 2px;
 }
+
+.adjust_btn{
+    margin: 5px;
+    height: 12%;
+    width: 80%;
+    text-align: center;
+}

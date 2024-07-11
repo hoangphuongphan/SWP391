@@ -12,28 +12,37 @@ import java.util.HashMap;
  * @author phoan
  */
 public class Order {
-    private int OrderID;
+    private int OrderID, total;
     private User user;
     private Shop shop;
     private HashMap<Integer,Integer> order;
     private Date time;
     private String status;
+    private String shipLocation;
 
-    public Order(User user, Shop shop, HashMap<Integer,Integer> items) {
+    public Order(User user, Shop shop, HashMap<Integer,Integer> items, int total, String shipLocation) {
         this.user = user;
         this.order = items;
         this.time = null;
         this.status = "Cooking";
         this.shop = shop;
+        this.total = total;
+        this.shipLocation = shipLocation;
     }
 
-    public Order(int OrderID, User user, HashMap<Integer, Integer> order, Date time, String status, Shop shop) {
+    public Order(int OrderID, User user, HashMap<Integer, Integer> order, Date time, String status, Shop shop, int total, String shipLocation) {
         this.OrderID = OrderID;
         this.user = user;
         this.order = order;
         this.time = time;
         this.status = status;
         this.shop = shop;
+        this.total = total;
+        this.shipLocation = shipLocation;
+    }
+
+    public int getTotal() {
+        return total;
     }
 
     public Shop getShop() {

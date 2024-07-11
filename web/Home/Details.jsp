@@ -25,7 +25,6 @@
         int orderID =  Integer.parseInt(request.getParameter("orderID"));
         Order order = new OrderDao().getOrderByID(orderID);
         FoodDao dao = new FoodDao();
-        int total = 0;
         int amount = 0;
         %>
         <%@include file="navbar.jsp" %>
@@ -39,7 +38,6 @@
                 </div>
                 <%for(HashMap.Entry<Integer,Integer> entry : order.getOrder().entrySet()){
                 Food food = dao.getFoodByID(entry.getKey());
-                total += food.getPrice()*entry.getValue();
                 amount += entry.getValue();
                 %>
                 <div class="item">
@@ -50,7 +48,7 @@
                 <div style="border-bottom: 1px solid black"></div>
                 <div class="item">
                     <div class="itemname"><%=amount%></div>
-                    <div class="itemvalue"><%=total%></div>
+                    <div class="itemvalue"><%=order.getTotal()%></div>
                 </div>
             </div>
             <div class="right box">

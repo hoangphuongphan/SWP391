@@ -5,11 +5,13 @@
 package Control.LoggingIn;
 
 import Dao.AccountsDao;
+import Dao.AdminDao;
 import Dao.FoodDao;
 import Dao.ShipperDao;
 import Dao.ShopDao;
 import Dao.UserDao;
 import Model.Account;
+import Model.Admin;
 import Model.Cart;
 import Model.CurrentShipper;
 import Model.CurrentShop;
@@ -37,6 +39,11 @@ public class Login extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         Account acc = new AccountsDao().getAccountByUsername(username);
+        AdminDao dao = new AdminDao();
+        Admin admin = dao.getAdminByCode(username);
+        if(admin!=null){
+            resp.sendRedirect("Admin/Dashboard.jsp");
+        }
         if(acc!= null && password.equals(acc.getPassword())){
             HttpSession session = req.getSession(true);
             switch (acc.getType()) {

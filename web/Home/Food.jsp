@@ -31,14 +31,21 @@
             <div class="information">
                 <h1><%=food.getName()%></h1>
                 <h2><%=food.getPrice()%></h2>
-                
             </div >
-            <button id="Report" value="Report"/>
+            <form action="/SWP391/ReportFood">
+                <input type="hidden" name="FoodID" value="<%=food.getID()%>"/>
+                <select name="content">
+                    <option value="scam" selected="true">The Food was a scam</option>
+                    <option value="bad">The Food went bad</option>
+                </select>
+                <input type="submit" value="Report"/>
+            </form>
             <%for(Rate rate : rates){%>
             <div style="border: 1px solid black;">
                 <h3><%=rate.getUser().getName()%></h3>
                 <h4><%=rate.getRate()%> star(s)</h4>
                 <p><%=dao.getReviewByRate(rate.getRateID()).getContent()%></p>
+                <p><%=rate.getReply()%></p>
             </div>
             <%}%>
         </div>

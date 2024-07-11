@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-					<div class="wrap-input100 validate-input" data-validate = "Username is required">
+					<div class="wrap-input100 validate-input" data-validate = "Phone is required">
 						<input class="input100" type="number" name="phone" placeholder="Phone number">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">

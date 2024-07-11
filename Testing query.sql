@@ -37,6 +37,7 @@ delete from Food where FoodID = 1003
 select * from Account as A join Users as B on A.AccountID = B.AccountID
 insert into Account as A join Users as B on A.AccountID = B.AccountID values ('sunheo123','123','User','PH','phoangphuong309@gmail.com')
 
+
 select * from Users
 select * from Account
 select * from Shop
@@ -60,6 +61,8 @@ select * from OrdersDetail
 
 
 select * from Wallet
+
+update wallet set Amount = 100000000
 
 select * from Account
 select * from ShopAccount
@@ -114,3 +117,20 @@ select * from RateFood where FoodID = 1005 AND UserID = 1 order by RateID desc
 
 SELECT * FROM Shop join Account on Shop.AccountID = Account.AccountID WHERE Name LIKE '%mi%'
 
+select * from Orders
+
+select * from RateFood
+select * from Review
+select * from Category
+select * from Ticket 
+select * from ReportFood
+select * from ReportShop
+select * from ReportShipper
+
+select * from Admin
+
+insert into Admin values ('Phuong','php_am1')
+
+update RateFood set FoodID = 2004 where FoodID = 1005
+update Review set FoodID = 2004 where FoodID = 1005
+select * from Food where ShopID = 1 and CateID = 1 and Price = 15000.00 and Foodname = 'banh trang cuon nuong'

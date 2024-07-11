@@ -37,11 +37,14 @@ public class order extends HttpServlet {
         Wallet wallet = Wallet.getInstance();
         HashMap<Integer,HashMap<Integer,Integer>> bills = BillSplit.SplitBill();
         int amount = Integer.parseInt(req.getParameter("total"));
+        String location = req.getParameter("location");
         ArrayList<Integer> unavails = StatusChecking.unavilShops(bills);
-        if(amount < wallet.getAmount()){
+        if(location.length() < 5)
+            resp.sendRedirect("/SWP391/Home/Cart.jsp?error=Location is empty");
+        else if(amount < wallet.getAmount()){
             if(unavails.size()<1){
                 for(HashMap.Entry<Integer,HashMap<Integer,Integer>> bill : bills.entrySet()){
-                    dao.createOrder("hanoi", bill.getKey(),bill.getValue());
+                    dao.createOrder(location, bill.getKey(),bill.getValue());
                 }
                 wallet.add(amount*-1);
                 new WalletDao().UpdateAmount(null,null);

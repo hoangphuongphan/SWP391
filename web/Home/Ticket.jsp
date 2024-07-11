@@ -12,6 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="/SWP391/SendTicket">
+            <label>Subject</label>
+            <input name="subject" placeholder="Subject">
+            <label>Content</label>
+            <input name="content" placeholder="your problem">
+            <input type="submit"/>
+        </form>
     </body>
 </html>
