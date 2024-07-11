@@ -18,7 +18,7 @@ import java.util.Map;
  * @author phoan
  */
 public class BillSplit {
-    //split bill for each Shop
+    //split bill for each Shop => HashMap <ShopID, Food Items hash map>
     public static HashMap<Integer,HashMap<Integer,Integer>> SplitBill(){
         FoodDao dao = new FoodDao();
         ShopDao sdao = new ShopDao();

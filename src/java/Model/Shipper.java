@@ -10,14 +10,15 @@ package Model;
  */
 public class Shipper extends Account{
     private int ID;
-    private String name, phone, VehicleID;
+    private String name, phone, VehicleID, avatar;
 
-    public Shipper(int ID, String name, String phone, String VehicleID, int id, String username, String password) {
+    public Shipper(int ID, String name, String phone, String VehicleID, int id, String username, String password, String avatar) {
         super(id, username, password, "Shipper");
         this.ID = ID;
         this.name = name;
         this.phone = phone;
         this.VehicleID = VehicleID;
+        this.avatar = avatar;
     }
 
     public Shipper(String username, String password, String name, String phone, String VehicleID) {
@@ -25,6 +26,10 @@ public class Shipper extends Account{
         this.name = name;
         this.phone = phone;
         this.VehicleID = VehicleID;
+    }
+
+    public String getAvatar() {
+        return avatar;
     }
 
     public int getID() {

@@ -46,6 +46,7 @@
                         <li><a class="dropdown-item" href="/SWP391/Home/TopUp.jsp">Top Up</a></li>
                         <li><a class="dropdown-item" href="/SWP391/UsrInfo">Profile</a></li>
                         <li><a class="dropdown-item" href="/SWP391/Logout">Logout</a></li>
+                        <li><a class="dropdown-item" href="/SWP391/Home/Ticket.jsp">Send Ticket</a></li>
                     </ul>
                 </li>
             </ul>

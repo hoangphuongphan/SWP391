@@ -10,7 +10,7 @@ package Control.Search;
  *
  * @author Admin
  */
-import Dao.ReportDAO;
+import Dao.ReportDao;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -19,12 +19,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class ReportFoodServlet extends HttpServlet {
 
-    private ReportDAO reportDAO;
+    private ReportDao reportDAO;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        reportDAO = new ReportDAO(); // Khởi tạo DAO
+        reportDAO = new ReportDao(); // Khởi tạo DAO
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

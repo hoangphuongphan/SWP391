@@ -23,8 +23,8 @@
             </div>
             <div class="col-md-4">
                 <h3>Contact us</h3>
-                <p>Email: FoodPalDN@gmail.com</p>
-                <p>Phone: +84 xxx xxx xxx</p>
+                <p>Email: phoangphuong309@gmail.com</p>
+                <p>Phone: +84 914020508</p>
                 <p>Address: </p>
             </div>
         </div>

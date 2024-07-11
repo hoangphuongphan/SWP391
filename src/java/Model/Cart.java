@@ -53,17 +53,8 @@ public class Cart {
         total += dao.getFoodByID(foodID).getPrice() * amount;
     }
     
-    public void Delete(Integer foodID, int amount){
-        if(cart.containsKey(foodID)){
-            int defaultAmount = cart.get(foodID);
-            if (defaultAmount > amount) {
-                cart.put(foodID, defaultAmount - amount);
-                total = total - ((int)dao.getFoodByID(foodID).getPrice() * amount);
-            } else {
-                total -= (int) dao.getFoodByID(foodID).getPrice()*cart.get(foodID);
-                cart.remove(foodID);
-            }
-        }
+    public void Delete(Integer foodID){
+        cart.remove(foodID);
     }
     
     public void setDiscount(Discount discount){

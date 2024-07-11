@@ -5,7 +5,7 @@ package Control.Search;
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-import Dao.ReportDAO;
+import Dao.ReportDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -16,12 +16,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class ReportShipperServlet extends HttpServlet {
 
-    private ReportDAO reportDAO;
+    private ReportDao reportDAO;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        reportDAO = new ReportDAO();
+        reportDAO = new ReportDao();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

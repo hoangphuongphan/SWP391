@@ -2,7 +2,7 @@
 -- tao bang user
 create table Users(
 	UserID int IDENTITY(1,1) primary key,
-	AccountID int,
+	AccountID int foreign key references Account(AccountID),
 	Name nvarchar(50) not null,
 	Phone varchar(20) not null,
 	Email varchar(50) not null,
@@ -12,7 +12,7 @@ create table Users(
 -- tao bang Shop
 create table Shop(
 	ShopID int IDENTITY(1,1) primary key,
-	AccountID int,
+	AccountID int foreign key references Account(AccountID),
 	Name nvarchar(50) not null,
 	Phone varchar(10) not null,
 	Location nvarchar(100) not null,
@@ -25,7 +25,8 @@ create table Shop(
 -- tao bang shipper
 create table Shipper(
 	ShipperID int IDENTITY(1,1) primary key,
-	AccountID int,
+	Avatar nvarchar(200),
+	AccountID int foreign key references Account(AccountID),
 	Name nvarchar(50) not null,
 	Phone varchar(20) not null,
 	VehicleID varchar(20) not null,
@@ -35,7 +36,9 @@ create table Shipper(
 create table Admin(
 	AdminID int IDENTITY(1,1) primary key,
 	Name nvarchar(50) not null,
+	LoginCode varchar(20) not null
 )
+
 
 -- tao bang category
 create table Category(
@@ -69,6 +72,7 @@ create table RateFood(
 	UserID int foreign key references Users(UserID),
 	Rate int,
 	constraint Rate CHECK (Rate between 0 and 5),
+	Reply nvarchar(200)
 )
 
 create table ReportFood(
@@ -102,6 +106,7 @@ create table Orders(
 	Time smallDateTime default getDate(),
 	ShipLocation nvarchar(200) not null,
 	Status nvarchar(20) Check(Status in ('Cooking','Shipping','Done','Denied')),
+	Total int,
 	primary key (OrderID)
 )
 
@@ -144,7 +149,7 @@ create table Wallet(
 )
 
 create table Ticket(
-	TicketID int primary key,
+	TicketID int primary key Identity(1,1),
 	UserID int foreign key references Users(UserID),
 	Subject nvarchar(50),
 	Content nvarchar(500)

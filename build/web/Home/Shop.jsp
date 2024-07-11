@@ -50,6 +50,15 @@
                     <h2><%=shop.getLocation()%></h2>
                     <h2><%=shop.getPhone()%></h2>
                 </div>
+                <form action="/SWP391/ReportShop">
+                <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>"/>
+                <select name="content">
+                    <option value="scam" selected="true">The Shop was a scam</option>
+                    <option value="bad">The Food of shop went bad or was poisoned</option>
+                    <option value="late">My Food was delivered intentionally late</option>
+                </select>
+                <input type="submit" value="Report"/>
+            </form>
 <!--                <div class="discount-list">
                     <div class="box">Discount</div>
                     <div class="box">Discount</div>

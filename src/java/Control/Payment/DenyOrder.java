@@ -33,7 +33,7 @@ public class DenyOrder extends HttpServlet {
         dao.deleteOrders(orderID);
         Order order = dao.getOrderByID(orderID);
         Wallet wallet = new WalletDao().getWalletByID(order.getUser().getID(), "User");
-        wallet.add(getTotal(order));
+        wallet.add(order.getTotal());
         new WalletDao().UpdateAmount(order.getUser(), wallet);
         resp.sendRedirect("Shop/Home.jsp");
     }
@@ -41,14 +41,6 @@ public class DenyOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
-    }
-
-    private static int getTotal(Order order){
-        int total = 0;
-        for(HashMap.Entry<Integer,Integer> item : order.getOrder().entrySet()){
-            total += (new FoodDao().getFoodByID(item.getKey()).getPrice()*item.getValue());
-        }
-        return total;
     }
 
 }

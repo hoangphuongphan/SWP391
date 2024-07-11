@@ -7,11 +7,55 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic Map with Geocoder</title>
+
+    <!-- Styles -->
+    <link href="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+      }
+      #map {
+        height: 100vh;
+      }
+      .form-container {
+        position: absolute;
+        top: 60px; /* Adjust to position the button below the geocoder */
+        left: 10px;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  
+  <body>
+    <main>
+      <div id="map"></div>
+      <div class="form-container">
+          <form id="location-form" action="/SWP391/PickLocation">
+          <input type="hidden" id="location-input" name="location" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+    
+    <!-- JavaScript dependencies -->
+    <script src="https://unpkg.com/maplibre-gl@3"></script>
+    <script src="https://unpkg.com/@aws/amazon-location-client@1/dist/amazonLocationClient.js"></script>
+    <script src="https://unpkg.com/@aws/amazon-location-utilities-auth-helper@1/dist/amazonLocationAuthHelper.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-geocoder@1/dist/maplibre-gl-geocoder.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@maplibre/maplibre-gl-geocoder/dist/maplibre-gl-geocoder.css"
+      type="text/css"
+    />
+
+    <!-- JavaScript for the app -->
+    <script src="js/mapMain.js"></script>
+  </body>
 </html>
+

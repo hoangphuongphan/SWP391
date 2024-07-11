@@ -27,6 +27,19 @@ public class RateDao {
             con = instance.getCon();
     }
     
+    public boolean replyRate(int RateID, String reply){
+        String query = "Update RateFood set Reply = ? where RateID = ?";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, reply);
+            st.setInt(2, RateID);
+            return st.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(RateDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public ArrayList<Rate> getRateByFood(int FoodID){
         String query = "select * from RateFood where FoodID = ?";
         ArrayList<Rate> rates = new ArrayList<>();
@@ -35,7 +48,7 @@ public class RateDao {
             pre.setInt(1, FoodID);
             ResultSet rs = pre.executeQuery();
             while(rs.next())
-                rates.add(new Rate(rs.getInt("RateID"), rs.getInt("FoodID"), rs.getInt("UserID"), rs.getInt("Rate")));
+                rates.add(new Rate(rs.getInt("RateID"), rs.getInt("FoodID"), rs.getInt("UserID"), rs.getInt("Rate"), rs.getString("Reply")));
         } catch (SQLException ex) {
             Logger.getLogger(RateDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -50,7 +63,7 @@ public class RateDao {
             pre.setInt(1, RateID);
             ResultSet rs = pre.executeQuery();
             if(rs.next())
-                rate = new Rate(rs.getInt("RateID"), rs.getInt("FoodID"), rs.getInt("UserID"), rs.getInt("Rate"));
+                rate = new Rate(rs.getInt("RateID"), rs.getInt("FoodID"), rs.getInt("UserID"), rs.getInt("Rate"), rs.getString("Reply"));
         } catch (SQLException ex) {
             Logger.getLogger(RateDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,7 +93,7 @@ public class RateDao {
             pre.setInt(2, UserID);
             ResultSet rs = pre.executeQuery();
             if(rs.next())
-                rate = new Rate(rs.getInt("RateID"), rs.getInt("FoodID"), rs.getInt("UserID"), rs.getInt("Rate"));
+                rate = new Rate(rs.getInt("RateID"), rs.getInt("FoodID"), rs.getInt("UserID"), rs.getInt("Rate"), rs.getString("Reply"));
         } catch (SQLException ex) {
             Logger.getLogger(RateDao.class.getName()).log(Level.SEVERE, null, ex);
         }

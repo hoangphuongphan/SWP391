@@ -16,8 +16,8 @@
                     <p class="card-text">${u.userId}</p>
                     <p class="card-text">${u.displayName}</p>
                     <p class="card-text"><small class="text-muted">Email: ${u.email}</small></p>
-                    <a href="ChangeUsrInfo">Change Profile</a>
-                    <a href="#">Change User Setting</a>
+                    <a href="/SWP391/ChangeUsrInfo">Change Profile</a>
+                    <a href="/SWP391/Home/UpdatePassword.jsp">Change Password</a>
                 </div>
             </div>
         </div>
