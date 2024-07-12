@@ -113,9 +113,11 @@ public class Authentication implements Filter {
         if(session == null || session.getAttribute("currentUser") == null){
             res.sendRedirect("/SWP391/Login");
         }
-        User user = (User) session.getAttribute("currentUser");
-        if( user.getStatus() == 2)
-            res.sendRedirect("/SWP391/Error.jsp?error=banned");
+        if(session.getAttribute("currentUser") != null){
+            User user = (User) session.getAttribute("currentUser");
+            if( user.getStatus() == 2)
+                res.sendRedirect("/SWP391/Error.jsp?error=banned");
+        }
         
         Throwable problem = null;
         try {

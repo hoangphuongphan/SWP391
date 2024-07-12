@@ -113,11 +113,13 @@ public class ShopAuthentication implements Filter {
         if(session == null || session.getAttribute("currentShop") == null){
             res.sendRedirect("/SWP391/Login");
         }
-        Shop shop = (Shop) session.getAttribute("currentShop");
-        if(shop.getStatus() == 3)
-            res.sendRedirect("/SWP391/Error.jsp?error=banned");
-        else if(shop.getStatus()==4)
-            res.sendRedirect("/SWP391/Error.jsp?error=notApproved");
+        if(session.getAttribute("currentShop") != null){
+            Shop shop = (Shop) session.getAttribute("currentShop");
+            if(shop.getStatus() == 3)
+                res.sendRedirect("/SWP391/Error.jsp?error=banned");
+            else if(shop.getStatus()==4)
+                res.sendRedirect("/SWP391/Error.jsp?error=notApproved");
+        }
         Throwable problem = null;
         try {
             chain.doFilter(request, response);

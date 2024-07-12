@@ -72,7 +72,7 @@
                                         <form action="/SWP391/AdjustAmount">
                                             <input type="hidden" value="<%=food.getID()%>" name="FoodID"/>
                                             <input type="hidden" name="amount" value="<%=entry.getValue()-1%>">
-                                            <button class="adjust_btn" type="submit" value="-"></button>
+                                            <button class="btn border-dark rounded" type="submit" value="-">-</button>
                                         </form>
                                         <form id="myForm" action="/SWP391/AdjustAmount">
                                             <input type="hidden" value="<%=food.getID()%>" name="FoodID"/>
@@ -81,7 +81,7 @@
                                         <form action="/SWP391/AdjustAmount">
                                             <input type="hidden" value="<%=food.getID()%>" name="FoodID"/>
                                             <input type="hidden" name="amount" value="<%=entry.getValue()+1%>">
-                                            <button class="adjust_btn" type="submit" value="+"></button>
+                                            <button class="btn border-dark rounded" type="submit" value="+">+</button>
                                         </form>
                                     </div>
                                 </div>

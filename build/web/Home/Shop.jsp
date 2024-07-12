@@ -33,8 +33,10 @@
                 width: 50%;
             }
         </style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     </head>
     <body>
+        <%@include file="navbar.jsp" %>
         <%
             int ShopID = Integer.parseInt(request.getParameter("ShopID"));
             Shop shop = new ShopDao().getShopByID(ShopID);

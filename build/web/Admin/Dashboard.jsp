@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <a href="/SWP391/Logout">Logout</a>
         <h1>Hello World!</h1>
     </body>
 </html>

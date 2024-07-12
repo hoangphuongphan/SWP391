@@ -256,6 +256,10 @@
         <servlet-name>RegisterShop</servlet-name>
         <servlet-class>Control.Registering.RegisterShop</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddFood</servlet-name>
+        <servlet-class>Control.Cart.AddFood</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -463,6 +467,10 @@
     <servlet-mapping>
         <servlet-name>RegisterShop</servlet-name>
         <url-pattern>/RegisterShop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFood</servlet-name>
+        <url-pattern>/AddFood</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

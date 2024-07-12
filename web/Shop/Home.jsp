@@ -22,6 +22,7 @@
         Shop current = (Shop) session.getAttribute("currentShop");
         ArrayList<Order> list = dao.getOrderList(current.getShopID(),"Shop");
         %>
+        <a href="/SWP391/Logout">Logout</a>
         <div class="container">
         <div class="orderinfo">
             <h1>Orders</h1>

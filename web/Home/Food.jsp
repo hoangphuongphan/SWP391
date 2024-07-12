@@ -17,8 +17,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     </head>
     <body>
+        <%@include file="navbar.jsp" %>
         <%
             Food food = new FoodDao().getFoodByID(Integer.parseInt(request.getParameter("FoodID")));
             ArrayList<Rate> rates = new RateDao().getRateByFood(food.getID());
@@ -32,6 +34,10 @@
                 <h1><%=food.getName()%></h1>
                 <h2><%=food.getPrice()%></h2>
             </div >
+            <form action="/SWP391/AddFood">
+                <input type="hidden" name="FoodID" value="<%=food.getID()%>"/>
+                <input type="submit" value="Add to Cart"/>
+            </form>
             <form action="/SWP391/ReportFood">
                 <input type="hidden" name="FoodID" value="<%=food.getID()%>"/>
                 <select name="content">

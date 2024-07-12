@@ -4,7 +4,7 @@
     Author     : Admin
 --%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Model.Food" %>
 <%@page import="Model.Shop" %>
 <%@page  import="java.util.List" %>
@@ -14,8 +14,10 @@
     <meta charset="UTF-8">
     <title>Search Results</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 </head>
 <body>
+    <jsp:include page="navbar.jsp"/>
     <h1>Search Results</h1>
     <div id="search-results">
         <% 

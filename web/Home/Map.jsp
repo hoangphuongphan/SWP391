@@ -30,9 +30,11 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   </head>
   
   <body>
+      <%@include file="navbar.jsp" %>v
     <main>
       <div id="map"></div>
       <div class="form-container">

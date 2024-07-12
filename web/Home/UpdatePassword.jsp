@@ -10,9 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     </head>
     <body>
-        <<form id="resetPass" action="/SWP391/UpdateUserPass" onsubmit="return validateForm()">
+        <%@include file="navbar.jsp" %>
+        <form id="resetPass" action="/SWP391/UpdateUserPass" onsubmit="return validateForm()">
             <label>Current Password</label><br>
             <input type="password" name="oldPass" placeholder="Your current Password"/><br>
             <label>New Password</label><br>
