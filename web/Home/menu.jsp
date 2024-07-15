@@ -95,7 +95,7 @@
                     </div>
                 </c:forEach>
             </div>
-        </div>s
+        </div>
         <jsp:include page="homefooter.jsp"/>
     </body>
 </html>
