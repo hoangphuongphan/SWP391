@@ -24,10 +24,8 @@ public class ShowHome extends HttpServlet {
         FoodDao fa = new FoodDao();
         List<Food> nfl = fa.get5NewItems();
         List<Food> ffl = fa.get5RandomItems();
-        List<Food> afl=fa.getAllFood();
         req.setAttribute("nfl", nfl);
         req.setAttribute("ffl", ffl);
-        req.setAttribute("afl", afl);
         req.getRequestDispatcher("Home/menu.jsp").forward(req, resp);
     }
 

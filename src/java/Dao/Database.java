@@ -19,14 +19,12 @@ public class Database {
     private Connection con = null ;
 
     private Database() {
-        String serverName = "sun-phan";
+        String serverName = "DESKTOP-U65F98K";
         String databaseName = "Foodpal";
         String url = "jdbc:sqlserver://" + serverName + ";databaseName=" + databaseName + ";encrypt=false";
-        String username = "sa";
-        String password = "sa";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
-            con= (Connection) DriverManager.getConnection(url, username, password);
+            con= (Connection) DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } catch (ClassNotFoundException ex) {
@@ -43,5 +41,9 @@ public class Database {
             instance = new Database();
         return instance;
     }
-    
+     public static void main(String[] args) {
+        Database db=new Database();
+        Connection con=db.getCon();
+         System.out.println(con.toString());
+    }
 }

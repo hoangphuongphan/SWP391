@@ -113,7 +113,7 @@ public class FoodDao {
         return null;
     }
     
-    public List<Food> getAllFood(){
+    public List<Food> get5NewItems(){
         String sql = "select top 5 * from Food order by newid()";
         List<Food> ffl = null;
         try {
@@ -134,7 +134,7 @@ public class FoodDao {
         }
         return null;
     }
-    public List<Food> get5NewItems() {
+    public List<Food> getAllFood() {
         String sql = "select * from Food";
         List<Food> afl = null;
         try {

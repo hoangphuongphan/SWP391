@@ -75,11 +75,3 @@
         </div>
     </div>
 </nav>
-<script>
-    const searchToggle = document.getElementById('search-toggle');
-    const searchForm = document.getElementById('search-form');
-
-    searchToggle.addEventListener('click', () => {
-        searchForm.style.display = searchForm.style.display === 'none' || searchForm.style.display === '' ? 'flex' : 'none';
-    });
-</script>

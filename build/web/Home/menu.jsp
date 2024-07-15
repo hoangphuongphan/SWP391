@@ -18,82 +18,84 @@
         <title>Menu Page</title>
     </head>
     <style>
+        #homebody{
+            background-color: #ccccff
+        }
         img{
             height: 200px;
             width: auto;
         }
+        .image-container{
+            overflow: hidden;
+        }
+
+        .detail-box {
+            display: none;
+            transition: opacity 0.3s linear;
+            z-index: 10;
+        }
+
+        .image-container:hover>.detail-box {
+            display: block;
+        }
     </style>
-    <script>
-        const box = document.getElementById('box');
-        const hiddenBox = document.getElementById('hidden-box');
-
-        box.addEventListener('mouseenter', () => {
-            hiddenBox.style.visibility = 'visible'; // Show the hidden box
-        });
-
-        box.addEventListener('mouseleave', () => {
-            hiddenBox.style.visibility = 'hidden'; // Hide the hidden box
-        });
-    </script>
     <body>
         <jsp:include page="navbar.jsp"/>
         <jsp:include page="searchbar.jsp"/>
         <jsp:include page="homebanner.jsp"/>
-        
-        <div class="container d-flex p-5 flex-collumn" id="feature-food-container">
-            <c:set var="ffl" value="${requestScope.ffl}"/>
-            <div class="col-10 p-2 flex-fill" style="background-color: #7f84fa">
-                <div class="p-3 flex-fill" style="text-align: left; color: #ffea03; font-weight: bold">
-                    <h3>What to eat today</h3>
+        <c:set var="ffl" value="${ffl}"/>
+        <c:set var="nfl" value="${requestScope.nfl}"/>
+        <div class="container" id="homebody">
+            <div class="container col-lg-12 m-4" style="color: blanchedalmond" id="feature-food-container">
+
+                <div class="container col-lg-10 border-bottom-0 m-auto" style="background-color: #9299ff; border-start-end-radius: 10px; border-start-start-radius: 10px;">
+                    <div class="p-3 col-lg flex-fill" style="text-align: left; font-weight: bold;">
+                        <h4>What to eat today</h4>
+                    </div>
+                </div>
+                <div class="container col-lg-10 p-1 m-auto center-block d-flex justify-content-around bg-light border-top-0" style="border-end-start-radius: 10px; border-end-end-radis:10px">
+                    <c:forEach var="ffl" items="${ffl}">
+                        <div class="image-container flex-item d-inline-block border rounded col-lg-2 p-1"
+                             style="background-color: #efefef;">
+                            <img src="${ffl.imgurl}"
+                                 alt="alt" class="img-fluid" />
+                            <div class="detail-box">
+                                <h4 style="font-weight: bold">${ffl.name}</h4>
+                                <p>Price: ${ffl.price}</p>
+                                <form action="/SWP391/ShowFood">
+                                    <input type="hidden" name="FoodID" value="${ffl.ID}">
+                                    <input class="form-control btn btn-primary btn-sm btn-block flex-fill" type="submit"
+                                           value="Food Information" style="text-align: center; color: #efefef" />
+                                </form>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
-            <div class="col-10 p-1 d-flex justify-content-around">
-                <c:forEach var="items" items="${pageScope.ffl}">
-                    <div class="border rounded col-2 p-1 d-inline-flex" style="background-color: #efefef; color: #004f73" id="box">
-                        <div class="box" id="box">
-                            <img src="${items.imgUrl}" alt="alt"/>
-                        </div>
-                        <div class="hidden-box" id="hidden-box"
-                             style="background-color: #479ad6; color: #ed3235; transition: transform 0.5s ease-in; position: relative; visibility: hidden">
-                            <img src="${items.imgUrl}" alt="alt"/>
-                            <h4 style="font-weight: bold">${items.name}</h4>
-                            <p>${items.price}</p>
-                            <form action="/SWP391/ShowFood">
-                                <input type="hidden" name="FoodID" value="${items.ID}">
-                                <input class= "form-control btn btn-primary btn-sm btn-block flex-fill" 
-                                       type="submit" value="Food Information" style="text-align: center; color: #cc0033"/>
-                            </form>
-                        </div>
+            <div class="container col-lg-12 m-4" style="color: blanchedalmond" id="new-food-container">
+                <div class="container col-lg-10 border-bottom-0 m-auto" style="background-color: #9299ff; border-start-end-radius: 10px; border-start-start-radius: 10px;">
+                    <div class="p-3 flex-fill" style="text-align: left; color: #ffea03; font-weight: bold">
+                        <h4>New food on menu</h4>
                     </div>
-                </c:forEach>
-            </div>
-        </div>
-        <div class="container d-flex p-5 flex-collumn" id="new-food-container">
-            <c:set var="nfl" value="${requestScope.nfl}"/>
-            <div class="col-10 p-2 flex-fill" style="background-color: #7f84fa">
-                <div class="p-3 flex-fill" style="text-align: left; color: #ffea03; font-weight: bold">
-                    <h3>New food on menu</h3>
                 </div>
-            </div>
-            <div class="col-10 p-1 d-flex justify-content-around">
-                <c:forEach var="items" items="${pageScope.ffl}">
-                    <div class="border rounded col-2 p-1 d-inline-flex" style="background-color: #efefef; color: #004f73" id="box">
-                        <div class="box" id="box">
-                            <img src="${items.imgUrl}" alt="alt"/>
+                <div class="container col-lg-10 p-1 m-auto center-block d-flex justify-content-around bg-light border-top-0" style="border-end-start-radius: 10px; border-end-end-radis:10px">
+                    <c:forEach var="nfl" items="${nfl}">
+                        <div class="image-container flex-item d-inline-block border rounded col-lg-2 p-1"
+                             style="background-color: #efefef;">
+                            <img src="${nfl.imgurl}"
+                                 alt="alt" class="img-fluid" />
+                            <div class="detail-box">
+                                <h4 style="font-weight: bold">${nfl.name}</h4>
+                                <p>Price: ${nfl.price}</p>
+                                <form action="/SWP391/ShowFood">
+                                    <input type="hidden" name="FoodID" value="${nfl.ID}">
+                                    <input class="form-control btn btn-primary btn-sm btn-block flex-fill" type="submit"
+                                           value="Food Information" style="text-align: center; color: #efefef" />
+                                </form>
+                            </div>
                         </div>
-                        <div class="hidden-box" id="hidden-box"
-                             style="background-color: #479ad6; color: #ed3235; transition: transform 0.5s ease-in; position: absolute">
-                            <img src="${items.imgUrl}" alt="alt"/>
-                            <h4 style="font-weight: bold">${items.name}</h4>
-                            <p>${items.price}</p>
-                            <form action="/SWP391/ShowFood">
-                                <input type="hidden" name="FoodID" value="${items.ID}">
-                                <input class= "form-control btn btn-primary btn-sm btn-block flex-fill" 
-                                       type="submit" value="Food Information" style="text-align: center; color: #cc0033"/>
-                            </form>
-                        </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
+                </div>
             </div>
         </div>
         <jsp:include page="homefooter.jsp"/>
