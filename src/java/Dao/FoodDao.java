@@ -5,6 +5,7 @@
 package Dao;
 
 import Model.Food;
+import Model.MenuFood;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,6 +76,22 @@ public class FoodDao {
         return foods;
     }
     
+    public Food getFoodByIDwRating(int id){
+        String query = "select * from Food where FoodID = ?";
+        Food food = null;
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                food = new Food(rs.getString("Foodname"), rs.getString("FoodImage"), rs.getInt("FoodID"), rs.getInt("ShopID"), rs.getInt("CateID"), rs.getDouble("Price"));
+        } catch (SQLException ex) {
+            Logger.getLogger(Food.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return food;
+    }
+    
     public Food getFoodByID(int id){
         String query = "select * from Food where FoodID = ?";
         Food food = null;
@@ -91,21 +108,20 @@ public class FoodDao {
         return food;
     }
     
-    public List<Food> get5RandomItems() {
-        String sql = "select top 5 * from Food order by newid()";
-        List<Food> ffl = null;
+    public List<MenuFood> get5RandomItems() {
+        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid order by newid()";
+        List<MenuFood> ffl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);
             ffl = new ArrayList<>();
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                int fId = rs.getInt(2);
-                int sId = rs.getInt(1);
-                int cId = rs.getInt(3);
-                int p = rs.getInt(4);
-                String fIm = rs.getString(5);
-                String fN = rs.getString(6);
-                ffl.add(new Food(fN, fIm, fId, sId, cId, p));
+                int fid=rs.getInt(1);
+                String fn=rs.getString(2);
+                String sn=rs.getString(3);
+                double fp=rs.getDouble(4);
+                String fi=rs.getString(5);
+                ffl.add(new MenuFood(fid, fn, sn, fi, fp));
             }
             return ffl;
         } catch (SQLException e) {
@@ -113,12 +129,32 @@ public class FoodDao {
         return null;
     }
     
-    public List<Food> get5NewItems() {
-        String sql = "select top 5 * from Food order by foodid desc";
-        List<Food> nfl = null;
+    public List<MenuFood> get5NewItems() {
+        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid";
+        List<MenuFood> nfl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);
             nfl = new ArrayList<>();
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                int fid=rs.getInt(1);
+                String fn=rs.getString(2);
+                String sn=rs.getString(3);
+                double fp=rs.getDouble(4);
+                String fi=rs.getString(5);
+                nfl.add(new MenuFood(fid, fn, sn, fi, fp));
+            }
+            return nfl;
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+    public List<Food> getAllFood() {
+        String sql = "select * from Food";
+        List<Food> afl = null;
+        try {
+            PreparedStatement pstm = con.prepareCall(sql);
+            afl = new ArrayList<>();
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 int fId = rs.getInt(2);
@@ -127,9 +163,9 @@ public class FoodDao {
                 int p = rs.getInt(4);
                 String fIm = rs.getString(5);
                 String fN = rs.getString(6);
-                nfl.add(new Food(fN, fIm, fId, sId, cId, p));
+                afl.add(new Food(fN, fIm, fId, sId, cId, p));
             }
-            return nfl;
+            return afl;
         } catch (SQLException e) {
         }
         return null;

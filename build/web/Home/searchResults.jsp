@@ -1,56 +1,47 @@
-    <%-- 
-    Document   : newjsp
-    Created on : Jun 12, 2024, 6:34:19 PM
-    Author     : Admin
+<%-- 
+Document   : newjsp
+Created on : Jun 12, 2024, 6:34:19 PM
+Author     : Admin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="Model.Food" %>
 <%@page import="Model.Shop" %>
 <%@page  import="java.util.List" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Search Results</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <jsp:include page="navbar.jsp"/>
-    <h1>Search Results</h1>
-    <div id="search-results">
-        <% 
-        List<Food> searchResults = (List<Food>) request.getAttribute("searchResults");
-        List<Shop> ShopSearch = (List<Shop>) request.getAttribute("ShopList");
-        if (searchResults != null && !searchResults.isEmpty()) {
-            for (Food food : searchResults) {
-        %>
-        <div class="food-item">
-            <h2><%= food.getName() %></h2>
-            <p>Price: <%= food.getPrice() %></p>
-            <!-- Hiển thị các thông tin khác về mỗi món ăn -->
-            <form action="/SWP391/ShowFood">
-                                <input type="hidden" name="FoodID" value="<%=food.getID()%>">
-                                <input type="submit" value="Food Information"/>
-                            </form>
-        </div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Search Results</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <jsp:include page="${navbar.jsp}"/>
+        <h1>Search Results</h1>
+        <div id="search-results">
             
-            <%}%>
-        <% 
-            }
-            if(ShopSearch !=null && !ShopSearch.isEmpty()){
-                for(Shop shop : ShopSearch){%>
-                <div class="shop-item">
-            <h2><%= shop.getName() %></h2>
-            <p>Price: <%= shop.getLocation() %></p>
-            <!-- Hiển thị các thông tin khác về mỗi món ăn -->
-            <form action="/SWP391/ShowShop">
-                                <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>">
-                                <input type="submit" value="Shop Information"/>
-                            </form>
+            <c:set var="searchResults" value="${searchResult}"/>
+            <c:if test="${not empty searchResult}">
+                <h3>Search result for food</h3>
+                <c:set var="items" value="${searchResult}"/>
+                <jsp:include page="foodListDisplay.jsp"/>
+            </c:if>
+            
+            <% 
+                }
+                if(ShopSearch !=null && !ShopSearch.isEmpty()){
+                    for(Shop shop : ShopSearch){%>
+            <div class="shop-item">
+                <h2><%= shop.getName() %></h2>
+                <p>Price: <%= shop.getLocation() %></p>
+                <!-- Hiển thị các thông tin khác về mỗi món ăn -->
+                <form action="/SWP391/ShowShop">
+                    <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>">
+                    <input type="submit" value="Shop Information"/>
+                </form>
+            </div>
+            <%}}%>
         </div>
-                <%}}%>
-    </div>
-</body>
+    </body>
 </html>
