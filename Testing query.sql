@@ -116,8 +116,7 @@ insert into RateFood values (1005,1,5)
 select * from RateFood where FoodID = 1005 AND UserID = 1 order by RateID desc
 
 SELECT * FROM Shop join Account on Shop.AccountID = Account.AccountID WHERE Name LIKE '%mi%'
-
-select * from Orders
+OrderID
 
 select * from RateFood
 select * from Review
