@@ -158,6 +158,12 @@ create table Ticket(
 	Content nvarchar(500)
 )
 
+create table ticketResponse(
+	TicketID int foreign key references Ticket(TicketID),
+	response nvarchar(200),
+	primary key(TicketID)
+)
+
  insert into Account values
 ('ptt@123','123','User'),
 ('pnt@123','123','User'),
