@@ -9,9 +9,6 @@ import Dao.OrderDao;
 import Dao.ShipperDao;
 import Dao.WalletDao;
 import Model.Cart;
-import Model.CurrentUser;
-import Model.Order;
-import Model.Shop;
 import Model.User;
 import Model.Wallet;
 import java.io.IOException;
@@ -28,35 +25,28 @@ import java.util.HashMap;
  *
  * @author phoan
  */
-public class order extends HttpServlet {
-
-    @Override
+public class orderCash extends HttpServlet {
+@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User current = (User) session.getAttribute("currentUser");
         OrderDao dao = new OrderDao();
-        Wallet wallet = Wallet.getInstance();
         HashMap<Integer,HashMap<Integer,Integer>> bills = BillSplit.SplitBill();
         int amount = Integer.parseInt(req.getParameter("total"));
         String location = req.getParameter("location");
         ArrayList<Integer> unavails = StatusChecking.unavilShops(bills);
         if(location.length() < 5)
             resp.sendRedirect("/SWP391/Home/Cart.jsp?error=Location is empty");
-        else if(amount < wallet.getAmount()){
-            if(unavails.size()<1){
-                for(HashMap.Entry<Integer,HashMap<Integer,Integer>> bill : bills.entrySet()){
-                    dao.createOrder(location, bill.getKey(),bill.getValue(), new ShipperDao().getBestFreeShipper());
+            else{
+                if(unavails.size()<1){
+                    for(HashMap.Entry<Integer,HashMap<Integer,Integer>> bill : bills.entrySet()){
+                        dao.createOrder(location, bill.getKey(),bill.getValue(), new ShipperDao().getBestFreeShipper());
+                    }
+                    Cart.getInstance().DeleteCart();
+                }else{
+                    resp.sendRedirect("/SWP391/Home/Cart.jsp?error=There are shops not available");
                 }
-                wallet.add(amount*-1);
-                new WalletDao().UpdateAmount(null,null);
-                Cart.getInstance().DeleteCart();
-            }else{
-                resp.sendRedirect("/SWP391/Home/Cart.jsp?error=There are shops not available");
-            }
-        }else{
-            resp.sendRedirect("/SWP391/Home/Cart.jsp?error=Wallet not having enough");
-        }
-        session.setAttribute("CurrentOrders", new OrderDao().getLatest(current.getID(), "User", bills.size()));
+            }   
         resp.sendRedirect("/SWP391/ShowOrders");
     }
 

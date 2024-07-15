@@ -260,6 +260,26 @@
         <servlet-name>AddFood</servlet-name>
         <servlet-class>Control.Cart.AddFood</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>setShipperStatus</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.setShipperStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowShipperOrderDetails</servlet-name>
+        <servlet-class>Control.Cart.ShowShipperOrderDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>shipperReceive</servlet-name>
+        <servlet-class>Control.Payment.shipperReceive</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>shipperDone</servlet-name>
+        <servlet-class>Control.Payment.shipperDone</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>orderCash</servlet-name>
+        <servlet-class>Control.Payment.orderCash</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -471,6 +491,26 @@
     <servlet-mapping>
         <servlet-name>AddFood</servlet-name>
         <url-pattern>/AddFood</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>setShipperStatus</servlet-name>
+        <url-pattern>/setShipperStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowShipperOrderDetails</servlet-name>
+        <url-pattern>/ShowShipperOrderDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shipperReceive</servlet-name>
+        <url-pattern>/shipperReceive</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shipperDone</servlet-name>
+        <url-pattern>/shipperDone</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>orderCash</servlet-name>
+        <url-pattern>/orderCash</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

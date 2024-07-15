@@ -45,10 +45,12 @@
                         <%=order%><br>
                         <button class="bill" type="submit">Detail</button>
                         </form>
+                        <%if(order.getStatus().equals("Cooking")){%>
                         <form action="/SWP391/DenyOrder">
                             <input name="orderID" type="hidden" value="<%=order.getOrderID()%>"/>
                             <button class="bill" type="submit">Deny</button>
                         </form>
+                        <%}%>
                         </div>
                     <%}%>
                 </div>

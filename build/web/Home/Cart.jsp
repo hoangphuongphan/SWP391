@@ -106,7 +106,11 @@
                                     <div class="right"><p class="bold" id="total"><%=ship + total%></p></div>
                                 </div>
                                 <p style="color: #D6D3D1; font-size: 1rem;">Shipping and taxes are included in the checkout</p>
-                                <button class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
+                                <form action="/SWP391/order">
+                                    <input type="hidden" value="<%=location%>" readonly="true" name="location"/>
+                                    <input name="total" type="hidden" id="total" value="<%=ship + total%>"/>
+                                    <button id="payOnline" class="button" style="background-color: red; border: none;" type="submit">Pay on Delivery</button>
+                                </form>
                                 <form action="/SWP391/order">
                                     <input type="hidden" value="<%=location%>" readonly="true" name="location"/>
                                     <input name="total" type="hidden" id="total" value="<%=ship + total%>"/>

@@ -15,12 +15,13 @@ public class Order {
     private int OrderID, total;
     private User user;
     private Shop shop;
+    private Shipper shipper;
     private HashMap<Integer,Integer> order;
     private Date time;
     private String status;
     private String shipLocation;
 
-    public Order(User user, Shop shop, HashMap<Integer,Integer> items, int total, String shipLocation) {
+    public Order(User user, Shop shop, HashMap<Integer,Integer> items, int total, String shipLocation, Shipper shipper) {
         this.user = user;
         this.order = items;
         this.time = null;
@@ -28,9 +29,10 @@ public class Order {
         this.shop = shop;
         this.total = total;
         this.shipLocation = shipLocation;
+        this.shipper = shipper;
     }
 
-    public Order(int OrderID, User user, HashMap<Integer, Integer> order, Date time, String status, Shop shop, int total, String shipLocation) {
+    public Order(int OrderID, User user, HashMap<Integer, Integer> order, Date time, String status, Shop shop, int total, String shipLocation, Shipper shipper) {
         this.OrderID = OrderID;
         this.user = user;
         this.order = order;
@@ -39,8 +41,17 @@ public class Order {
         this.shop = shop;
         this.total = total;
         this.shipLocation = shipLocation;
+        this.shipper = shipper;
     }
 
+    public Shipper getShipper() {
+        return shipper;
+    }
+
+    public String getShipLocation() {
+        return shipLocation;
+    }
+    
     public int getTotal() {
         return total;
     }
@@ -67,6 +78,10 @@ public class Order {
 
     public String getStatus() {
         return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

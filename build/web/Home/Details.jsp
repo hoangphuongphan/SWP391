@@ -28,7 +28,6 @@
         FoodDao dao = new FoodDao();
         int amount = 0;
         %>
-        <%@include file="navbar.jsp" %>
         <div class="container">
             <h1>Billing</h1>
             <div class="left box">
@@ -55,6 +54,8 @@
             <div class="right box">
                 <h2><%=order.getTime()%></h2>
                 <h2><%=order.getStatus()%></h2>
+                <h2>Your Shipper : </h2> 
+                <a href="/SWP391/Home/Shipper.jsp?ShipperID=<%=order.getShipper().getID()%>"><%=order.getShipper().getName()%></a>
             </div>
         </div>
     </body>

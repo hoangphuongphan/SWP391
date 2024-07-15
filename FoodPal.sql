@@ -109,6 +109,7 @@ create table Orders(
 	ShipLocation nvarchar(200) not null,
 	Status nvarchar(20) Check(Status in ('Cooking','Shipping','Done','Denied')),
 	Total int,
+	ShipperID int foreign key references Shipper(ShipperID),
 	primary key (OrderID)
 )
 

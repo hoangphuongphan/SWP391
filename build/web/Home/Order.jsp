@@ -15,6 +15,7 @@
     OrderDao dao = new OrderDao();
     User current = (User) session.getAttribute("currentUser");
     ArrayList<Order> list = dao.getOrderList(current.getID(),"User");
+    ArrayList<Order> walletList = (ArrayList<Order>) session.getAttribute("CurrentOrders");
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,6 +45,18 @@
                 </div>
             </div>
         </div>
+                <div>
+                    <%if(walletList!=null){%>
+                    <%for(Order order : walletList){%>
+                        <form action="/SWP391/action">
+                        <div class="block">
+                        <input name="orderID" type="hidden" value="<%=order.getOrderID()%>"/>
+                        <%=order%><br>
+                        <button class="bill" type="submit">Confirm Receive</button>
+                        </div>
+                        </form>
+                    <%}}%>
+                </div>
     </div>
     </body>
 </html>

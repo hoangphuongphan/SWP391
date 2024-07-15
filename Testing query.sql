@@ -8,8 +8,10 @@ as C on B.FoodID = C.FoodID Where ShopID = 1
 select * from Orders as A join OrdersDetail as B on A.OrderID = B.OrderID where A.OrderID = 1007
 
 Select * from Orders where UserID = 1 AND Status <> 'Denied'
-select * from Orders
+2012
 select * from OrdersDetail
+
+update Orders set ShipperID = 1
 
 delete from OrdersDetail where OrderID = 1004
 delete from Orders where OrderID = 1004
@@ -21,6 +23,7 @@ insert into Wallet values(1,1,1000000)
 
 select * from Shipper
 select * from Account
+
 
 select * from Category
 
@@ -48,15 +51,18 @@ delete from Users where UserID = 1004
 
 update Food set Status = 1
 select* from Food
-select * from Shipper
+select * from Shipper Order by NewID()
 select * from Account
+
+select * from Users
+update Users set status = 1
 
 select * from Account where Username = 'shopanvat'
 
 select * from Discount
 select * from DiscountOwner
 
-select * from Orders
+select top 1 * from Orders where UserID = 1 Order By OrderID Desc
 select * from OrdersDetail
 
 
@@ -133,3 +139,5 @@ insert into Admin values ('Phuong','php_am1')
 update RateFood set FoodID = 2004 where FoodID = 1005
 update Review set FoodID = 2004 where FoodID = 1005
 select * from Food where ShopID = 1 and CateID = 1 and Price = 15000.00 and Foodname = 'banh trang cuon nuong'
+
+update Orders set Status = 'Cooking'
