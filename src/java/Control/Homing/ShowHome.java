@@ -5,7 +5,7 @@
 package Control.Homing;
 
 import Dao.FoodDao;
-import Model.Food;
+import Model.MenuFood;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -22,8 +22,8 @@ public class ShowHome extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         FoodDao fa = new FoodDao();
-        List<Food> nfl = fa.get5NewItems();
-        List<Food> ffl = fa.get5RandomItems();
+        List<MenuFood> nfl = fa.get5NewItems();
+        List<MenuFood> ffl = fa.get5RandomItems();
         req.setAttribute("nfl", nfl);
         req.setAttribute("ffl", ffl);
         req.getRequestDispatcher("Home/menu.jsp").forward(req, resp);
