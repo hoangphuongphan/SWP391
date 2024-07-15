@@ -2,38 +2,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Control.Registering;
+package Control.ChangeUsrInfo;
 
+import Dao.ShopDao;
+import Model.Shop;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author phoan
  */
-public class ConfirmShopEmail extends HttpServlet {
+public class BanShop extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(true);
-        session.setAttribute("username", req.getParameter("username"));
-        session.setAttribute("password", req.getParameter("password"));
-        session.setAttribute("email", req.getParameter("email"));
-        session.setAttribute("phone", req.getParameter("phone"));
-        session.setAttribute("location", req.getParameter("location"));
-        if(req.getParameter("location").equals("empty"))
-            resp.sendRedirect("Login/ShopRegister.jsp");
-        req.getRequestDispatcher("sendOTPShop").forward(req, resp);
+        int ShopID = Integer.parseInt(req.getParameter("ShopID"));
+        String action = req.getParameter("action");
+        ShopDao dao = new ShopDao();
+        Shop shop = dao.getShopByID(ShopID);
+        if(action.equals("ban")){
+            shop.setStatus(3);
+        }else{
+            shop.setStatus(2);
+        }
+        dao.UpdateShop(shop);
+        resp.sendRedirect("Admin/Shops.jsp");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
-
 }

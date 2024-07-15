@@ -42,34 +42,45 @@ public class Login extends HttpServlet {
         AdminDao dao = new AdminDao();
         Admin admin = dao.getAdminByCode(username);
         if(admin!=null){
+            HttpSession session = req.getSession(true);
             resp.sendRedirect("Admin/Dashboard.jsp");
+            session.setAttribute("Admin", true);
         }
         if(acc!= null && password.equals(acc.getPassword())){
             HttpSession session = req.getSession(true);
             switch (acc.getType()) {
                 case 1:
                     User user = new UserDao().getUserByUsername(username);
-                    CurrentUser.initialize(user);
-                    session.setAttribute("currentUser", user);
-                    Cart.getInstance();
-                    Wallet.initialize(user.getID(), "User");
-                    Cart.getInstance().Add(1, 4);
-                    Cart.getInstance().Add(2, 3);
-                    req.getRequestDispatcher("ShowHome").forward(req, resp);
+                    if(user.getStatus()==1){
+                        CurrentUser.initialize(user);
+                        session.setAttribute("currentUser", user);
+                        Cart.getInstance();
+                        Wallet.initialize(user.getID(), "User");
+                        Cart.getInstance().Add(1, 4);
+                        Cart.getInstance().Add(2, 3);
+                        req.getRequestDispatcher("ShowHome").forward(req, resp);
+                    }else
+                        resp.sendRedirect("/SWP391/Error.jsp?Error=Banned");
                     break;
                 case 2:
                     Shop shop = new ShopDao().getShopByUsername(username);
-                    session.setAttribute("currentShop", shop);
-                    Wallet.initialize(shop.getShopID(), "Shop");
-                    CurrentShop.initialize(shop);
-                    req.getRequestDispatcher("ShowShopHome").forward(req, resp);
+                    if(shop.getStatus()<3){
+                        session.setAttribute("currentShop", shop);
+                        Wallet.initialize(shop.getShopID(), "Shop");
+                        CurrentShop.initialize(shop);
+                        req.getRequestDispatcher("ShowShopHome").forward(req, resp);
+                    }else
+                        resp.sendRedirect("/SWP391/Error.jsp?Error=Banned");
                     break;
                 case 3:
                     Shipper ship = new ShipperDao().getShipperByUsername(username);
-                    session.setAttribute("currentShipper", ship);
-                    CurrentShipper.initialize(ship);
-                    Wallet.initialize(ship.getID(), "Shipper");
-                    req.getRequestDispatcher("ShowShipperHome").forward(req, resp);
+                    if(ship.getStaus()<3){
+                        session.setAttribute("currentShipper", ship);
+                        CurrentShipper.initialize(ship);
+                        Wallet.initialize(ship.getID(), "Shipper");
+                        req.getRequestDispatcher("ShowShipperHome").forward(req, resp);
+                    }else
+                        resp.sendRedirect("/SWP391/Error.jsp?Error=Banned");
                     break;
                 default:
                     resp.sendRedirect("Login/Login.jsp");

@@ -12,7 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="/SWP391/Logout">Logout</a>
+        <a href="/SWP391/Logout">Logout</a><br>
+        <a href="/SWP391/Admin/Shops.jsp">Shop Management</a><br>
+        <a href="/SWP391/Admin/ApplyingShop.jsp">Shop Approving</a>
         <h1>Hello World!</h1>
     </body>
 </html>

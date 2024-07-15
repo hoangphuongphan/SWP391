@@ -280,6 +280,14 @@
         <servlet-name>orderCash</servlet-name>
         <servlet-class>Control.Payment.orderCash</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ApproveShop</servlet-name>
+        <servlet-class>Control.Registering.ApproveShop</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BanShop</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.BanShop</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -511,6 +519,14 @@
     <servlet-mapping>
         <servlet-name>orderCash</servlet-name>
         <url-pattern>/orderCash</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveShop</servlet-name>
+        <url-pattern>/ApproveShop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BanShop</servlet-name>
+        <url-pattern>/BanShop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

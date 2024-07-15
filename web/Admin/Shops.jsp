@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ApplyingShop
-    Created on : Jul 11, 2024, 9:35:24 PM
+    Document   : Shops
+    Created on : Jul 16, 2024, 1:16:52 AM
     Author     : phoan
 --%>
 
@@ -15,10 +15,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Applying Shops</h1>
+        <h1>Shops</h1>
         <%
             ShopDao sDao = new ShopDao();
-            ArrayList<Shop> shops = sDao.getApplyingShop();
+            ArrayList<Shop> shops = sDao.getShops();
         %>
         <table>
             <tr>
@@ -31,10 +31,19 @@
                 <td><%=shop.getShopID()%></td>
                 <td><%=shop.getName()%></td>
                 <td>
-                    <form action="action">
+                    <%if(shop.getStatus()<3){%>
+                    <form action="/SWP391/BanShop">
                         <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>"/>
-                        <input type="submit" value="Approved" />
+                        <input type="hidden" name="action" value="ban"/>
+                        <input type="submit" value="Ban" />
                     </form>
+                    <%}else{%>
+                    <form action="/SWP391/BanShop">
+                        <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>"/>
+                        <input type="hidden" name="action" value="unban"/>
+                        <input type="submit" value="Unban" />
+                    </form>
+                    <%}%>
                 </td>
             </tr>
         <%}%>
