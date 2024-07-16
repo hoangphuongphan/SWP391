@@ -17,24 +17,27 @@ Author     : Admin
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
+        <%
+            List<Food> searchResults = (List<Food>) request.getAttribute("searchResults");
+            List<Shop> ShopSearch = (List<Shop>) request.getAttribute("ShopList");
+        %>
         <jsp:include page="${navbar.jsp}"/>
         <h1>Search Results</h1>
         <div id="search-results">
-            
+
             <c:set var="searchResults" value="${searchResult}"/>
             <c:if test="${not empty searchResult}">
                 <h3>Search result for food</h3>
                 <c:set var="items" value="${searchResult}"/>
                 <jsp:include page="foodListDisplay.jsp"/>
             </c:if>
-            
+
             <% 
-                }
                 if(ShopSearch !=null && !ShopSearch.isEmpty()){
                     for(Shop shop : ShopSearch){%>
             <div class="shop-item">
                 <h2><%= shop.getName() %></h2>
-                <p>Price: <%= shop.getLocation() %></p>
+                <p>Location: <%= shop.getLocation() %></p>
                 <!-- Hiển thị các thông tin khác về mỗi món ăn -->
                 <form action="/SWP391/ShowShop">
                     <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>">

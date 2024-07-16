@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Dao.ShopDao" %>
-<%@page import="Model.Shop" %>
+<%@page import="Dao.ShipperDao" %>
+<%@page import="Model.Shipper" %>
 <%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
@@ -17,29 +17,29 @@
     <body>
         <h1>Shops</h1>
         <%
-            ShopDao sDao = new ShopDao();
-            ArrayList<Shop> shops = sDao.getShops();
+            ShipperDao sDao = new ShipperDao();
+            ArrayList<Shipper> ships = sDao.getShippers();
         %>
         <table>
             <tr>
-                <th>ShopID</th>
-                <th>ShopName</th>
+                <th>ShipperID</th>
+                <th>ShipperName</th>
                 <th>Ban Status</th>
             </tr>
-        <%for(Shop shop : shops){%>
+        <%for(Shipper ship : ships){%>
             <tr>
-                <td><%=shop.getShopID()%></td>
-                <td><%=shop.getName()%></td>
+                <td><%=ship.getID()%></td>
+                <td><%=ship.getName()%></td>
                 <td>
-                    <%if(shop.getStatus()<3){%>
+                    <%if(ship.getStaus()<3){%>
                     <form action="/SWP391/BanShop">
-                        <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>"/>
+                        <input type="hidden" name="ShipID" value="<%=ship.getID()%>"/>
                         <input type="hidden" name="action" value="ban"/>
                         <input type="submit" value="Ban" />
                     </form>
                     <%}else{%>
                     <form action="/SWP391/BanShop">
-                        <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>"/>
+                        <input type="hidden" name="ShipID" value="<%=ship.getID()%>"/>
                         <input type="hidden" name="action" value="unban"/>
                         <input type="submit" value="Unban" />
                     </form>

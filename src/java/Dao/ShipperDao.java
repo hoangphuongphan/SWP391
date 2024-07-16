@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +26,38 @@ public class ShipperDao {
     public ShipperDao() {
         instance = Database.getInstance();
         con = instance.getCon();
+    }
+    
+    public ArrayList<Shipper> getShippers(){
+        String query = "select * from Shipper as A join Account as C on A.AccountID = C.AccountID where status <> 4";
+        ArrayList<Shipper> list = new ArrayList<>();
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+                list.add(new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status")));
+        }catch (SQLException ex) {
+            Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return list;
+    }
+    
+    public ArrayList<Shipper> getApplyingShipper(){
+        String query = "select * from Shipper as A join Account as C on A.AccountID = C.AccountID where status = 4";
+        ArrayList<Shipper> list = new ArrayList<>();
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+                list.add(new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status")));
+        }catch (SQLException ex) {
+            Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return list;
     }
     
     public Shipper getBestFreeShipper(){

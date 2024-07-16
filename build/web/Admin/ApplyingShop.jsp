@@ -31,7 +31,7 @@
                 <td><%=shop.getShopID()%></td>
                 <td><%=shop.getName()%></td>
                 <td>
-                    <form action="action">
+                    <form action="/SWP391/ApproveShop">
                         <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>"/>
                         <input type="submit" value="Approved" />
                     </form>

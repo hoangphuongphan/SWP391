@@ -288,6 +288,14 @@
         <servlet-name>BanShop</servlet-name>
         <servlet-class>Control.ChangeUsrInfo.BanShop</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ApproveShipper</servlet-name>
+        <servlet-class>Control.Registering.ApproveShipper</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BanShipper</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.BanShipper</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -527,6 +535,14 @@
     <servlet-mapping>
         <servlet-name>BanShop</servlet-name>
         <url-pattern>/BanShop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveShipper</servlet-name>
+        <url-pattern>/ApproveShipper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BanShipper</servlet-name>
+        <url-pattern>/BanShipper</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

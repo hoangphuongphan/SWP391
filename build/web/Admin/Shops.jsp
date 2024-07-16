@@ -24,7 +24,7 @@
             <tr>
                 <th>ShopID</th>
                 <th>ShopName</th>
-                <th>Approved</th>
+                <th>Ban Status</th>
             </tr>
         <%for(Shop shop : shops){%>
             <tr>

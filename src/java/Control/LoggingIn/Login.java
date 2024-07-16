@@ -43,11 +43,13 @@ public class Login extends HttpServlet {
         Admin admin = dao.getAdminByCode(username);
         if(admin!=null){
             HttpSession session = req.getSession(true);
+            session.setMaxInactiveInterval(86400);
             resp.sendRedirect("Admin/Dashboard.jsp");
             session.setAttribute("Admin", true);
         }
         if(acc!= null && password.equals(acc.getPassword())){
             HttpSession session = req.getSession(true);
+            session.setMaxInactiveInterval(86400);
             switch (acc.getType()) {
                 case 1:
                     User user = new UserDao().getUserByUsername(username);

@@ -55,7 +55,6 @@
                                 Welcome ${sessionScope.currentUser.getEmail()}
                             </c:otherwise>
                         </c:choose>
-                        Welcome ${sessionScope.currentUser.getName()}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="/SWP391/Home/TopUp.jsp">Top Up</a></li>

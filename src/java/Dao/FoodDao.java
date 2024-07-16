@@ -109,7 +109,7 @@ public class FoodDao {
     }
     
     public List<MenuFood> get5RandomItems() {
-        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid order by newid()";
+        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 order by newid()";
         List<MenuFood> ffl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);
@@ -130,7 +130,7 @@ public class FoodDao {
     }
     
     public List<MenuFood> get5NewItems() {
-        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid";
+        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 desc";
         List<MenuFood> nfl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);
@@ -150,7 +150,7 @@ public class FoodDao {
         return null;
     }
     public List<Food> getAllFood() {
-        String sql = "select * from Food";
+        String sql = "select * from Food and Status = 1";
         List<Food> afl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);

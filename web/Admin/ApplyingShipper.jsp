@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Dao.ShopDao" %>
-<%@page import="Model.Shop" %>
+<%@page import="Dao.ShipperDao" %>
+<%@page import="Model.Shipper" %>
 <%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
@@ -17,22 +17,22 @@
     <body>
         <h1>Applying Shops</h1>
         <%
-            ShopDao sDao = new ShopDao();
-            ArrayList<Shop> shops = sDao.getApplyingShop();
+            ShipperDao sDao = new ShipperDao();
+            ArrayList<Shipper> ships = sDao.getApplyingShipper();
         %>
         <table>
             <tr>
-                <th>ShopID</th>
-                <th>ShopName</th>
+                <th>ShipperID</th>
+                <th>ShipperName</th>
                 <th>Approved</th>
             </tr>
-        <%for(Shop shop : shops){%>
+        <%for(Shipper ship : ships){%>
             <tr>
-                <td><%=shop.getShopID()%></td>
-                <td><%=shop.getName()%></td>
+                <td><%=ship.getID()%></td>
+                <td><%=ship.getName()%></td>
                 <td>
-                    <form action="/SWP391/ApproveShop">
-                        <input type="hidden" name="ShopID" value="<%=shop.getShopID()%>"/>
+                    <form action="action">
+                        <input type="hidden" name="ShipID" value="<%=ship.getID()%>"/>
                         <input type="submit" value="Approved" />
                     </form>
                 </td>

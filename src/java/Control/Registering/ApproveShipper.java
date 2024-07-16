@@ -4,7 +4,9 @@
  */
 package Control.Registering;
 
+import Dao.ShipperDao;
 import Dao.ShopDao;
+import Model.Shipper;
 import Model.Shop;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,19 +19,19 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author phoan
  */
-public class ApproveShop extends HttpServlet {
-
-    @Override
+public class ApproveShipper extends HttpServlet {
+@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int ShopID = Integer.parseInt(req.getParameter("ShopID"));
-        Shop shop = new ShopDao().getShopByID(ShopID);
-        shop.setStatus(2);
-        new ShopDao().UpdateShop(shop);
-        resp.sendRedirect("Admin/ApplyingShop.jsp");
+        int ShipID = Integer.parseInt(req.getParameter("ShipID"));
+        Shipper ship = new ShipperDao().getShipperByID(ShipID);
+        ship.setStaus(2);
+        new ShipperDao().updateShipper(ship);
+        resp.sendRedirect("Admin/ApplyingShipper.jsp");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
+
 }

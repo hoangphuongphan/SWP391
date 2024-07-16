@@ -141,3 +141,9 @@ update Review set FoodID = 2004 where FoodID = 1005
 select * from Food where ShopID = 1 and CateID = 1 and Price = 15000.00 and Foodname = 'banh trang cuon nuong'
 
 update Orders set Status = 'Cooking'
+
+select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 order by newid()
+
+select COALESCE(avg(ratefood.rate), 0) as AvgRate , food.foodid, food.foodname, shop.name, food.price from 
+food inner join shop on food.shopid=shop.shopid left join RateFood on food.foodid=RateFood.FoodID
+group by food.foodid, food.foodname, shop.name, food.price
