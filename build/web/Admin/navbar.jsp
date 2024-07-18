@@ -55,6 +55,9 @@
                 <li class="nav-item col-2">
                     <a class="nav-link" href="/SWP391/Admin/Users.jsp">Users</a>
                 </li>
+                <li class="nav-item col-2">
+                    <a class="nav-link" href="/SWP391/Logout">Log out</a>
+                </li>
                 <li class="nav-item col-1">
                     <i class="bi bi-search"/>
                 </li>
