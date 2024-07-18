@@ -43,6 +43,9 @@
 					<% if ("true".equals(partner)) { %>
 						<%@include file="Partner.jsp" %>
 					<% } %>
+                                        <% if ("true".equals(partner)) { %>
+						<%@include file="Shipper.jsp" %>
+					<% } %>
 					<%@include file="Back.jsp" %>
 				</form>
 			</div>

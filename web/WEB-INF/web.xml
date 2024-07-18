@@ -296,6 +296,26 @@
         <servlet-name>BanShipper</servlet-name>
         <servlet-class>Control.ChangeUsrInfo.BanShipper</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmShipEmail</servlet-name>
+        <servlet-class>Control.Registering.ConfirmShipEmail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendOTPShip</servlet-name>
+        <servlet-class>Control.Registering.SendOTPShip</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterShip</servlet-name>
+        <servlet-class>Control.Registering.RegisterShip</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BanUser</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.BanUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RequireTransaction</servlet-name>
+        <servlet-class>Control.Payment.RequireTransaction</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -543,6 +563,26 @@
     <servlet-mapping>
         <servlet-name>BanShipper</servlet-name>
         <url-pattern>/BanShipper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmShipEmail</servlet-name>
+        <url-pattern>/ConfirmShipEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendOTPShip</servlet-name>
+        <url-pattern>/SendOTPShip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterShip</servlet-name>
+        <url-pattern>/RegisterShip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BanUser</servlet-name>
+        <url-pattern>/BanUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequireTransaction</servlet-name>
+        <url-pattern>/RequireTransaction</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

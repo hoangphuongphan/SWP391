@@ -1,5 +1,6 @@
 package Dao;
 
+import Model.CurrentUser;
 import Model.User;
 import java.sql.Connection;
 import java.util.logging.Level;
@@ -8,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,6 +23,22 @@ public class UserDao {
     public UserDao() {
         instance = Database.getInstance();
         con = instance.getCon();
+    }
+    
+    public ArrayList<User> getUsers(){
+        String query = "select * from Users as A join Account as B on B.AccountID = A.AccountID";
+        ArrayList<User> users = new ArrayList<>();
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+                users.add(new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
+                        , rs.getInt("UserID"), rs.getInt("status")));
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return users;
     }
     
     public User getUserByID(int id){
@@ -118,6 +136,24 @@ public class UserDao {
             return result == 1;
         } catch (SQLException e) {
             return false;
+        }
+    }
+    
+    public void updateUser(User user){
+        if(user == null)
+            user = CurrentUser.getCurrent();
+        String query = "Update Users set Name = ?, Phone = ?, Email = ?, Location = ?, status = ? where UserID = ?";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, user.getName());
+            st.setString(2, user.getPhone());
+            st.setString(3, user.getEmail());
+            st.setString(4, user.getLocation());
+            st.setInt(5, user.getStatus());
+            st.setInt(6, user.getID());
+            st.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

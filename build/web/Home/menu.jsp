@@ -21,9 +21,10 @@
         #homebody{
             width: 100%;
         }
-        img{
-            height: 200px;
-            width: auto;
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
         }
         .image-container {
             overflow: hidden;
@@ -52,20 +53,20 @@
         <c:set var="nfl" value="${nfl}"/>
         <div class="container px-4" id="homebody">
             <div class="container col-lg-12 m-4" style="color: blanchedalmond" id="feature-food-container">
-                <div class="container col-lg-10 border-bottom-0 m-auto" 
+                <div class="container-fluid border-bottom-0 m-auto"
                      style="background-color: #9299ff; border-start-end-radius: 10px; border-start-start-radius: 10px;">
-                    <div class="p-3 flex-fill" style="text-align: left; color: #ffea03; font-weight: bold">
+                    <div class="p-3 flex-fill text-dark" style="text-align: left;; font-weight: bold">
                         <h4>What to eat today</h4>
                     </div>
                 </div>
                 <div class="row row-flex-box col-lg-10 p-1 m-auto center-block d-flex justify-content-around
-                     bg-light border-top-0" style="border-end-start-radius: 10px; border-end-end-radis:10px">
+                     bg-light border-top-0" style="border-end-start-radius: 10px; border-end-end-radis:10px; color: black;">
                     <c:forEach var="ffl" items="${ffl}">
-                        <div class="image-container d-inline-flex justify-content-around m-auto border rounded col-lg-5 p-1"
+                        <div class="image-container d-inline-flex justify-content-around m-auto border rounded col-lg-4 p-1"
                              style="background-color: #efefef;">
                             <img src="${ffl.imgurl}"
                                  alt="alt" class="img d-inline-block" />
-                            <div class="detail-box d-inline-block">
+                            <div class="detail-box d-inline-block px-4">
                                 <h4 style="font-weight: bold">${ffl.foodName}</h4>
                                 <p>Price: ${ffl.price}</p>
                                 <p>Shop: ${ffl.shopName}</p>
@@ -80,20 +81,20 @@
                 </div>
             </div>
             <div class="container col-lg-12 m-4" style="color: blanchedalmond" id="new-food-container">
-                <div class="container col-lg-10 border-bottom-0 m-auto" 
+                <div class="container-fluid border-bottom-0 m-auto"
                      style="background-color: #9299ff; border-start-end-radius: 10px; border-start-start-radius: 10px;">
-                    <div class="p-3 flex-fill" style="text-align: left; color: #ffea03; font-weight: bold">
+                    <div class="p-3 flex-fill text-dark" style="text-align: left;; font-weight: bold">
                         <h4>New food on menu</h4>
                     </div>
                 </div>
                 <div class="row row-flex-box col-lg-10 p-1 m-auto center-block d-flex justify-content-around
-                     bg-light border-top-0" style="border-end-start-radius: 10px; border-end-end-radis:10px">
+                     bg-light border-top-0 text-dark" style="border-end-start-radius: 10px; border-end-end-radis:10px">
                     <c:forEach var="nfl" items="${nfl}">
-                        <div class="image-container d-inline-flex justify-content-around m-auto border rounded col-lg-5 p-1"
+                        <div class="image-container d-inline-flex justify-content-around m-auto border rounded col-lg-4 p-1"
                              style="background-color: #efefef;">
                             <img src="${nfl.imgurl}"
                                  alt="alt" class="img d-inline-block" />
-                            <div class="detail-box d-inline-block">
+                            <div class="detail-box d-inline-block px-4">
                                 <h4 style="font-weight: bold">${nfl.foodName}</h4>
                                 <p>Price: ${nfl.price}</p>
                                 <p>Shop: ${nfl.shopName}</p>
@@ -106,9 +107,6 @@
                         </div>
                     </c:forEach>
                 </div>
-            </div>
-            <div class="container col-lg-12 m-4" style="color: blanchedalmond">
-
             </div>
         </div>
         <jsp:include page="homefooter.jsp"/>

@@ -29,7 +29,7 @@ public class WalletDao {
     
     public void CreateWallet(int ID, String type){
         int wt = 0;
-        String query = "Insert into Wallet values (???)";
+        String query = "Insert into Wallet values (?,?,?)";
         switch (type) {
             case "User":
                 wt = 1;
@@ -43,8 +43,8 @@ public class WalletDao {
         try{
             PreparedStatement st = con.prepareStatement(query);
             st.setInt(1, ID);
-            st.setInt(2, 0);
-            st.setInt(3, wt);
+            st.setInt(2, wt);
+            st.setInt(3, 0);
             st.execute();
         }catch (SQLException ex) {
             Logger.getLogger(WalletDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,6 +63,8 @@ public class WalletDao {
                 break;
             case "Shipper":
                 wt = 3;
+            default:
+                wt = 0;
         }
         try{
             PreparedStatement st = con.prepareStatement(query);
@@ -77,17 +79,30 @@ public class WalletDao {
         return null;
     }
     
-    public void UpdateAmount(User user, Wallet wallet){
-        if(user == null)
-            user = CurrentUser.getCurrent();
+    public void UpdateAmount(int UserID, String type,Wallet wallet){
+        int wt ;
+        switch (type) {
+            case "User":
+                wt = 1;
+                break;
+            case "Shop":
+                wt = 2;
+                break;
+            case "Shipper":
+                wt = 3;
+            default:
+                wt = 0;
+        }
+        if(UserID == -1)
+            UserID = CurrentUser.getCurrent().getID();
         if(wallet == null)
             wallet = Wallet.getInstance();
         String query = "update Wallet set Amount = ? where UserID = ? and Type = ?";
         try{
             PreparedStatement st = con.prepareStatement(query);
             st.setInt(1, wallet.getAmount());
-            st.setInt(2, user.getID());
-            st.setInt(3, user.getType());
+            st.setInt(2, UserID);
+            st.setInt(3, wt);
             st.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(WalletDao.class.getName()).log(Level.SEVERE, null, ex);

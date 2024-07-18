@@ -35,6 +35,7 @@ public class order extends HttpServlet {
         HttpSession session = req.getSession();
         User current = (User) session.getAttribute("currentUser");
         OrderDao dao = new OrderDao();
+        WalletDao wDao = new WalletDao();
         Wallet wallet = Wallet.getInstance();
         HashMap<Integer,HashMap<Integer,Integer>> bills = BillSplit.SplitBill();
         int amount = Integer.parseInt(req.getParameter("total"));
@@ -48,7 +49,10 @@ public class order extends HttpServlet {
                     dao.createOrder(location, bill.getKey(),bill.getValue(), new ShipperDao().getBestFreeShipper());
                 }
                 wallet.add(amount*-1);
-                new WalletDao().UpdateAmount(null,null);
+                wDao.UpdateAmount(-1,"User",null);
+                wallet = wDao.getWalletByID(0, "admin");
+                wallet.add(amount);
+                wDao.UpdateAmount(0, "admin", wallet);
                 Cart.getInstance().DeleteCart();
             }else{
                 resp.sendRedirect("/SWP391/Home/Cart.jsp?error=There are shops not available");

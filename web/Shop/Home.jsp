@@ -23,6 +23,9 @@
         ArrayList<Order> list = dao.getOrderList(current.getShopID(),"Shop");
         %>
         <a href="/SWP391/Logout">Logout</a>
+        <a href="/SWP391/Shop/Profile.jsp">Profile</a>
+        <a href="/SWP391/Shop/History.jsp">History</a>
+        <a href="/SWP391/Shop/Wallet.jsp">Wallet</a>
         <div class="container">
         <div class="orderinfo">
             <h1>Orders</h1>

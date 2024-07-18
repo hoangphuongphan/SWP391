@@ -4,15 +4,17 @@
  */
 package Model;
 
+import Control.Generator;
+
 /**
  *
  * @author phoan
  */
 public class Shipper extends Account{
     private int ID, staus;
-    private String name, phone, VehicleID, avatar;
+    private String name, phone, VehicleID, avatar, email;
 
-    public Shipper(int ID, String name, String phone, String VehicleID, int id, String username, String password, String avatar, int status) {
+    public Shipper(int ID, String name, String phone, String VehicleID, int id, String username, String password, String avatar, int status, String email) {
         super(id, username, password, "Shipper");
         this.ID = ID;
         this.name = name;
@@ -20,14 +22,19 @@ public class Shipper extends Account{
         this.VehicleID = VehicleID;
         this.avatar = avatar;
         this.staus = status;
+        this.email = email;
     }
 
-    public Shipper(String username, String password, String name, String phone, String VehicleID, int status) {
+    public Shipper(String username, String password, String phone, String VehicleID,  String email) {
         super(username, password, "Shipper");
-        this.name = name;
+        this.name = Generator.getInstance().getNewDisplayName();
         this.phone = phone;
         this.VehicleID = VehicleID;
-        this.staus = status;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getAvatar() {

@@ -36,7 +36,7 @@ public class ShipperDao {
             ResultSet rs = st.executeQuery();
             while(rs.next())
                 list.add(new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
-                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status")));
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"), rs.getString("Email")));
         }catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -52,7 +52,7 @@ public class ShipperDao {
             ResultSet rs = st.executeQuery();
             while(rs.next())
                 list.add(new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
-                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status")));
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"), rs.getString("Email")));
         }catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -68,7 +68,7 @@ public class ShipperDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 shipper = new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
-                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"));
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"), rs.getString("Email"));
         }catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -85,7 +85,7 @@ public class ShipperDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 shipper = new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
-                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"));
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"), rs.getString("Email"));
         } catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -102,7 +102,7 @@ public class ShipperDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 shipper = new Shipper(rs.getInt("ShipperID"), rs.getString("Name"), rs.getString("Phone"), rs.getString("VehicleID"),
-                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"));
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Avatar"), rs.getInt("status"), rs.getString("Email"));
         } catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -125,6 +125,23 @@ public class ShipperDao {
             st.execute();
         }catch (SQLException ex) {
             Logger.getLogger(ShipperDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void create(Shipper ship){
+        int AccountID = new AccountsDao().getAccountByUsername(ship.getUsername()).getAccountID();
+        String query = "insert into Shipper(Name,Phone,AccountID,Email,Status,VehicleID) values (?,?,?,?,?,?)";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, ship.getName());
+            st.setString(2, ship.getPhone());
+            st.setInt(3, AccountID);
+            st.setString(4, ship.getEmail());
+            st.setInt(5, 4);
+            st.setString(6, ship.getVehicleID());
+            st.execute();
+        }catch (SQLException ex) {
+            Logger.getLogger(ShopDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

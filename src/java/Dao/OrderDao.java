@@ -33,6 +33,35 @@ public class OrderDao {
             con = instance.getCon();
     }
     
+    public ArrayList<Order> getHistory(int ID, String type){
+        ArrayList<Order> orders = new ArrayList<>();
+        String query = "";
+        switch (type) {
+            case "User":
+                query = "select * from Orders where UserID = ? AND Status = ?";
+                break;
+            case "Shop":
+                query = "select * from Orders where ShopID = ? AND Status = ?";
+                break;
+            case "Shipper":
+                query = "select * from Orders where ShipperID = ? AND Status = ?";
+                break;
+        }
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, ID);
+            st.setString(2, "Done");
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                int OrderID = rs.getInt("OrderID");
+                orders.add(getOrderByID(OrderID));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orders;
+    }
+    
     public ArrayList<Order> getLatest(int ID, String type, int amount){
         String query = "";
         ArrayList<Order> orders = new ArrayList<>();

@@ -16,7 +16,8 @@
         <a href="/SWP391/Admin/Shops.jsp">Shop Management</a><br>
         <a href="/SWP391/Admin/ApplyingShop.jsp">Shop Approving</a><br>
         <a href="/SWP391/Admin/Shippers.jsp">Shipper Management</a><br>
-        <a href="/SWP391/Admin/ApplyingShipper.jsp">Shipper Approving</a>
+        <a href="/SWP391/Admin/ApplyingShipper.jsp">Shipper Approving</a><br>
+        <a href="/SWP391/Admin/Users.jsp">User Management</a>
         <h1>Hello World!</h1>
     </body>
 </html>

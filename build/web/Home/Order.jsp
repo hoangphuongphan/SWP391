@@ -48,7 +48,7 @@
                 <div>
                     <%if(walletList!=null){%>
                     <%for(Order order : walletList){%>
-                        <form action="/SWP391/action">
+                        <form action="/SWP391/RequireTransaction">
                         <div class="block">
                         <input name="orderID" type="hidden" value="<%=order.getOrderID()%>"/>
                         <%=order%><br>

@@ -27,7 +27,7 @@ public class TopUp extends HttpServlet {
         int amount = Integer.parseInt((String) session.getAttribute("TopupAmount"));
         session.removeAttribute("TopupAmount");
         Wallet.getInstance();
-        new WalletDao().UpdateAmount(null,null);
+        new WalletDao().UpdateAmount(-1,"User",null);
         resp.sendRedirect("/SWP391/ShowCart");
     }
 
