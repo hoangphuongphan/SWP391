@@ -28,26 +28,30 @@ import java.util.HashMap;
 public class orderCash extends HttpServlet {
 @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        User current = (User) session.getAttribute("currentUser");
-        OrderDao dao = new OrderDao();
-        HashMap<Integer,HashMap<Integer,Integer>> bills = BillSplit.SplitBill();
-        int amount = Integer.parseInt(req.getParameter("total"));
-        String location = req.getParameter("location");
-        ArrayList<Integer> unavails = StatusChecking.unavilShops(bills);
-        if(location.length() < 5)
-            resp.sendRedirect("/SWP391/Home/Cart.jsp?error=Location is empty");
-            else{
-                if(unavails.size()<1){
-                    for(HashMap.Entry<Integer,HashMap<Integer,Integer>> bill : bills.entrySet()){
-                        dao.createOrder(location, bill.getKey(),bill.getValue(), new ShipperDao().getBestFreeShipper());
+        try{
+            HttpSession session = req.getSession();
+            User current = (User) session.getAttribute("currentUser");
+            OrderDao dao = new OrderDao();
+            HashMap<Integer,HashMap<Integer,Integer>> bills = BillSplit.SplitBill();
+            int amount = Integer.parseInt(req.getParameter("total"));
+            String location = req.getParameter("location");
+            ArrayList<Integer> unavails = StatusChecking.unavilShops(bills);
+            if(location.length() < 5)
+                resp.sendRedirect("/SWP391/Home/Cart.jsp?error=Location is empty");
+                else{
+                    if(unavails.size()<1){
+                        for(HashMap.Entry<Integer,HashMap<Integer,Integer>> bill : bills.entrySet()){
+                            dao.createOrder(location, bill.getKey(),bill.getValue(), new ShipperDao().getBestFreeShipper());
+                        }
+                        Cart.getInstance().DeleteCart();
+                    }else{
+                        resp.sendRedirect("/SWP391/Home/Cart.jsp?error=There are shops not available");
                     }
-                    Cart.getInstance().DeleteCart();
-                }else{
-                    resp.sendRedirect("/SWP391/Home/Cart.jsp?error=There are shops not available");
-                }
-            }   
-        resp.sendRedirect("/SWP391/ShowOrders");
+                }   
+            resp.sendRedirect("/SWP391/ShowOrders");
+        }catch (Exception ex) {
+            resp.sendRedirect("/SWP391/Error.jsp?error=CannotOrder");
+        }
     }
 
     @Override

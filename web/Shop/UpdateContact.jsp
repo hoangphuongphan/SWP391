@@ -1,6 +1,6 @@
 <%-- 
     Document   : UpdateContact
-    Created on : Jun 27, 2024, 11:43:21 PM
+    Created on : Jun 27, 2024, 11:43:21 PM
     Author     : phoan
 --%>
 
@@ -9,42 +9,67 @@
 <%@page import="Model.Email" %>
 <%@page import="Control.Generator" %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <%
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Contact Information</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+            max-width: 500px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <jsp:include page="navbar.jsp"/>
+    <%
             Shop current = (Shop) session.getAttribute("currentShop");
             String OTP = Generator.getInstance().getOTP();
             Email mail = new Email(current.getEmail(),"Your OTP is : " + OTP, "do not reply");
             mail.run();
         %>
-        <form id="OTPinput" action="#">
-            <input id="OTP" value="<%=OTP%>" type="hidden">
-            <input id="input" type="text" name="inputOTP"/>
-            <input type="submit"/>
+    <div class="container">
+        <h1>Update Contact Information</h1>
+        <form id="OTPinputForm">
+            <div class="form-group">
+                <label for="inputOTP">Enter OTP sent to your email:</label>
+                <input id="inputOTP" type="text" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Verify OTP</button>
         </form>
-        <form id="NewPassword" action="/SWP391/UpdateShopContact" style="display: none">
-            <label>E-mail</label>
-            <input type="text" name="Email"/>
-            <label>Phone</label>
-            <input type="number" name="Phone"/>
-            <input type="submit" value="Change Password" />
+
+        <form id="updateContactForm" action="/SWP391/UpdateShopContact" style="display: none;">
+            <div class="form-group">
+                <label for="inputEmail">New E-mail:</label>
+                <input type="email" id="inputEmail" name="Email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPhone">New Phone:</label>
+                <input type="text" id="inputPhone" name="Phone" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Update Contact Information</button>
         </form>
-        <script>
-            var OTP = document.getElementById("OTP").value;
-            document.getElementById("OTPinput").addEventListener('submit', (event) =>{
-                var input = document.getElementById("input").value;
-                event.preventDefault();
-                if(OTP == input){
-                    document.getElementById("OTPinput").style.display = "none";
-                    document.getElementById("NewPassword").style.display = "block";
-                }else {
-                    alert("Incorrect OTP. Please try again." );
-                }
-            });
-        </script>
-    </body>
+    </div>
+
+    <script>
+        document.getElementById("OTPinputForm").addEventListener('submit', function(event) {
+            event.preventDefault();
+            var inputOTP = document.getElementById("inputOTP").value;
+            var OTP = "<%= Generator.getInstance().getOTP() %>"; // Generate OTP server-side
+
+            if (inputOTP === OTP) {
+                document.getElementById("OTPinputForm").style.display = "none";
+                document.getElementById("updateContactForm").style.display = "block";
+            } else {
+                alert("Incorrect OTP. Please try again.");
+            }
+        });
+    </script>
+</body>
 </html>

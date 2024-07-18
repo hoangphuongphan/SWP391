@@ -110,7 +110,7 @@ public class ShipAuthentication implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
-        if(session == null || session.getAttribute("currentShop") == null){
+        if(session == null || session.getAttribute("currentShipper") == null){
             res.sendRedirect("/SWP391/Login");
         }
         

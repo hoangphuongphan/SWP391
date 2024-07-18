@@ -5,7 +5,10 @@
 package Control.Payment;
 
 import Dao.OrderDao;
+import Dao.ShipperDao;
+import Model.CurrentShipper;
 import Model.Order;
+import Model.Shipper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -25,6 +28,9 @@ public class shipperDone extends HttpServlet {
         Order order = new OrderDao().getOrderByID(orderID);
         order.setStatus("Done");
         new OrderDao().updateOrder(order);
+        Shipper current = CurrentShipper.getInstance();
+        current.setStaus(1);
+        new ShipperDao().updateShipper(current);
         resp.sendRedirect("Shipper/Home.jsp");
     }
 

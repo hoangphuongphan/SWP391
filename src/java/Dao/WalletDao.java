@@ -39,6 +39,9 @@ public class WalletDao {
                 break;
             case "Shipper":
                 wt = 3;
+                break;
+            default:
+                wt = 0;
         }
         try{
             PreparedStatement st = con.prepareStatement(query);
@@ -63,6 +66,7 @@ public class WalletDao {
                 break;
             case "Shipper":
                 wt = 3;
+                break;
             default:
                 wt = 0;
         }
@@ -90,6 +94,7 @@ public class WalletDao {
                 break;
             case "Shipper":
                 wt = 3;
+                break;
             default:
                 wt = 0;
         }

@@ -32,7 +32,8 @@ public class order extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+        try{
+            HttpSession session = req.getSession();
         User current = (User) session.getAttribute("currentUser");
         OrderDao dao = new OrderDao();
         WalletDao wDao = new WalletDao();
@@ -50,10 +51,11 @@ public class order extends HttpServlet {
                 }
                 wallet.add(amount*-1);
                 wDao.UpdateAmount(-1,"User",null);
-                wallet = wDao.getWalletByID(0, "admin");
-                wallet.add(amount);
-                wDao.UpdateAmount(0, "admin", wallet);
+                Wallet wallet2 = wDao.getWalletByID(0, "admin");
+                wallet2.add(amount);
+                wDao.UpdateAmount(0, "admin", wallet2);
                 Cart.getInstance().DeleteCart();
+                Wallet.initialize(current.getID(), "User");
             }else{
                 resp.sendRedirect("/SWP391/Home/Cart.jsp?error=There are shops not available");
             }
@@ -62,6 +64,9 @@ public class order extends HttpServlet {
         }
         session.setAttribute("CurrentOrders", new OrderDao().getLatest(current.getID(), "User", bills.size()));
         resp.sendRedirect("/SWP391/ShowOrders");
+        }catch (Exception ex) {
+            resp.sendRedirect("/SWP391/Error.jsp?error=CannotOrder");
+        }
     }
 
     @Override

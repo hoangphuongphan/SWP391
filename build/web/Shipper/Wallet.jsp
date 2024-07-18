@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Model.Wallet" %>
-<%@page import="Model.Shop" %>
+<%@page import="Model.Shipper" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +35,7 @@
 <body>
     <%
             Wallet wallet = Wallet.getInstance();
-            Shop current = (Shop) session.getAttribute("currentShop");
+            Shipper current = (Shipper) session.getAttribute("currentShipper");
         %>
     <jsp:include page="navbar.jsp"/>
     <div class="container">

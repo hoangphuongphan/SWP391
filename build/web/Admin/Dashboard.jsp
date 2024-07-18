@@ -12,12 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="/SWP391/Logout">Logout</a><br>
-        <a href="/SWP391/Admin/Shops.jsp">Shop Management</a><br>
-        <a href="/SWP391/Admin/ApplyingShop.jsp">Shop Approving</a><br>
-        <a href="/SWP391/Admin/Shippers.jsp">Shipper Management</a><br>
-        <a href="/SWP391/Admin/ApplyingShipper.jsp">Shipper Approving</a><br>
-        <a href="/SWP391/Admin/Users.jsp">User Management</a>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <jsp:include page="navbar.jsp"/>
         <h1>Hello World!</h1>
     </body>
 </html>

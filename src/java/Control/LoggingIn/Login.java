@@ -58,8 +58,6 @@ public class Login extends HttpServlet {
                         session.setAttribute("currentUser", user);
                         Cart.getInstance();
                         Wallet.initialize(user.getID(), "User");
-                        Cart.getInstance().Add(1, 4);
-                        Cart.getInstance().Add(2, 3);
                         req.getRequestDispatcher("ShowHome").forward(req, resp);
                     }else
                         resp.sendRedirect("/SWP391/Error.jsp?Error=Banned");
