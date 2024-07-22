@@ -90,5 +90,6 @@
             });
         });
     </script>
+    <jsp:include page="homefooter.jsp"/>
 </body>
 </html>

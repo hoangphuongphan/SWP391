@@ -91,5 +91,6 @@
         </form>
     </div>
 </div>
+            <jsp:include page="homefooter.jsp"/>
 </body>
 </html>

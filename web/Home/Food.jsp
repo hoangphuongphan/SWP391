@@ -121,5 +121,6 @@
                 window.location.href = "/SWP391/ReportFood";
             });
         </script>
+        <jsp:include page="homefooter.jsp"/>
     </body>
 </html>

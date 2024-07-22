@@ -44,6 +44,23 @@ public class ShopDao {
         return shops;
     }
     
+    public ArrayList<Shop> get5Shops(){
+        ArrayList<Shop> shops = new ArrayList<>();
+        String query = "SELECT Top 5 * FROM Shop join Account on Shop.AccountID = Account.AccountID WHERE Status <> ?";
+        try {
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, 4);
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+                shops.add(new Shop(rs.getInt("ShopID"), rs.getString("Name"), rs.getString("Location"), rs.getString("Phone"), rs.getString("ShopImage"),
+                        rs.getInt("AccountID"), rs.getString("Username"), rs.getString("Password"), rs.getString("ShopEmail"), rs.getInt("Status")));
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return shops;
+    }
+    
     public ArrayList<Shop> getApplyingShop(){
         ArrayList<Shop> shops = new ArrayList<>();
         String query = "SELECT * FROM Shop join Account on Shop.AccountID = Account.AccountID WHERE Status = ?";

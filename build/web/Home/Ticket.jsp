@@ -55,5 +55,6 @@
             <button type="submit" class="btn-submit">Submit</button>
         </form>
     </div>
+    <jsp:include page="homefooter.jsp"/>
 </body>
 </html>

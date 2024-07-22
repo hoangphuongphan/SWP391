@@ -109,7 +109,49 @@ public class FoodDao {
     }
     
     public List<MenuFood> get5RandomItems() {
-        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 order by newid()";
+        String sql = "select top 6 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 order by newid()";
+        List<MenuFood> ffl = null;
+        try {
+            PreparedStatement pstm = con.prepareCall(sql);
+            ffl = new ArrayList<>();
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                int fid=rs.getInt(1);
+                String fn=rs.getString(2);
+                String sn=rs.getString(3);
+                double fp=rs.getDouble(4);
+                String fi=rs.getString(5);
+                ffl.add(new MenuFood(fid, fn, sn, fi, fp));
+            }
+            return ffl;
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+    
+    public List<MenuFood> getAll() {
+        String sql = "select food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 order by newid()";
+        List<MenuFood> ffl = null;
+        try {
+            PreparedStatement pstm = con.prepareCall(sql);
+            ffl = new ArrayList<>();
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                int fid=rs.getInt(1);
+                String fn=rs.getString(2);
+                String sn=rs.getString(3);
+                double fp=rs.getDouble(4);
+                String fi=rs.getString(5);
+                ffl.add(new MenuFood(fid, fn, sn, fi, fp));
+            }
+            return ffl;
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+    
+    public List<MenuFood> getHighRatingsFood(){
+        String sql = "select top 6 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 order by newid()";
         List<MenuFood> ffl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);
@@ -130,7 +172,7 @@ public class FoodDao {
     }
     
     public List<MenuFood> get5NewItems() {
-        String sql = "select top 4 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 desc";
+        String sql = "select top 6 food.foodid, food.foodname, shop.name, food.price, food.foodimage from Food inner join shop on food.shopid=shop.shopid and Food.Status = 1 ORDER BY food.foodid desc";
         List<MenuFood> nfl = null;
         try {
             PreparedStatement pstm = con.prepareCall(sql);

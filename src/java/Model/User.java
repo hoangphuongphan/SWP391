@@ -24,8 +24,8 @@ public class User extends Account{
         this.status = status;
     }
     
-    public User( String username, String password, String email, String phone, String name, String location, int ID, int status) {
-        super(username, password,"User");
+    public User( String username, String password, String email, String phone, String name, String location, int ID, int status, int AccountID) {
+        super(AccountID, username, password,"User");
         this.email = email;
         this.phone = phone;
         this.name = name;

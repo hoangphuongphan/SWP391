@@ -50,14 +50,14 @@
     <div class="container">
         <div class="form-container">
             <h2>Update Password</h2>
-            <form id="resetPass" action="/SWP391/UpdateUserPass" onsubmit="return validateForm()">
+            <form id="resetPass" action="/SWP391/UpdatePassword" onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="oldPass">Current Password</label>
-                    <input type="password" id="oldPass" name="oldPass" class="form-control" placeholder="Your current Password" required>
+                    <input type="password" id="oldPass" name="oldPassword" class="form-control" placeholder="Your current Password" required>
                 </div>
                 <div class="form-group">
                     <label for="newPass">New Password</label>
-                    <input type="password" id="newPass" name="newPass" class="form-control" placeholder="Your new Password" required>
+                    <input type="password" id="newPass" name="newPassword" class="form-control" placeholder="Your new Password" required>
                 </div>
                 <div class="form-group">
                     <label for="confirmPass">Confirm New Password</label>
@@ -80,5 +80,6 @@
             return true;
         }
     </script>
+    <jsp:include page="homefooter.jsp"/>
 </body>
 </html>

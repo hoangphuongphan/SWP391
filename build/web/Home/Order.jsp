@@ -59,6 +59,12 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
+<%
+    OrderDao dao = new OrderDao();
+    User current = (User) session.getAttribute("currentUser");
+    ArrayList<Order> list = dao.getOrderList(current.getID(), "User");
+    ArrayList<Order> walletList = (ArrayList<Order>) session.getAttribute("CurrentOrders");
+%>
 <div class="container">
     <div class="orderinfo">
         <h1>My Orders</h1>
@@ -88,5 +94,6 @@
         <% } %>
     </div>
 </div>
+    <jsp:include page="homefooter.jsp"/>
 </body>
 </html>

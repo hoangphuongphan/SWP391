@@ -26,17 +26,22 @@ public class UpdatePassword extends HttpServlet {
         String oldP = req.getParameter("oldPassword");
         String newP = req.getParameter("newPassword");
         Account acc;
-        if(session.getAttribute("currentUser")!=null)
+        String returnPage = "";
+        if(session.getAttribute("currentUser")!=null){
             acc = (Account) session.getAttribute("currentUser");
-        else if (session.getAttribute("currentShop")!=null)
+            returnPage = "/SWP391/Home/menu.jsp";
+        }else if (session.getAttribute("currentShop")!=null){
             acc = (Account) session.getAttribute("currentShop");
-        else
+            returnPage = "/SWP391/Shop/Home.jsp";
+        }else{
             acc = (Account) session.getAttribute("currentShipper");
+            returnPage = "/SWP391/Shipper/Home.jsp";
+        }
         if(oldP.equals(acc.getPassword())){
             acc.setPassword(newP);
             new AccountsDao().UpdateAccount(acc);
         }
-        resp.sendRedirect("/SWP391/Shop/Home.jsp");
+        resp.sendRedirect(returnPage);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class UserDao {
             ResultSet rs = st.executeQuery();
             while(rs.next())
                 users.add(new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
-                        , rs.getInt("UserID"), rs.getInt("status")));
+                        , rs.getInt("UserID"), rs.getInt("status"), rs.getInt("AccountID")));
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -50,7 +50,7 @@ public class UserDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
-                        , rs.getInt("UserID"), rs.getInt("status"));
+                        , rs.getInt("UserID"), rs.getInt("status"), rs.getInt("AccountID"));
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -67,7 +67,7 @@ public class UserDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
-                        , rs.getInt("UserID"), rs.getInt("status"));
+                        , rs.getInt("UserID"), rs.getInt("status"), rs.getInt("AccountID"));
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -84,7 +84,7 @@ public class UserDao {
             ResultSet rs = st.executeQuery();
             if(rs.next())
                 user = new User(rs.getString("Username"), rs.getString("Password"), rs.getString("email"), rs.getString("Phone"), rs.getString("Name"), rs.getString("location")
-                        , rs.getInt("UserID"), rs.getInt("status"));
+                        , rs.getInt("UserID"), rs.getInt("status"), rs.getInt("AccountID"));
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;

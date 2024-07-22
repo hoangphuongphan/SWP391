@@ -27,6 +27,7 @@
         int total = 0;
         int amount = 0;
         %>
+        <jsp:include page="navbar.jsp"/>
         <div class="container">
             <h1>Billing</h1>
             <div class="left box">

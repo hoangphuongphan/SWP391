@@ -109,6 +109,8 @@
         <div class="food-list">
             <% for(Food food : foods) { %>
                 <div class="box">
+                    <img src="<%=food.getImgurl()%>"
+                                 alt="alt" class="img d-inline-block" />
                     <h3><%=food.getName()%></h3>
                     <p>Price: <%=food.getPrice()%></p>
                     <form action="/SWP391/ShowFood">
@@ -120,5 +122,6 @@
         </div>
     </div>
 </div>
+        <jsp:include page="homefooter.jsp"/>
 </body>
 </html>

@@ -316,6 +316,18 @@
         <servlet-name>RequireTransaction</servlet-name>
         <servlet-class>Control.Payment.RequireTransaction</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateShipperPassword</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.UpdateShipperPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeShipInfo</servlet-name>
+        <servlet-class>Control.ChangeUsrInfo.ChangeShipInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowDashboard</servlet-name>
+        <servlet-class>Control.Homing.ShowDashboard</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -583,6 +595,18 @@
     <servlet-mapping>
         <servlet-name>RequireTransaction</servlet-name>
         <url-pattern>/RequireTransaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateShipperPassword</servlet-name>
+        <url-pattern>/UpdateShipperPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeShipInfo</servlet-name>
+        <url-pattern>/ChangeShipInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowDashboard</servlet-name>
+        <url-pattern>/ShowDashboard</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -3,7 +3,6 @@
     Created on : May 23, 2024, 8:58:50 PM
     Author     : DELL
 --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- jQuery library -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -42,9 +41,9 @@
                 <li class="nav-item col-2">
                     <a class="nav-link" href="/SWP391/ShowOrders">Orders</a>
                 </li>
-                <li class="nav-item col-2">
+<!--                <li class="nav-item col-2">
                     <a class="nav-link" href="#">Contact</a>
-                </li>
+                </li>-->
                 <li class="nav-item col dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                         <c:choose>
@@ -67,10 +66,6 @@
                     <i class="bi bi-search"/>
                 </li>
             </ul>
-            <form class="form-inline ml-auto search-bar" id="search-form" action="/SWP391/SearchServlet" method="get">
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>

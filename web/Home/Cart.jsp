@@ -6,12 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Model.User" %>
+<%@page import="Model.Shop" %>
 <%@page import="Model.Food" %>
 <%@page import="Model.Cart" %>
 <%@page import="Model.Wallet" %>
 <%@page import="Model.Discount" %>
 <%@page import="Dao.DiscountDao" %>
 <%@page import="Dao.FoodDao" %>
+<%@page import="Dao.ShopDao" %>
 <%@page import="Dao.WalletDao" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.HashMap" %>
@@ -29,6 +31,7 @@
         <%@include file="navbar.jsp" %>
         <%User current = (User) session.getAttribute("currentUser");
         HashMap<Integer,Integer> cart = Cart.getInstance().getCart();
+        ShopDao sdao = new ShopDao();
         FoodDao dao = new FoodDao();
         int ship = 0;
         int total = Cart.getInstance().getTotal();
@@ -60,15 +63,15 @@
                             <div class="title">
                                 <h3>Get it shipped(<%=cart.size()%>)</h3>
                             </div>
-                                <div class="cartelement">Your fee ship is <%=ship%></div>
                             <%for (Map.Entry<Integer,Integer> entry : cart.entrySet()){
-                                Food food = dao.getFoodByID(entry.getKey());%>
+                                Food food = dao.getFoodByID(entry.getKey());
+                                Shop shop = sdao.getShopByID(food.getShopID());%>
                                 <div class="container cartelement">
                                     <div class="productimage">
                                         <img src="<%=food.getImgurl()%>" alt="Food image"/>
                                     </div>
                                     <div class="productinfo">
-                                        <%=food%><br>
+                                        <a href="/SWP391/Home/Shop.jsp?ShopID=<%=shop.getShopID()%>"><%=food%></a><br>
                                         <form action="/SWP391/AdjustAmount">
                                             <input type="hidden" value="<%=food.getID()%>" name="FoodID"/>
                                             <input type="hidden" name="amount" value="<%=entry.getValue()-1%>">
@@ -94,10 +97,6 @@
                                 <div class="container">
                                     <div class="left"><p>Merchandise Subtotal</p></div>
                                     <div class="right"><p class="bold"><%=total%> vnd</p></div>
-                                </div>
-                                <div class="container">
-                                    <div class="left"><p>Shipping and Handling</p></div>
-                                    <div class="right"><p class="bold"><%=ship%> vnd</p></div>
                                 </div>
                             </div>
                             <div class="total">
@@ -161,5 +160,6 @@
                 document.getElementById("myForm").submit();
             }
         </script>
+        <jsp:include page="homefooter.jsp"/>
     </body>
 </html>

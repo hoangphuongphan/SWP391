@@ -43,6 +43,15 @@
         .btn-custom:hover {
             background-color: #0056b3;
         }
+        /* Ensure the image does not exceed 300x300 pixels */
+.food-item img {
+    max-width: 300px; /* Maximum width */
+    max-height: 300px; /* Maximum height */
+    width: 100%; /* Make sure it scales responsively */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the container without stretching */
+}
+
     </style>
 </head>
 <body>
@@ -58,6 +67,8 @@
             %>
             <div class="col-md-4">
                 <div class="food-item">
+                    <img src="<%=food.getImgurl()%>
+                        alt="alt" class="img d-inline-block" />
                     <h2><%= food.getName() %></h2>
                     <p>Price: <%= food.getPrice() %></p>
                     <form action="/SWP391/ShowFood">
@@ -82,5 +93,6 @@
             <%}} %>
         </div>
     </div>
+        <jsp:include page="homefooter.jsp"/>
 </body>
 </html>

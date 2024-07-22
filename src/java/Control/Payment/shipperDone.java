@@ -30,7 +30,7 @@ public class shipperDone extends HttpServlet {
         new OrderDao().updateOrder(order);
         Shipper current = CurrentShipper.getInstance();
         current.setStaus(1);
-        new ShipperDao().updateShipper(current);
+        new ShipperDao().updateShipper(null);
         resp.sendRedirect("Shipper/Home.jsp");
     }
 

@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
         if(admin!=null){
             HttpSession session = req.getSession(true);
             session.setMaxInactiveInterval(86400);
-            resp.sendRedirect("Admin/Dashboard.jsp");
+            resp.sendRedirect("ShowDashboard");
             session.setAttribute("Admin", true);
         }
         if(acc!= null && password.equals(acc.getPassword())){

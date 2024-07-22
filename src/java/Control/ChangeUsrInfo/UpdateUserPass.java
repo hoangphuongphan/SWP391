@@ -4,7 +4,9 @@
  */
 package Control.ChangeUsrInfo;
 
+import Dao.AccountsDao;
 import Dao.UserDao;
+import Model.Account;
 import Model.CurrentUser;
 import Model.User;
 import java.io.IOException;
@@ -25,9 +27,11 @@ public class UpdateUserPass extends HttpServlet {
         String oldPass = req.getParameter("oldPass");
         String newPass = req.getParameter("newPass");
         User current = CurrentUser.getCurrent();
-        UserDao dao = new UserDao();
+        AccountsDao dao = new AccountsDao();
+        Account acc = dao.getAccountByUsername((String) req.getSession().getAttribute("username"));
+        acc.setPassword(newPass);
         if(oldPass.equals(current.getPassword())){
-            dao.UpdataePassword(newPass, current.getEmail());
+            dao.UpdateAccount(acc);
         }
         resp.sendRedirect("/SWP391/Home/profile.jsp");
     }

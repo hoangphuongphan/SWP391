@@ -58,6 +58,7 @@
 
     <!-- JavaScript for the app -->
     <script src="js/mapMain.js"></script>
+    <jsp:include page="homefooter.jsp"/>
   </body>
 </html>
 

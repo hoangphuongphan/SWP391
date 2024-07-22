@@ -33,6 +33,26 @@ public class Shipper extends Account{
         this.email = email;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setVehicleID(String VehicleID) {
+        this.VehicleID = VehicleID;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -69,6 +89,4 @@ public class Shipper extends Account{
     public void setStaus(int staus) {
         this.staus = staus;
     }
-    
-    
 }

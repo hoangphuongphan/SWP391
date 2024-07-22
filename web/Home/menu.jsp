@@ -44,6 +44,40 @@
             display: flex;
             flex-wrap: wrap;
         }
+        
+        .image-container {
+    overflow: hidden;
+    height: 200px; /* Adjust as needed */
+    position: relative; /* Required for absolute positioning of .detail-box */
+    margin-bottom: 1rem; /* Adds space between the elements */
+}
+
+/* Style the image to fit within its container */
+.image-container img {
+    object-fit: cover; /* Adjust to cover the container */
+    width: 100%;
+    height: 100%;
+    display: block; /* Removes any extra space below the image */
+}
+
+/* Style for detail box */
+.detail-box {
+    display: none;
+    position: absolute; /* Position it over the image */
+    bottom: 0; /* Position at the bottom of the container */
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Optional: background color to make text readable */
+    color: white; /* Adjust text color for readability */
+    padding: 1rem;
+    transition: opacity 0.3s linear;
+    text-align: center; /* Center text inside the detail-box */
+}
+
+/* Show the detail box on hover */
+.image-container:hover .detail-box {
+    display: block;
+}
     </style>
     <body>
         <jsp:include page="navbar.jsp"/>
@@ -108,6 +142,64 @@
                     </c:forEach>
                 </div>
             </div>
+            <div class="container col-lg-12 m-4" style="color: blanchedalmond" id="new-food-container">
+                <div class="container-fluid border-bottom-0 m-auto"
+                     style="background-color: #9299ff; border-start-end-radius: 10px; border-start-start-radius: 10px;">
+                    <div class="p-3 flex-fill text-dark" style="text-align: left;; font-weight: bold">
+                        <h4>Food with high rating</h4>
+                    </div>
+                </div>
+                <div class="row row-flex-box col-lg-10 p-1 m-auto center-block d-flex justify-content-around
+                     bg-light border-top-0 text-dark" style="border-end-start-radius: 10px; border-end-end-radis:10px">
+                    <c:forEach var="hrl" items="${hrl}">
+                        <div class="image-container d-inline-flex justify-content-around m-auto border rounded col-lg-4 p-1"
+                             style="background-color: #efefef;">
+                            <img src="${hrl.imgurl}"
+                                 alt="alt" class="img d-inline-block" />
+                            <div class="detail-box d-inline-block px-4">
+                                <h4 style="font-weight: bold">${hrl.foodName}</h4>
+                                <p>Price: ${hrl.price}</p>
+                                <p>Shop: ${hrl.shopName}</p>
+                                <form action="/SWP391/ShowFood">
+                                    <input type="hidden" name="FoodID" value="${hrl.foodid}">
+                                    <input class="form-control btn btn-primary btn-sm btn-block flex-fill" type="submit"
+                                           value="Food Information" style="text-align: center; color: #efefef" />
+                                </form>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+            
+            <div class="container col-lg-12 m-4" style="color: blanchedalmond" id="new-food-container">
+                <div class="container-fluid border-bottom-0 m-auto"
+                     style="background-color: #9299ff; border-start-end-radius: 10px; border-start-start-radius: 10px;">
+                    <div class="p-3 flex-fill text-dark" style="text-align: left;; font-weight: bold">
+                        <h4>Food with high rating</h4>
+                    </div>
+                </div>
+                <div class="row row-flex-box col-lg-10 p-1 m-auto center-block d-flex justify-content-around
+                     bg-light border-top-0 text-dark" style="border-end-start-radius: 10px; border-end-end-radis:10px">
+                    <c:forEach var="hrl" items="${all}">
+                        <div class="image-container d-inline-flex justify-content-around m-auto border rounded col-lg-4 p-1"
+                             style="background-color: #efefef;">
+                            <img src="${hrl.imgurl}"
+                                 alt="alt" class="img d-inline-block" />
+                            <div class="detail-box d-inline-block px-4">
+                                <h4 style="font-weight: bold">${hrl.foodName}</h4>
+                                <p>Price: ${hrl.price}</p>
+                                <p>Shop: ${hrl.shopName}</p>
+                                <form action="/SWP391/ShowFood">
+                                    <input type="hidden" name="FoodID" value="${hrl.foodid}">
+                                    <input class="form-control btn btn-primary btn-sm btn-block flex-fill" type="submit"
+                                           value="Food Information" style="text-align: center; color: #efefef" />
+                                </form>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+
         </div>
         <jsp:include page="homefooter.jsp"/>
     </body>

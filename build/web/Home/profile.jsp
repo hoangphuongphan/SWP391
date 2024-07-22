@@ -19,5 +19,6 @@
     <body>
         <jsp:include page="navbar.jsp"/>
         <jsp:include page="profilecontent.jsp"/>
+        <jsp:include page="homefooter.jsp"/>
     </body>
 </html>

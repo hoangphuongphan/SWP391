@@ -46,7 +46,7 @@ public class Discount {
         else if(offer.endsWith("%"))
             return (double) Double.parseDouble(offer.split("%")[0])/100;
         else if(offer.equals("free-ship"))
-            return -1;
+            return 0;
         return Double.parseDouble(offer);
     }
 

@@ -116,7 +116,7 @@ public class ShopAuthentication implements Filter {
         if(session.getAttribute("currentShop") != null){
             Shop shop = (Shop) session.getAttribute("currentShop");
             if(shop.getStatus() == 3)
-                res.sendRedirect("/SWP391/Error.jsp?error=banned");
+                res.sendRedirect("/SWP391/Error.jsp?error=Banned");
             else if(shop.getStatus()==4)
                 res.sendRedirect("/SWP391/Error.jsp?error=notApproved");
         }

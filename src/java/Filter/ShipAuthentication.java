@@ -117,7 +117,7 @@ public class ShipAuthentication implements Filter {
         if(session.getAttribute("currentShop")!=null){
             Shipper ship =  (Shipper) session.getAttribute("currentShop");
             if(ship.getStaus()==3)
-                res.sendRedirect("/SWP391/Error.jsp?error=banned");
+                res.sendRedirect("/SWP391/Error.jsp?error=Banned");
             else if(ship.getStaus()==4)
                 res.sendRedirect("/SWP391/Error.jsp?error=notApproved");
         }
