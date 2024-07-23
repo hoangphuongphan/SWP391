@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item col-2">
-                    <a class="nav-link active" aria-current="page" href="/SWP391/Admin/Dashboard.jsp">Dashboard</a>
+                    <a class="nav-link active" aria-current="page" href="/SWP391/ShowDashboard">Dashboard</a>
                 </li>
                 <li class="nav-item col-2">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">Shops

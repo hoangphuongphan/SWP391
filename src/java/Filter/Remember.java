@@ -117,7 +117,7 @@ public class Remember implements Filter {
         if(session!= null && session.getAttribute("currentShipper")!=null)
             req.getRequestDispatcher("/ShowShipperHome").forward(request, response);
         if(session!= null && session.getAttribute("Admin")!=null)
-            res.sendRedirect("/SWP391/Admin/Dashboard.jsp");
+            res.sendRedirect("/SWP391/ShowDashboard");
         
         Throwable problem = null;
         try {

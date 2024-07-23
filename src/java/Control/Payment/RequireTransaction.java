@@ -32,11 +32,15 @@ public class RequireTransaction extends HttpServlet {
         
         //handle transaction
         int amount = (int) Math.round((double)((order.getTotal() * 95) / 100));
+        int ship = (int) Math.round((double)((order.getTotal() * 2) / 100));
         Wallet shopWallet = wdao.getWalletByID(order.getShop().getShopID(), "Shop");
+        Wallet shipWallet = wdao.getWalletByID(order.getShipper().getID(), "Shipper");
         Wallet adminBank = wdao.getWalletByID(0, "admin");
         shopWallet.add(amount);
-        adminBank.add(amount*-1);
+        shipWallet.add(ship);
+        adminBank.add((amount*-1)+(ship*-1));
         wdao.UpdateAmount(0, "admin", adminBank);
+        wdao.UpdateAmount(shipWallet.getUserID(), "Shipper", shipWallet);
         wdao.UpdateAmount(shopWallet.getUserID(), "Shop", shopWallet);
         
         

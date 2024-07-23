@@ -29,24 +29,19 @@ public class RegisterShop extends HttpServlet {
      @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        AccountsDao aDao = new AccountsDao();
+        ShopDao sDao = new ShopDao();
+        WalletDao wDao = new WalletDao();
         if(((String)session.getAttribute("OTP")).equals(req.getParameter("trueOTP")) ){
-//        AccountsDao Adao = new AccountsDao();
-//        UserDao Udao = new UserDao();
-//        Account acc = new Account((String) session.getAttribute("username"), (String) session.getAttribute("password"), "User");
-//        User user = new User(acc.getUsername(), acc.getPassword(), (String) session.getAttribute("email"), (String) session.getAttribute("phone"), Generator.getInstance().getNewDisplayName());
-//        Adao.Create(acc, "User");
-//        acc = Adao.getAccountByUsername(acc.getUsername());
-//        Udao.Create(user, acc.getAccountID());
-            AccountsDao aDao = new AccountsDao();
-            ShopDao sDao = new ShopDao();
-            WalletDao wDao = new WalletDao();
+            if(sDao.isValidEmail((String) session.getAttribute("email"))){
             Account acc = new Account((String) session.getAttribute("username"), (String) session.getAttribute("password"), "Shop");
             aDao.Create(acc, "Shop");
             Shop shop = new Shop((String) session.getAttribute("location"), (String) session.getAttribute("phone"), (String) session.getAttribute("email"),
                     (String) session.getAttribute("username"), (String) session.getAttribute("password"), "Shop");
             sDao.CreateShop(shop);
             wDao.CreateWallet(sDao.getShopByUsername(acc.getUsername()).getShopID(), "Shop");
-            
+            }else
+                resp.sendRedirect("Error.jsp?error=invalidEmail");
         }
         session.removeAttribute("username");
         session.removeAttribute("password");

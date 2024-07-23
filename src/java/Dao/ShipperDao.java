@@ -28,6 +28,20 @@ public class ShipperDao {
         con = instance.getCon();
     }
     
+    public boolean isValidEmail(String email){
+        String query = "select COUNT(*) as number from Shipper where Email = ?";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                return rs.getInt("number")==0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public ArrayList<Shipper> getShippers(){
         String query = "select * from Shipper as A join Account as C on A.AccountID = C.AccountID where status <> 4";
         ArrayList<Shipper> list = new ArrayList<>();

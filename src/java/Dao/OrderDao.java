@@ -33,6 +33,26 @@ public class OrderDao {
             con = instance.getCon();
     }
     
+    public int[] getIncomes(){
+        int[] incomes = new int[12];
+        for(int i =0;i <12; i++){
+            String query = "select * from Orders where Month(Time) = ?";
+            try{
+                PreparedStatement st = con.prepareStatement(query);
+                st.setInt(1, i+1);
+                ResultSet rs = st.executeQuery();
+                while(rs.next()){
+                    int orderID = rs.getInt("OrderID");
+                    Order order = getOrderByID(orderID);
+                    incomes[i] += Math.round(order.getTotal()*98/100);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return incomes;
+    }
+    
     public ArrayList<Order> getHistory(int ID, String type){
         ArrayList<Order> orders = new ArrayList<>();
         String query = "";

@@ -4,6 +4,7 @@
  */
 package Control.Homing;
 
+import Dao.OrderDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -21,8 +22,8 @@ public class ShowDashboard extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        List<Integer> monthlyPayments = Arrays.asList(1200, 1500, 1800, 2000, 2300, 2500, 2700, 3000, 3200, 3400, 3600, 3800);
-//        req.setAttribute("monthlyPayments", monthlyPayments);
+        int[] incomes = new OrderDao().getIncomes();
+        req.setAttribute("incomes", incomes);
         req.getRequestDispatcher("/Admin/Dashboard.jsp").forward(req, resp);
     }
 

@@ -25,6 +25,20 @@ public class UserDao {
         con = instance.getCon();
     }
     
+    public boolean isValidEmail(String email){
+        String query = "select COUNT(*) as number from Users where Email = ?";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                return rs.getInt("number")==0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public ArrayList<User> getUsers(){
         String query = "select * from Users as A join Account as B on B.AccountID = A.AccountID";
         ArrayList<User> users = new ArrayList<>();

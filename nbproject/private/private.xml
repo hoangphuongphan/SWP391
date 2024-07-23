@@ -3,26 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Food.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Filter/ShopAuthentication.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Shop.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Payment/order.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Cart.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Model/Discount.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/searchbar.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/TopUp.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Homing/ShowHome.java</file>
             <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Payment/orderCash.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Filter/ShipAuthentication.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Admin/Dashboard.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Control/Payment/RequireTransaction.java</file>
             <file>file:/C:/FU/SWP391/SWP391/web/Home/searchResults.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Error.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Shipper.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/UpdatePassword.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/Database.java</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Shop.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/navbar.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Order.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Ticket.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Map.jsp</file>
-            <file>file:/C:/FU/SWP391/SWP391/web/Home/Details.jsp</file>
+            <file>file:/C:/FU/SWP391/SWP391/src/java/Dao/ShopDao.java</file>
+            <file>file:/C:/FU/SWP391/SWP391/web/Home/menu.jsp</file>
         </group>
     </open-files>
 </project-private>

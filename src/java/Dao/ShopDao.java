@@ -27,6 +27,20 @@ public class ShopDao {
         con = instance.getCon();
     }
     
+    public boolean isValidEmail(String email){
+        String query = "select COUNT(*) as number from Shop where ShopEmail = ?";
+        try{
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                return rs.getInt("number")==0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public ArrayList<Shop> getShops(){
         ArrayList<Shop> shops = new ArrayList<>();
         String query = "SELECT * FROM Shop join Account on Shop.AccountID = Account.AccountID WHERE Status <> ?";

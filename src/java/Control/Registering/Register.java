@@ -26,18 +26,21 @@ public class Register extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
         HttpSession session = req.getSession();
-        if(((String)session.getAttribute("OTP")).equals(req.getParameter("trueOTP")) ){
         AccountsDao Adao = new AccountsDao();
         UserDao Udao = new UserDao();
         WalletDao Wdao = new WalletDao();
-        Account acc = new Account((String) session.getAttribute("username"), (String) session.getAttribute("password"), "User");
-        User user = new User(acc.getUsername(), acc.getPassword(), (String) session.getAttribute("email"), (String) session.getAttribute("phone"), Generator.getInstance().getNewDisplayName(),1);
-        Adao.Create(acc, "User");
-        acc = Adao.getAccountByUsername(acc.getUsername());
-        Udao.Create(user, acc.getAccountID());
-        Wdao.CreateWallet(Udao.getUserByUsername(acc.getUsername()).getID(), "User");
+        if(((String)session.getAttribute("OTP")).equals(req.getParameter("trueOTP")) ){
+            if(Udao.isValidEmail((String) session.getAttribute("email"))){
+                
+                Account acc = new Account((String) session.getAttribute("username"), (String) session.getAttribute("password"), "User");
+                User user = new User(acc.getUsername(), acc.getPassword(), (String) session.getAttribute("email"), (String) session.getAttribute("phone"), Generator.getInstance().getNewDisplayName(),1);
+                Adao.Create(acc, "User");
+                acc = Adao.getAccountByUsername(acc.getUsername());
+                Udao.Create(user, acc.getAccountID());
+                Wdao.CreateWallet(Udao.getUserByUsername(acc.getUsername()).getID(), "User");
+            }else
+                resp.sendRedirect("Error.jsp?error=invalidEmail");
         }
         session.removeAttribute("username");
         session.removeAttribute("password");

@@ -31,20 +31,19 @@ public class RegisterShip extends HttpServlet {
      @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        AccountsDao aDao = new AccountsDao();
+        ShipperDao sDao = new ShipperDao();
+        WalletDao wDao = new WalletDao();
         if(((String)session.getAttribute("OTP")).equals(req.getParameter("trueOTP")) ){
-            AccountsDao aDao = new AccountsDao();
-            ShipperDao sDao = new ShipperDao();
-            WalletDao wDao = new WalletDao();
-            Account acc = new Account((String) session.getAttribute("username"), (String) session.getAttribute("password"), "Shop");
-            aDao.Create(acc, "Shop");
-            Shipper ship = new Shipper(acc.getUsername(), acc.getPassword(), (String) session.getAttribute("phone"), 
-                    (String) session.getAttribute("vehicleID"), (String) session.getAttribute("email"));
-            sDao.create(ship);
-//            Shop shop = new Shop((String) session.getAttribute("location"), (String) session.getAttribute("phone"), (String) session.getAttribute("email"),
-//                    (String) session.getAttribute("username"), (String) session.getAttribute("password"), "Shop");
-//            sDao.CreateShop(shop);
-            wDao.CreateWallet(sDao.getShipperByUsername(acc.getUsername()).getID(), "Shipper");
-            
+            if(sDao.isValidEmail((String) session.getAttribute("email"))){
+                Account acc = new Account((String) session.getAttribute("username"), (String) session.getAttribute("password"), "Shop");
+                aDao.Create(acc, "Shop");
+                Shipper ship = new Shipper(acc.getUsername(), acc.getPassword(), (String) session.getAttribute("phone"), 
+                        (String) session.getAttribute("vehicleID"), (String) session.getAttribute("email"));
+                sDao.create(ship);
+                wDao.CreateWallet(sDao.getShipperByUsername(acc.getUsername()).getID(), "Shipper");
+            }else
+                resp.sendRedirect("Error.jsp?error=invalidEmail");
         }
         session.removeAttribute("username");
         session.removeAttribute("password");

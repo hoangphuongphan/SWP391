@@ -54,6 +54,10 @@
                     title = "Order Issue";
                     description = "Cannot order right now due to a platform problem.";
                     break;
+                case "invalidEmail":
+                    title = "Email Used";
+                    description = "This email has already been registered on this platform.";
+                    break;
                 default:
                     title = "Unknown Error";
                     description = "An unknown error occurred. Please try again later.";
